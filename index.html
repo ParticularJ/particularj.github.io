@@ -501,60 +501,14 @@
 
       
         
-          
-            <h1 id="Tensorflow-tutorials"><a href="#Tensorflow-tutorials" class="headerlink" title="Tensorflow tutorials"></a>Tensorflow tutorials</h1><h2 id="tensor"><a href="#tensor" class="headerlink" title="tensor"></a>tensor</h2><p>Tensorflow的中心数据单元是tensor。Tensor是由一组以任意维数所组成的矩阵组成的，Tensor的等级就是维数。</p>
-<pre><code>3   # a rank 0 tensor;
-[1., 2., 3.] # a rank 1 tensor; a vector with shape [3]
-[[1.,2., 3.], [4., 5., 6.]] # a rank 2 tensor; a matrix with shape [2, 3]
-[[[1., 2., 3.]], [[7., 8., 9.]]] # a rank3 tensor with shape [2, 1, 3]
-</code></pre><h2 id="TensofFlow-Core-tutorial"><a href="#TensofFlow-Core-tutorial" class="headerlink" title="TensofFlow Core tutorial"></a>TensofFlow Core tutorial</h2><p>在机器学习中，我们通常需要一个可以采取任意输入的模型，比如上面的模型。 为了使模型可训练，我们需要能够修改图形以获得具有相同输入的新输出。<strong>Variables</strong> 可以使得我们向图添加可训练的参数。</p>
-<pre><code>W = tf.Variable([.3], dtype=tf.float32)
-</code></pre><p>在我们使用tf.Variable时我们首先要对其进行初始化。</p>
-<pre><code>init = tf.global_variables_initializer()
-sess = tf.Session()
-sess.run(init)
-</code></pre><p>我们可以使用<em>tf.square</em>计算每一个样本误差，通过_tf.reduce<em>sum</em>函数来计算总误差。</p>
-<pre><code>y = tf.placeholder(tf.float32)
-squared_deltas = tf.square(linear_model-y)
-loss = tf.reduce_sum(squared_deltas)
-</code></pre><p>我们可以通过<em>tf.assign</em>函数来改变由<em>tf.Variable</em>函数所赋值的变量。</p>
-<pre><code>fixX = tf.assign(W,[-1.])
-</code></pre><p><em>tf.estimator</em> 是一个高级的Tensorflow库，用来简化机器学习的机制。</p>
-<ul>
-<li>running training loops</li>
-<li>running evaluation loops</li>
-<li>managing data sets</li>
-</ul>
-<p><em>tf.feature_column.numeric_column</em> 这个函数是用来穿件有几个feature的，本例中只有一个feature。</p>
-<pre><code>tf.feature_column.numeric_column(&quot;x&quot;, shape = [1])
-</code></pre><p>通过tf.estimator直接构建分类器，但是数据load进来之后，输入分类器之前我们先要使用input_fn的函数。如果你的feature/label数据是python array，或者存在pandas dataframe或者numpy array中，需要使用如下函数建立input_fn函数。</p>
-<pre><code>tf.estimator.inputs.pandas_input_fn()
-tf.estimator.inputs.numpy_input_fn()
-</code></pre><p><em>tf.train.get_global_step(graph = None)</em></p>
-<ul>
-<li>Function：获得全局步张量。并且全局的步张量必须是整形变量。</li>
-</ul>
-<p><em>tf.assign_add()</em></p>
-<pre><code>assign_add(
-  ref,
-  value,
-  use_locking = None,
-  name = None
-  )
-</code></pre><ul>
-<li><p>Function:更新ref通过将value值加给它。</p>
-</li>
-<li><p>Args:</p>
-<ul>
-<li>ref: 一个可修改的Tensor</li>
-<li>value: 一个和ref相同类型的Tensor</li>
-<li>use_locking: bool型。</li>
-<li>name: 给该操作起名称。</li>
-</ul>
-</li>
-</ul>
-
-          
+          <p>Tensorflow的学习笔记,孰能生巧。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/09/Tensorflow/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
