@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="Tensorflow的简单教程，多做练习，熟能生巧。">
+<meta name="description" content="Tensorflow tutorialstensorTensorflow的中心数据单元是tensor。Tensor是由一组以任意维数所组成的矩阵组成的，Tensor的等级就是维数。 3   # a rank 0 tensor; [1., 2., 3.] # a rank 1 tensor; a vector with shape [3] [[1.,2., 3.], [4., 5., 6.]] #">
 <meta name="keywords" content="Tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tensorflow">
 <meta property="og:url" content="particularj.github.io/2017/11/09/Tensorflow/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="Tensorflow的简单教程，多做练习，熟能生巧。">
+<meta property="og:description" content="Tensorflow tutorialstensorTensorflow的中心数据单元是tensor。Tensor是由一组以任意维数所组成的矩阵组成的，Tensor的等级就是维数。 3   # a rank 0 tensor; [1., 2., 3.] # a rank 1 tensor; a vector with shape [3] [[1.,2., 3.], [4., 5., 6.]] #">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-09T14:59:46.388Z">
+<meta property="og:updated_time" content="2017-11-10T02:27:04.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow">
-<meta name="twitter:description" content="Tensorflow的简单教程，多做练习，熟能生巧。">
+<meta name="twitter:description" content="Tensorflow tutorialstensorTensorflow的中心数据单元是tensor。Tensor是由一组以任意维数所组成的矩阵组成的，Tensor的等级就是维数。 3   # a rank 0 tensor; [1., 2., 3.] # a rank 1 tensor; a vector with shape [3] [[1.,2., 3.], [4., 5., 6.]] #">
 
 
 
@@ -353,8 +353,7 @@
       
 
       
-        <p>Tensorflow的简单教程，多做练习，熟能生巧。<br><a id="more"></a></p>
-<h1 id="Tensorflow-tutorials"><a href="#Tensorflow-tutorials" class="headerlink" title="Tensorflow tutorials"></a>Tensorflow tutorials</h1><h2 id="tensor"><a href="#tensor" class="headerlink" title="tensor"></a>tensor</h2><p>Tensorflow的中心数据单元是tensor。Tensor是由一组以任意维数所组成的矩阵组成的，Tensor的等级就是维数。</p>
+        <h1 id="Tensorflow-tutorials"><a href="#Tensorflow-tutorials" class="headerlink" title="Tensorflow tutorials"></a>Tensorflow tutorials</h1><h2 id="tensor"><a href="#tensor" class="headerlink" title="tensor"></a>tensor</h2><p>Tensorflow的中心数据单元是tensor。Tensor是由一组以任意维数所组成的矩阵组成的，Tensor的等级就是维数。</p>
 <pre><code>3   # a rank 0 tensor;
 [1., 2., 3.] # a rank 1 tensor; a vector with shape [3]
 [[1.,2., 3.], [4., 5., 6.]] # a rank 2 tensor; a matrix with shape [2, 3]
@@ -369,14 +368,40 @@ sess.run(init)
 <pre><code>y = tf.placeholder(tf.float32)
 squared_deltas = tf.square(linear_model-y)
 loss = tf.reduce_sum(squared_deltas)
-</code></pre><p>我们可以通过<em>tf.assign</em>函数来改变有<em>tf.Variable</em>函数所赋值的变量。</p>
+</code></pre><p>我们可以通过<em>tf.assign</em>函数来改变由<em>tf.Variable</em>函数所赋值的变量。</p>
 <pre><code>fixX = tf.assign(W,[-1.])
 </code></pre><p><em>tf.estimator</em> 是一个高级的Tensorflow库，用来简化机器学习的机制。</p>
 <ul>
 <li>running training loops</li>
 <li>running evaluation loops</li>
-<li><p>managing data sets<br>_tf.feature_column.numeric<em>column</em> 这个函数是用来穿件有几个feature的，本例中只有一个feature。</p>
-<p>tf.feature_column.numeric_column(“x”, shape = [1])</p>
+<li>managing data sets</li>
+</ul>
+<p><em>tf.feature_column.numeric_column</em> 这个函数是用来穿件有几个feature的，本例中只有一个feature。</p>
+<pre><code>tf.feature_column.numeric_column(&quot;x&quot;, shape = [1])
+</code></pre><p>通过tf.estimator直接构建分类器，但是数据load进来之后，输入分类器之前我们先要使用input_fn的函数。如果你的feature/label数据是python array，或者存在pandas dataframe或者numpy array中，需要使用如下函数建立input_fn函数。</p>
+<pre><code>tf.estimator.inputs.pandas_input_fn()
+tf.estimator.inputs.numpy_input_fn()
+</code></pre><p><em>tf.train.get_global_step(graph = None)</em></p>
+<ul>
+<li>Function：获得全局步张量。并且全局的步张量必须是整形变量。</li>
+</ul>
+<p><em>tf.assign_add()</em></p>
+<pre><code>assign_add(
+  ref,
+  value,
+  use_locking = None,
+  name = None
+  )
+</code></pre><ul>
+<li><p>Function:更新ref通过将value值加给它。</p>
+</li>
+<li><p>Args:</p>
+<ul>
+<li>ref: 一个可修改的Tensor</li>
+<li>value: 一个和ref相同类型的Tensor</li>
+<li>use_locking: bool型。</li>
+<li>name: 给该操作起名称。</li>
+</ul>
 </li>
 </ul>
 
@@ -520,7 +545,7 @@ loss = tf.reduce_sum(squared_deltas)
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
