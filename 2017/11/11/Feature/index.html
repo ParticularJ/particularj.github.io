@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+
+
+
+
+  <meta name="keywords" content="Han_Recognize," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="文字识别拟采用到的特征以及分类器的选择，对不同的特征做出比较，并且对分类器进行简单的比较，浅尝辄止。">
+<meta name="keywords" content="Han_Recognize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Feature">
+<meta property="og:url" content="particularj.github.io/2017/11/11/Feature/index.html">
+<meta property="og:site_name" content="ParticularJ">
+<meta property="og:description" content="文字识别拟采用到的特征以及分类器的选择，对不同的特征做出比较，并且对分类器进行简单的比较，浅尝辄止。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201208/31/1346398527_7290.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201208/31/1346398555_8090.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201208/31/1346398586_1563.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201208/31/1346398889_7438.jpg">
+<meta property="og:updated_time" content="2017-11-11T14:26:46.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Feature">
+<meta name="twitter:description" content="文字识别拟采用到的特征以及分类器的选择，对不同的特征做出比较，并且对分类器进行简单的比较，浅尝辄止。">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201208/31/1346398527_7290.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>Feature | ParticularJ</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ParticularJ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/11/Feature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ParticularJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ParticularJ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Feature</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T22:23:08+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>文字识别拟采用到的特征以及分类器的选择，对不同的特征做出比较，并且对分类器进行简单的比较，浅尝辄止。<br><a id="more"></a></p>
+<h1 id="文字识别"><a href="#文字识别" class="headerlink" title="文字识别"></a>文字识别</h1><h2 id="特征的选择"><a href="#特征的选择" class="headerlink" title="特征的选择"></a>特征的选择</h2><ul>
+<li><p>HOG</p>
+<p>1、方向梯度直方图，通过计算和统计图像局部区域的梯度方向直方图来构成特征。</p>
+<p>2、在一副图像中，局部目标的表象和形状能够被梯度或边缘的方向密度分布很好地描述。</p>
+<p>3、主要过程：</p>
+<pre><code>1）灰度化；
+2）采用Gamma校正法对输入图像进行颜色空间的标准化（归一化）；
+3）计算每个像素的梯度；
+4）将图像划分成小cells;
+5) 统计每个cell的梯度直方图，形成每个cell的descriptor;
+6) 将每几个cell组成block，形成block的descriptor;
+7) 将图像的所有block串联起来就得到图像的descriptor。
+</code></pre></li>
+<li><p>LBP</p>
+<p>1、局部二值模式，用来表述图像局部纹理特征的算子。</p>
+<p>2、以（3*3）窗口中心像素为阈值，将相邻的8个像素的灰度值与其进行比较，若周围像素大于中心位置像素，<br>则该像素被标记为1，否则为0。通过这个串码，代表该区域的纹理信息。</p>
+<p><img src="http://img.my.csdn.net/uploads/201208/31/1346398527_7290.jpg" alt="LBP" title="LBP描述"></p>
+<p>3、随后，算法改进，将区域扩大到任何区域，并且用圆形替代了正方形。<img src="http://img.my.csdn.net/uploads/201208/31/1346398555_8090.jpg" alt="LBP改进" title="LBP改进"></p>
+<p>4、之后，又进一步改进使得LBP具有旋转不变性，通过不断旋转得到一系列初始定义的LBP值，取最小作为该区域的LBP值。<img src="http://img.my.csdn.net/uploads/201208/31/1346398586_1563.jpg" alt="LBP旋转不变" title="LBP旋转不变"></p>
+<p>5、由于LBP采用二进制的模式，往往使得数据量极大，所以<strong>等价模式</strong>被提出用来降维。<strong>等价模式认为，绝大多说LBP最多只包含两次0，1跳跃，因此，当某个LBP所对应的循环二进制跳跃至多有两次时，就表明他们是等价的。除此之外，都称之为混合类模式。</strong> 通过该方法，可以使得模式的数量大大减少。</p>
+<p>6、主要过程</p>
+<pre><code>1）首先将窗口划分为小的cell;
+2) 生成对应的LBP值；
+3）计算每个cell的直方图，即每个数字出现的频率，然后进行归一化处理；
+4）最后将每个cell的直方图连接成为特征向量。
+</code></pre></li>
+<li><p>Haar-like</p>
+<p>1、Haar特征分为三类：边缘特征、线性特征、中心特征和对角线特征，组合成特征模板。特征模板模板内有白色和黑色两种矩形，并定义该模板的特征值为<strong>白色矩形像素和减去黑色矩形像素和。</strong></p>
+<p>2、Haar特征值反映了图像的灰度变化情况。<img src="http://img.my.csdn.net/uploads/201208/31/1346398889_7438.jpg" alt="Haar-like"><br>对于图中的A,B和D这类特征，特征值计算公式为：v=Sum白-Sum黑，对于C则是：v=Sum白-2*Sum黑，之所以将黑色区域像素和乘以2，是为了使两种矩形区域中像素数目一致。</p>
+<p>3、矩形特征可位于图像任意位置，大小也可以任意改变，所以矩形特征值是矩形模板类别、矩形位置和矩形大小这三个因素的函数。</p>
+<p>4、Haar-like特征的计算-积分图</p>
+<p>  积分图就是只遍历一次图像就可以求出图像中所有区域像素和的快速算法。主要思想是：将图像从起点开始到各个点所形成的矩形区域像素之和作为一个数组的元素保存在内存中，当需要计算某个区域的像素和时可以直接索引数组的元素，不用重新计算这个区域的像素和。<strong>(动态规划)</strong></p>
+</li>
+<li><p>Sift</p>
+<p>1、在不同尺度空间上查找关键点（特征点）的问题。所谓关键点，就是一些十分突出的点，这些点不会因光照条件的改变而消失，比如角点、边缘点、暗区域的亮点以及亮区域的暗点。在sift中，关键点是在不同尺度空间的图像下检测出的具有方向信息的局部极值点。主要涉及：1、构建尺度空间；2、关键点检测。</p>
+<p>2、构建尺度空间。通过对原始图像进行尺度变换，获得图像多尺度下的尺度空间表示序列，并检测序列中的关键点。<strong>这样图片就被映射为多个尺度上的关键点信息，尽管两幅图片是处于不同的尺度，但却可以提取出在尺度变换中没有改变的关键点，从而进行关键点匹配，进而识别出物体。</strong></p>
+<p>3、通过高斯核产生尺度模糊，从而模拟多尺度下的图像，通常使用二位高斯核与原始图像的卷积来表示。通过构建高斯金字塔，产生多组尺度的图片。</p>
+<p>4、关键点检测。通过对卷积过的图像进行拉普拉斯运算（二阶导数），并求极值点，从而求出关键点。提出了DoG算子，能够很大程度提高计算效率，我们通过构建DOG金字塔</p>
+<p>5、算法步骤：</p>
+<pre><code>1）构建尺度空间
+2）LoG近似
+3）找到关键点
+4）除去不好的特征点（边界和低亮度区域）
+5）给特征点赋值一个方向
+6）生成sift特征
+</code></pre></li>
+<li><p>Surf</p>
+<p>1、surf算法是对sift算法的加强版，同时加速的具有鲁棒性的特征。并且surf算子比sift算子快好几倍，并且在多幅图片下具有更好的鲁棒性。<strong>surf最大的特征在于采用了haar特征以及积分图像integral image的概念。</strong></p>
+<p>2、sift算法建立一幅图像的金字塔，在每一层进行高斯滤波并求取DOG进行特征点的提取，而surf则用的是Hessian Matrix进行特征点的提取。</p>
+<p>3、基本思想是通过对图片高斯滤波，之后计算出Hessian矩阵，通过计算矩阵的判别式的值，从而判断该点是否为极值点。</p>
+<p>4、尺度空间生成。Sift采用的高斯模板大小是始终不变的，只是在不同的octave之间改变图片的大小。而surf，图片的大小是一直不变的，不同的octave层得到的待检测图片是改变高斯模糊尺寸大小得到的。</p>
+<p>5、利用非极大值抑制初步确定特征点和精确定位特征点。通过三维比较，选取出最大或最小点，当作初步的特征点。为了保证旋转不变性，<strong>在surf中，不统计其梯度直方图，而是统计特征点领域内的Harr小波特征。</strong> 以特征点为中心，统计邻域内的Harr小波响应总和，并给这些响应值赋高斯权重系数，然后形成新的矢量，选择最长的矢量方向为特征点的主方向。</p>
+<p>6、构造surf特征点描述算子。在特征点周围取一个正方形框，该框的方向便是上一步检测的方向。然后将之分为16个子区域，每个子区域统计25个像素的水平方向和垂直方向的haar小波特征，分别计算垂直和水平方向值和绝对值之和。</p>
+</li>
+<li>surf与sift的比较</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">SIFT</th>
+<th style="text-align:right">SURF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>尺度空间</td>
+<td style="text-align:center">DOG与不同尺度的图片卷积</td>
+<td style="text-align:right">不同尺度的box filters与原图片卷积</td>
+</tr>
+<tr>
+<td>特征点检测</td>
+<td style="text-align:center">先进行非极大值抑制，再去除低对比度的点。再通过Hessian矩阵去除边缘的点</td>
+<td style="text-align:right">先用Hessian矩阵确定候选点，然后进行非极大抑制</td>
+</tr>
+<tr>
+<td>方向</td>
+<td style="text-align:center">在正方形区域内统计梯度的幅值的直方图，找max对应的方向。可以有多个方向</td>
+<td style="text-align:right">在圆形区域内，计算各个扇形范围内x,y方向的haar小波响应，找模最大的扇形方向</td>
+</tr>
+<tr>
+<td>特征描述子</td>
+<td style="text-align:center">16<em>16的采样点划分为4</em>4的区域，计算每个区域的采样点的梯度方向和幅值，统计成8bin直方图，共4<em>4</em>8=128维</td>
+<td style="text-align:right">20<em>20s的区域划分为4</em>4的子区域，每个子区域找5<em>5个采样点，计算采样点的haar小波响应，记录∑dx,∑dy,以及dx和dy的绝对值，共4</em>4*4=64维</td>
+</tr>
+</tbody>
+</table>
+<h2 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h2><ul>
+<li><p>PCA</p>
+<p>1、K-L变换，在均方误差准则下失真最小的一种变换。是将原空间变换到特征向量空间内，数学表达式为：AX=λX。</p>
+<p>算法思想：</p>
+<pre><code>设有m条n维数据
+1)将原始数据按列组成n行m列矩阵X
+2)将X的每一行进行零均值化
+3）求出协方差矩阵
+4）求出协方差矩阵对应的特征值和特征向量
+5）将特征向量按对应特征值大小从上到下按行排列成矩阵，取前K行组成矩阵P
+6)Y = PX即为降维后的数据。
+</code></pre><p>2、优点：1）最小误差，2）提取了主要信息。缺点：1）计算协方差矩阵的计算量大。</p>
+</li>
+<li><p>LDA</p>
+<p>1、往线性判别超平面的法向量上投影，使得区分度最大。（Fisher线性判别）</p>
+</li>
+<li><p>LLE</p>
+<p>1、非线性降维算法，使得降维后的数据较好地保持原有的流行结构。</p>
+</li>
+<li><p>拉普拉特征映射</p>
+<p>1、使用某一种方法，将所有点构成一个图</p>
+<pre><code>1）构造近邻图
+2）计算边权重
+3）特征映射  
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Han-Recognize/" rel="tag"><i class="fa fa-tag"></i> Han_Recognize</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="ParticularJ" />
+            
+              <p class="site-author-name" itemprop="name">ParticularJ</p>
+              <p class="site-description motion-element" itemprop="description">Those who can not beat you will make you stronger.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ParticularJ" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文字识别"><span class="nav-number">1.</span> <span class="nav-text">文字识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征的选择"><span class="nav-number">1.1.</span> <span class="nav-text">特征的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#降维"><span class="nav-number">1.2.</span> <span class="nav-text">降维</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ParticularJ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
