@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Tensorflow的学习笔记,孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-10T02:56:36.009Z">
+<meta property="og:updated_time" content="2017-11-13T02:10:37.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow">
 <meta name="twitter:description" content="Tensorflow的学习笔记,孰能生巧。">
@@ -405,7 +405,14 @@ tf.estimator.inputs.numpy_input_fn()
 </ul>
 </li>
 </ul>
-
+<h2 id="MNIST-For-ML"><a href="#MNIST-For-ML" class="headerlink" title="MNIST For ML"></a>MNIST For ML</h2><p><em>交叉熵函数</em>:用来确定模型的损失。</p>
+<pre><code>cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y),reduction_indices = [1]))
+</code></pre><ul>
+<li>reduction_indices的作用是将tf.reduce_sum计算出的值存在新一列。</li>
+</ul>
+<p>但是，在源码当中我们并不使用他，因为他的计算不够稳定，我们使用如下的函数：</p>
+<pre><code>tf.nn.softmax_cross_entropy_with_logits
+</code></pre>
       
     </div>
     
@@ -524,7 +531,7 @@ tf.estimator.inputs.numpy_input_fn()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -535,7 +542,7 @@ tf.estimator.inputs.numpy_input_fn()
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -546,7 +553,7 @@ tf.estimator.inputs.numpy_input_fn()
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -589,7 +596,7 @@ tf.estimator.inputs.numpy_input_fn()
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow-tutorials"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow tutorials</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensor"><span class="nav-number">1.1.</span> <span class="nav-text">tensor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensofFlow-Core-tutorial"><span class="nav-number">1.2.</span> <span class="nav-text">TensofFlow Core tutorial</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow-tutorials"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow tutorials</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensor"><span class="nav-number">1.1.</span> <span class="nav-text">tensor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensofFlow-Core-tutorial"><span class="nav-number">1.2.</span> <span class="nav-text">TensofFlow Core tutorial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MNIST-For-ML"><span class="nav-number">1.3.</span> <span class="nav-text">MNIST For ML</span></a></li></ol></li></ol></div>
             
 
           </div>
