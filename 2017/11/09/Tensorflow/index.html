@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Tensorflow的学习笔记,孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T02:10:37.016Z">
+<meta property="og:updated_time" content="2017-11-14T00:40:36.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow">
 <meta name="twitter:description" content="Tensorflow的学习笔记,孰能生巧。">
@@ -412,7 +412,24 @@ tf.estimator.inputs.numpy_input_fn()
 </ul>
 <p>但是，在源码当中我们并不使用他，因为他的计算不够稳定，我们使用如下的函数：</p>
 <pre><code>tf.nn.softmax_cross_entropy_with_logits
-</code></pre>
+</code></pre><p><em>tf.argmax</em>:gives you the index of the highest entry in a tensor along some axis.</p>
+<pre><code>tf.argmax(y_, 1)
+</code></pre><ul>
+<li><p>表示正确的标签。</p>
+<p>  tf.argmax(y, 1)</p>
+</li>
+<li><p>表示我们训练的模型预测出的标签。</p>
+</li>
+</ul>
+<p><em>tf.equal</em>:用来检查我们的标签和真实标签的,返回booleans.</p>
+<pre><code>tf.equal(tf.argmax(y,1), tf.argmax(y_, 1))
+</code></pre><p><em>tf.cast</em>:将tf.equal函数得到的，booleans值，转化成数值型。</p>
+<p><strong>tf.Session()和tf.InteractiveSession()区别</strong></p>
+<ul>
+<li>tf.Session()在执行变量时需要sess.run(x)</li>
+<li>tf.InteractiveSession()执行时仅仅需要x.eval()即可。</li>
+</ul>
+
       
     </div>
     
@@ -553,7 +570,7 @@ tf.estimator.inputs.numpy_input_fn()
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -799,6 +816,28 @@ tf.estimator.inputs.numpy_input_fn()
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

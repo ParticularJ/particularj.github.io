@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="randomforest," />
+  <meta name="keywords" content="Randomforest," />
 
 
 
@@ -113,16 +113,16 @@
 
 
 <meta name="description" content="随机森林指的是利用多棵树对样本进行训练并预测的一种分类器，熟能生巧。">
-<meta name="keywords" content="randomforest">
+<meta name="keywords" content="Randomforest">
 <meta property="og:type" content="article">
-<meta property="og:title" content="randomforest">
+<meta property="og:title" content="随机森林">
 <meta property="og:url" content="particularj.github.io/2017/11/13/randomforest/index.html">
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="随机森林指的是利用多棵树对样本进行训练并预测的一种分类器，熟能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T13:20:39.322Z">
+<meta property="og:updated_time" content="2017-11-14T12:35:23.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="randomforest">
+<meta name="twitter:title" content="随机森林">
 <meta name="twitter:description" content="随机森林指的是利用多棵树对样本进行训练并预测的一种分类器，熟能生巧。">
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <title>randomforest | ParticularJ</title>
+  <title>随机森林 | ParticularJ</title>
   
 
 
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">randomforest</h1>
+          <h1 class="post-title" itemprop="name headline">随机森林</h1>
         
 
         <div class="post-meta">
@@ -370,11 +370,59 @@
 </ul>
 </li>
 </ol>
-<h3 id="1-信息增益g-D-A"><a href="#1-信息增益g-D-A" class="headerlink" title="1.信息增益g(D,A)"></a>1.信息增益g(D,A)</h3><p>定义：特征A对训练数据集D的信息增益g(D,A),定义为集合的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差，即：H(D)-H(D|A)。</p>
+<h3 id="信息增益g-D-A"><a href="#信息增益g-D-A" class="headerlink" title="信息增益g(D,A)"></a>信息增益g(D,A)</h3><p>定义：特征A对训练数据集D的信息增益g(D,A),定义为集合的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差，即：H(D)-H(D|A)。</p>
 <h4 id="基本记号"><a href="#基本记号" class="headerlink" title="基本记号"></a>基本记号</h4><ul>
 <li>设训练数据集为D，|D|表示样本个数。</li>
-<li>设有K个类。</li>
+<li>设有K个类$C<em>k$,k=1,2,…，K,有 $\sum</em>{k}$</li>
+<li>设特征A有n个不同的取值{$a_1,a_2,\dots,a_n$},根据特征A的取值将D划分为n个子集 $D_1,D_2,\dots,D_n$, 有：$\sum_i|D_i|=|D|$</li>
+<li>记子集$D_i$中属于类$C<em>k$的样本的集合为 $D</em>{ik}$</li>
 </ul>
+<h4 id="经验熵"><a href="#经验熵" class="headerlink" title="经验熵"></a>经验熵</h4><p>计算经验熵：$H(D)=-\sum_{k=1}^K\frac{|C_k|}{|D|}log\frac{|C_k|}{|D|}$</p>
+<p>其中，$H(X)=-\sum{p(x)}lnp(x)$</p>
+<h4 id="经验条件熵H-D-A"><a href="#经验条件熵H-D-A" class="headerlink" title="经验条件熵H(D|A)"></a>经验条件熵H(D|A)</h4><p>$H(D|A)=\sum_{i=1}^{n}\frac{|D_i|}{|D|}H(D<em>i)=-\sum</em>{i=1}^{n}\frac{|D<em>i|}{|D|}\sum</em>{k=1}^{K}\frac{|D_{ik}|}{|D<em>i|}log\frac{|D</em>{ik}|}{|D_i|}$</p>
+<p>遍历所有特征，对于特征A:</p>
+<ul>
+<li>计算特征A对数据集D的经验条件H(D|A)</li>
+<li>计算特征A的信息增益g(D,A)=H(D)-H(D|A)</li>
+<li>选择<em>信息增益最大</em>的特征作为当前的分裂特征</li>
+</ul>
+<h3 id="信息增益率"><a href="#信息增益率" class="headerlink" title="信息增益率"></a>信息增益率</h3><p>$g_R(D,A)=\frac{g(D,A)}{H_A(D)}$<br>其中：$H<em>A(D)= -\sum\limits</em>{i=1}^{n}\frac{|D_i|}{|D|}log_2\frac{|D_i|}{|D|}$ 称为属性A的固有值。</p>
+<p>具体实现：C4.5算法并不是直接选择增益率最大的候选划分属性，而是采用一种启发式：先从候选划分属性中找出信息增益高于平均水平的属性，再从中选出增益率最高的。</p>
+<h3 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h3><p>$Gini(p)=\sum_{k=1}^{K}p_k(1-p<em>k)=1-\sum</em>{k=1}^{K}p<em>k^2=1-\sum</em>{k=1}^{K}(\frac{|C_k|}{D})^2$</p>
+<p>对于二分类问题：<br>$Gini(p) = 2p(1-p)$</p>
+<p>对于二分类问题，在特征A的条件下：</p>
+<p>$Gini(D|A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$</p>
+<p>直观来说，$Gini(p)$ 反应了从数据集 $D$ 中随机抽取两个样本，其类别标记不一样的概率。</p>
+<h3 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h3><h4 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h4><p>Bootstaping的名称的意思是依靠自己的资源，称为自助法，它是一种有放回的抽样方法。</p>
+<p>“拔靴法”：从手上有限的资料，产生不同的副本，来模拟不一样的资料。</p>
+<ol>
+<li><p>从已知大小为N的数据集 $\mathcal D$中，进行t=1,2,…,T的过程：</p>
+<ul>
+<li>进行有放回的采样，得到$N^{‘}大小的数据集\mathcal{D}_{\mathcal{t}}$\</li>
+<li>从 $\mathcal{A}${${\mathcal{D}}$}中建立分类器$g_t$(ID3、C4.5、CART、SVM、Logistics)</li>
+</ul>
+</li>
+<li><p>重复上述步骤，得到m个分类器，$G=Uniform(g_t)$</p>
+</li>
+</ol>
+<p>作用：通过投票/平均，降低变化variance与决策树恰好相反，决策树的作用是使variance变大，对数据敏感。</p>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><ul>
+<li>优点：决策树对训练属于有很好的分类能力。</li>
+<li>缺点：对未知的测试数据未必有好的分类能力，泛化能力弱，即可能发生过拟合的现象。</li>
+</ul>
+<h3 id="预防过拟合的方法"><a href="#预防过拟合的方法" class="headerlink" title="预防过拟合的方法"></a>预防过拟合的方法</h3><h4 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h4><p>剪枝(pruning)是决策树学习算法对付过拟合的主要手段。在决策树学习中，为了尽可能正确分类训练样本，结点划分过程将不断重复，有时会造成决策树分支过多，这时就可能因训练样本学习太好，以致于把训练集自身的一些特点当作所有数据都具有的一般性质而导致过拟合。剪枝分为”预剪枝“和”后剪枝”。</p>
+<ul>
+<li><p>预剪枝：在决策树生成过程中，对每个结点在划分前先进行估计，若当前结点的划分不能带来决策树泛化能力的提高，则停止划分并将当前结点标记为叶结点。</p>
+</li>
+<li><p>后剪枝：先从训练集生成一棵完整的决策树，然后自底向上地对非叶节点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则将该子树替换为叶结点。</p>
+</li>
+</ul>
+<p>总结：后剪枝决策树通常比预剪枝决策树保留更多的分支。一般情况下，后剪枝决策树的欠拟合风险很小，泛化性能往往优于预剪枝决策树。但后剪枝过程是在生成完全决策树之后进行的，并且要自底向上地对树中的所有非叶结点进行逐一考察，因此其训练时间开销比未剪枝决策树和预剪枝决策树都要大得多。</p>
+<h3 id="连续与缺失值"><a href="#连续与缺失值" class="headerlink" title="连续与缺失值"></a>连续与缺失值</h3><h4 id="连续值"><a href="#连续值" class="headerlink" title="连续值"></a>连续值</h4><p>由于现实学习任务中常会遇到连续属性。此时，就要使用到连续属性离散化，最简单的策略是采用二分法对连续属性进行处理。</p>
+<ul>
+<li>二分法：给定样本集$D$和连续属性$a$，假定$a$在$D$上出现了n个不同的取值，将这些值从小到大进行排序，记为：{$a^1,a^2,\dots,a^n$}。从中选取划分点$t$，通过$t$将集合划分为两部分。便可当离散值处理。</li>
+</ul>
+<h4 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h4><p>给定训练集$D$和属性$a$,令 $\tilde{D}表示D中在属性a$上没有缺失值的样本子集。</p>
 
       
     </div>
@@ -392,7 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/randomforest/" rel="tag"><i class="fa fa-tag"></i> randomforest</a>
+            <a href="/tags/Randomforest/" rel="tag"><i class="fa fa-tag"></i> Randomforest</a>
           
         </div>
       
@@ -405,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/11/Feature/" rel="next" title="Feature">
-                <i class="fa fa-chevron-left"></i> Feature
+              <a href="/2017/11/11/Feature/" rel="next" title="常见特征总结">
+                <i class="fa fa-chevron-left"></i> 常见特征总结
               </a>
             
           </div>
@@ -520,7 +568,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -563,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#随机森林"><span class="nav-number">1.</span> <span class="nav-text">随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#随机森林的释义"><span class="nav-number">1.1.</span> <span class="nav-text">随机森林的释义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的构建"><span class="nav-number">1.2.</span> <span class="nav-text">决策树的构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种生成算法"><span class="nav-number">1.3.</span> <span class="nav-text">三种生成算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-信息增益g-D-A"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.信息增益g(D,A)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本记号"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">基本记号</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#随机森林"><span class="nav-number">1.</span> <span class="nav-text">随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#随机森林的释义"><span class="nav-number">1.1.</span> <span class="nav-text">随机森林的释义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的构建"><span class="nav-number">1.2.</span> <span class="nav-text">决策树的构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种生成算法"><span class="nav-number">1.3.</span> <span class="nav-text">三种生成算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益g-D-A"><span class="nav-number">1.3.1.</span> <span class="nav-text">信息增益g(D,A)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本记号"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">基本记号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验熵"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">经验熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验条件熵H-D-A"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">经验条件熵H(D|A)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益率"><span class="nav-number">1.3.2.</span> <span class="nav-text">信息增益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基尼系数"><span class="nav-number">1.3.3.</span> <span class="nav-text">基尼系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bagging"><span class="nav-number">1.3.4.</span> <span class="nav-text">Bagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bootstrap"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">bootstrap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树"><span class="nav-number">1.4.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预防过拟合的方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">预防过拟合的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#剪枝"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">剪枝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续与缺失值"><span class="nav-number">1.4.2.</span> <span class="nav-text">连续与缺失值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#连续值"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">连续值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺失值"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">缺失值</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -766,6 +814,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
