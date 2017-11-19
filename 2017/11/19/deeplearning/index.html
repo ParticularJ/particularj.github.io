@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="Latex," />
+  <meta name="keywords" content="deeplearning," />
 
 
 
@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="在Markdown中使用数学公式，孰能生巧。">
-<meta name="keywords" content="Latex">
+<meta name="description" content="Deeplearning初始化以及反向传播的简单总结，熟能生巧。">
+<meta name="keywords" content="deeplearning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Latex Function">
-<meta property="og:url" content="particularj.github.io/2017/11/13/Latex/index.html">
+<meta property="og:title" content="deeplearning">
+<meta property="og:url" content="particularj.github.io/2017/11/19/deeplearning/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="在Markdown中使用数学公式，孰能生巧。">
+<meta property="og:description" content="Deeplearning初始化以及反向传播的简单总结，熟能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T13:47:41.366Z">
+<meta property="og:updated_time" content="2017-11-19T15:51:26.766Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Latex Function">
-<meta name="twitter:description" content="在Markdown中使用数学公式，孰能生巧。">
+<meta name="twitter:title" content="deeplearning">
+<meta name="twitter:description" content="Deeplearning初始化以及反向传播的简单总结，熟能生巧。">
 
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <title>Latex Function | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>deeplearning | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/13/Latex/">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/19/deeplearning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ParticularJ">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Latex Function</h1>
+          <h1 class="post-title" itemprop="name headline">deeplearning</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T14:23:49+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-19T19:30:56+08:00">
+                2017-11-19
               </time>
             
 
@@ -316,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index">
-                    <span itemprop="name">Math</span>
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
                   </a>
                 </span>
 
@@ -353,83 +353,81 @@
       
 
       
-        <p>在Markdown中使用数学公式，孰能生巧。<br><a id="more"></a></p>
-<h1 id="Latex数学公式基本命令"><a href="#Latex数学公式基本命令" class="headerlink" title="Latex数学公式基本命令"></a>Latex数学公式基本命令</h1><h2 id="角标"><a href="#角标" class="headerlink" title="角标"></a>角标</h2><p>上下标命令放在需要插入上下标的地方，花括弧为上下标内容。</p>
-<pre><code>上标命令： x^{x+y}
-</code></pre><p>上表显示：$x^{x+y}$</p>
-<pre><code>下标命令： x_{a}
-</code></pre><p>下标显示：$x_{a}$</p>
-<p>如果使用文字作为角标，要把文字放在\mbox{}文字模式中。</p>
-<pre><code>文字命令： f_{\mbox{极大值}}^{\mbox{成绩}}
-</code></pre><p>文字显示：$f_{\mbox{极大值}}^{\mbox{成绩}}$</p>
-<h2 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h2><pre><code>分式命令： \frac{x}{y}
-</code></pre><p>分式显示：$\frac{x}{y}$</p>
-<pre><code>连分式命令： \begin{displaymath}
-              x_0+\frac{1}{x_1+\frc{1}{x_3+\fracP{1}{x_4}}}
-           \end{displaymath}
-</code></pre><p>连分式显示：<br>$x_0+\frac{1}{x_1+\frac{1}{x_3+\frac{1}{x_4}}}$</p>
-<p>可以通过强制改变字体大小使得分子分母字体大小一致，在所描述的分数式子前加入如下命令即可：<br>    命令：\newcommand{\FS}[2]{\displaystyle\frac{’井号‘1}{’井号‘2}}</p>
-<h2 id="根式"><a href="#根式" class="headerlink" title="根式"></a>根式</h2><pre><code>二次根式命令：\sqrt{}
-</code></pre><p>二次根式显示：$\sqrt{x}$</p>
-<pre><code>n次根式命令： \sqrt[n]{}
-</code></pre><p>n次根式命令：$\sqrt[5]{x}$</p>
-<p>当开方次数较多的时候，可以省略根号上方的横线</p>
-<pre><code>命令：\surd{x+y+z}
-</code></pre><p>显示：$\surd{x+y+z}$</p>
-<h2 id="求和与积分"><a href="#求和与积分" class="headerlink" title="求和与积分"></a>求和与积分</h2><pre><code>求和命令：\sum_{k=1}^n
-</code></pre><p>求和显示：$\sum_{k=1}^n$</p>
-<pre><code>积分命令：\int_a^b
-</code></pre><p>积分显示：$\int_a^b$</p>
-<pre><code>上下限在上下测：\limits
-</code></pre><p>上下限例子：$\sum\limits_{k=0}^n$</p>
-<pre><code>上下限在右侧： \nolimits
-</code></pre><p>上下限在右侧：$\sum\nolimits_{k=0}^\infty$</p>
-<pre><code>无穷的表示方法：\infty
-</code></pre><h2 id="下划线、上划线"><a href="#下划线、上划线" class="headerlink" title="下划线、上划线"></a>下划线、上划线</h2><pre><code>上划线命令：\overline{}
-下划线命令：\underline{}
-</code></pre><p>划线展示：$\overline{\sqrt{x+y}}+\underline{ab}$</p>
-<pre><code>上花括弧命令：\overbrace{公式}^{说明}
-下花括弧命令：\underbrace{公式}_{说明}
-</code></pre><p>花括弧展示：$\underbrace{a+\overbrace{b+\dots+b}^{m\mbox{个}}+c}_{20\mbox{个}}$</p>
-<h2 id="数学重音符号"><a href="#数学重音符号" class="headerlink" title="数学重音符号"></a>数学重音符号</h2><pre><code>命令：\hat{a}
-</code></pre><p>展示：$\hat{a}$</p>
-<pre><code>命令：\check{a}
-</code></pre><p>展示：$\check{a}$</p>
-<pre><code>命令：\tilde{a}
-</code></pre><p>展示：$\tilde{a}$</p>
-<pre><code>命令：\bar{a}
-</code></pre><p>展示：$\bar{a}$</p>
-<pre><code>命令：\vec{a}
-</code></pre><p>展示：$\vec{a}$</p>
-<pre><code>命令：\acute{a}
-</code></pre><p>展示：$\acute{a}$</p>
-<pre><code>命令:\grave{a}
-</code></pre><p>展示： $\grave{a}$</p>
-<pre><code>命令：\mathring{a}
-</code></pre><p>展示： $\mathring{a}$</p>
-<pre><code>命令：\dot{a}
-</code></pre><p>展示： $\dot{a}$</p>
-<pre><code>命令：\ddot{a}
-</code></pre><p>展示： $\ddot{a}$</p>
-<pre><code>命令：\widehat{abc}
-</code></pre><p>展示： $\widehat{abc}$</p>
-<pre><code>命令：\widetilde{abc}
-</code></pre><p>展示： $\widetilde{abc}$</p>
-<h2 id="堆积符号"><a href="#堆积符号" class="headerlink" title="堆积符号"></a>堆积符号</h2><pre><code>堆积符号命令：\stackrel{上位符号}{基位符号}
-</code></pre><ul>
-<li>基位符号大，上位符号小</li>
-</ul>
-<p>展示：$\vec{x}\stackrel{\mathrm{def}}{=}{x_1,\dots,x_n}$</p>
-<pre><code>{上位公式\atop 下位公式}
-</code></pre><ul>
-<li>上下符号一样大</li>
-</ul>
-<p>展示：$\sum\limits_{k_0,k_2,\ldots&gt;0\atop K_0+k<em>1+\ldots=n}A</em>{k<em>0}A</em>{k_1}\cdots$</p>
-<pre><code>{上位公式\choose 下位公式}
-</code></pre><ul>
-<li>上下符号一样大；上下符号被包括在圆括弧内。</li>
-</ul>
-<p>展示：${n+1\choose k}={n \choose k}+{n\choose k-1}$</p>
+        <p>Deeplearning初始化以及反向传播的简单总结，熟能生巧。<br><a id="more"></a></p>
+<h1 id="DeepLearning"><a href="#DeepLearning" class="headerlink" title="DeepLearning"></a>DeepLearning</h1><h2 id="Xavier-and-he-initilization"><a href="#Xavier-and-he-initilization" class="headerlink" title="Xavier and he initilization"></a>Xavier and he initilization</h2><p>思想：输出层的方差应该和输入层的方差相同；梯度在相反的方向上通过两层仍然相同。</p>
+<p>为了能满足这个条件，我们用以下的初始化方法，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Activation function</th>
+<th>Uniform distribution[-r,+r]</th>
+<th>Normal distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Logistic</td>
+<td>$r = \sqrt{\frac{2}{n<em>{inputs}+n</em>{outputs}}}$</td>
+<td>$\sigma = \sqrt{\frac{6}{n<em>{inputs}+n</em>{outputs}}}$</td>
+</tr>
+<tr>
+<td style="text-align:left">Hyperbolic tangent</td>
+<td>$r=4\sqrt{\frac{6}{n<em>{inputs}+n</em>{outputs}}}$</td>
+<td>$\sigma=4\sqrt{\frac{2}{n<em>{inputs}+n</em>{outputs}}}$</td>
+</tr>
+<tr>
+<td style="text-align:left">Relu (and its variants)</td>
+<td>$r = \sqrt{2}\sqrt{\frac{6}{n<em>{inputs}+n</em>{outputs}}}$</td>
+<td>$\sigma = \sqrt{2}\sqrt{\frac{2}{n<em>{inputs}+n</em>{outputs}}}$</td>
+</tr>
+</tbody>
+</table>
+<p>Relu initilization也叫He initialization，可以通过调用如下函数实现</p>
+<pre><code>he_init = tf.contrib.layers.variance_scaling_initializer()
+</code></pre><h2 id="ELU（-alpha-1-）"><a href="#ELU（-alpha-1-）" class="headerlink" title="ELU（$\alpha = 1$）"></a>ELU（$\alpha = 1$）</h2><p>是一种新的激活函数，类似与Leaky Relu($\alpha = 0.01$), 但是有不同的函数表达式</p>
+<p>$ELU_\alpha(Z)=\begin{cases}<br>                \alpha(exp(z)-1) &amp; if\space z&lt;0 \<br>                z &amp;  if\space z\ge0<br>                \end{cases}$</p>
+<p>显然，由于ELU要计算exp函数，所以他的计算速度比Relu函数慢，但是他可以在训练过程中通过收敛速度来弥补，但是测试的时间会慢于Relu。</p>
+<p>Tensorflow中使用Relu和ELU</p>
+<pre><code>tf.nn.elu()                     
+return maximum(0.01*z, z , name=name)
+</code></pre><h2 id="Batch-Norm"><a href="#Batch-Norm" class="headerlink" title="Batch Norm"></a>Batch Norm</h2><p>一种防止梯度消失/爆炸的方法，通过归一化，数据的均值趋于0，方差趋于1，batch norm则是打破这种趋势，但是并不会改变数据的总体分布，使得后面的层更能经受前面层变化所带来的影响。</p>
+<p>在Tensorflow中的实现：</p>
+<pre><code>tf.nn.batch_normalization(
+  x,
+  mean,
+  variance,
+  offset,
+  scale,
+  variance_epsilon,
+  name = None
+  )
+</code></pre><p>为了避免重复去定义相同的参数，我们可以使用如下函数：</p>
+<pre><code>with tf.contrib.framework.arg_scope([&apos;the name of the repeat  define function&apos;],
+the repeat parameters)
+</code></pre><h2 id="Reusing-a-TensorFlow-Model"><a href="#Reusing-a-TensorFlow-Model" class="headerlink" title="Reusing a TensorFlow Model"></a>Reusing a TensorFlow Model</h2><pre><code>reuse_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope = &quot;hidden[123]&quot;&quot;)
+</code></pre><p>从模型当中收集名为hidden[1]-hidden[3]训练过的变量。</p>
+<pre><code>reuse_vars_dict = dict([(var.name, var.name) for var in reuse_vars])
+
+original_saver = tf.Saver(reuse_vars_dict)
+</code></pre><h2 id="Freezing-the-Lower-layers"><a href="#Freezing-the-Lower-layers" class="headerlink" title="Freezing the Lower layers"></a>Freezing the Lower layers</h2><p>因为等级越低的层代表的往往是一些边缘特征，这些特征对大部分深度学习的识别都是有效的，因此我们可以固定低等级的层，从高等级开始训练。</p>
+<p>TensorFlow实现：</p>
+<pre><code>train_var = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope = &quot;hidden[34]&quot;)
+
+training_op = optimizer.minimize(loss, var_list = train_var)
+</code></pre><p>表示，只训练3,4层的参数。</p>
+<h2 id="Faster-optimizer"><a href="#Faster-optimizer" class="headerlink" title="Faster optimizer"></a>Faster optimizer</h2><h3 id="MOMENTUM-beta-0-9"><a href="#MOMENTUM-beta-0-9" class="headerlink" title="MOMENTUM($\beta=0.9$)"></a>MOMENTUM($\beta=0.9$)</h3><p>$$m =:\beta m+\eta\bigtriangledown_{\theta}J(\theta)$$</p>
+<p>$$\theta =：\theta-m$$</p>
+<p>在深度神经网络中，通常使用MOMENTUM而不去使用Batch Normalization。因为，MOMENTUM对于不同尺度的数据有更好的效果。</p>
+<p>TensorFlow的实现</p>
+<pre><code>optimizer = tf.train.MomentumOptimizer(learning_rate = learning_rate, momentum = 0.9)
+</code></pre><h3 id="NAG"><a href="#NAG" class="headerlink" title="NAG"></a>NAG</h3><p>$$m =:\beta m+\eta\bigtriangledown_{\theta}J(\theta + \beta m )$$</p>
+<p>$$\theta =：\theta-m$$      </p>
+<p>因为MOMENTUM的下降方向是正确的方向，所以我们可以使这个方向稍微大一点。</p>
+<p>TensorFlow实现:</p>
+<pre><code>optimizer = tf.train.MomentumOptimizer(learning_rate = learning_rate, momentum = 0.9, use_nesterov = True)
+</code></pre><h2 id="Learning-Rate"><a href="#Learning-Rate" class="headerlink" title="Learning Rate"></a>Learning Rate</h2><p>Exponential scheduling:<br>$$\eta(t)=\eta_010^{\frac{-t}{r}}$$<br>其中t为迭代次数，学习率会在每r个step中下降10倍。</p>
+<p>TensorFlow实现：<br>      initial_learning_rate = 0.1<br>      decay_step = 10000<br>      decay_rate = 0.1<br>      global_step = tf.Variable(0, trainable = False)<br>      learning_rate = tf.train.exponential_decay(initial_learning_rate, global_step, decay_step, decay_rate)</p>
+<p>由于AdaGrad, RMSProp, Adam optimization可以自动的减少学习率，所以运用这些方法时，可以不使用该方法。</p>
 
       
     </div>
@@ -447,7 +445,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Latex/" rel="tag"><i class="fa fa-tag"></i> Latex</a>
+            <a href="/tags/deeplearning/" rel="tag"><i class="fa fa-tag"></i> deeplearning</a>
           
         </div>
       
@@ -460,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/13/randomforest/" rel="next" title="随机森林">
-                <i class="fa fa-chevron-left"></i> 随机森林
+              <a href="/2017/11/16/svm/" rel="next" title="支持向量机">
+                <i class="fa fa-chevron-left"></i> 支持向量机
               </a>
             
           </div>
@@ -469,10 +467,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/16/svm/" rel="prev" title="支持向量机">
-                支持向量机 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -618,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Latex数学公式基本命令"><span class="nav-number">1.</span> <span class="nav-text">Latex数学公式基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#角标"><span class="nav-number">1.1.</span> <span class="nav-text">角标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分式"><span class="nav-number">1.2.</span> <span class="nav-text">分式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根式"><span class="nav-number">1.3.</span> <span class="nav-text">根式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求和与积分"><span class="nav-number">1.4.</span> <span class="nav-text">求和与积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下划线、上划线"><span class="nav-number">1.5.</span> <span class="nav-text">下划线、上划线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学重音符号"><span class="nav-number">1.6.</span> <span class="nav-text">数学重音符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆积符号"><span class="nav-number">1.7.</span> <span class="nav-text">堆积符号</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DeepLearning"><span class="nav-number">1.</span> <span class="nav-text">DeepLearning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xavier-and-he-initilization"><span class="nav-number">1.1.</span> <span class="nav-text">Xavier and he initilization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELU（-alpha-1-）"><span class="nav-number">1.2.</span> <span class="nav-text">ELU（$\alpha = 1$）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Batch-Norm"><span class="nav-number">1.3.</span> <span class="nav-text">Batch Norm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reusing-a-TensorFlow-Model"><span class="nav-number">1.4.</span> <span class="nav-text">Reusing a TensorFlow Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Freezing-the-Lower-layers"><span class="nav-number">1.5.</span> <span class="nav-text">Freezing the Lower layers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-optimizer"><span class="nav-number">1.6.</span> <span class="nav-text">Faster optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MOMENTUM-beta-0-9"><span class="nav-number">1.6.1.</span> <span class="nav-text">MOMENTUM($\beta=0.9$)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAG"><span class="nav-number">1.6.2.</span> <span class="nav-text">NAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning-Rate"><span class="nav-number">1.7.</span> <span class="nav-text">Learning Rate</span></a></li></ol></li></ol></div>
             
 
           </div>
