@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Deeplearning初始化以及反向传播的简单总结，熟能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-20T02:03:24.254Z">
+<meta property="og:updated_time" content="2017-11-20T02:06:24.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deeplearning">
 <meta name="twitter:description" content="Deeplearning初始化以及反向传播的简单总结，熟能生巧。">
@@ -367,18 +367,18 @@
 <tbody>
 <tr>
 <td style="text-align:left">Logistic</td>
-<td>$r = \sqrt{\frac{2}{n<em>{inputs}+n</em>{outputs}}}$</td>
-<td>$\sigma = \sqrt{\frac{6}{n<em>{inputs}+n</em>{outputs}}}$</td>
+<td>$r = \sqrt{\frac{2}{n_{inputs}+n_{outputs}}}$</td>
+<td>$\sigma = \sqrt{\frac{6}{n_{inputs}+n_{outputs}}}$</td>
 </tr>
 <tr>
 <td style="text-align:left">Hyperbolic tangent</td>
-<td>$r=4\sqrt{\frac{6}{n<em>{inputs}+n</em>{outputs}}}$</td>
-<td>$\sigma=4\sqrt{\frac{2}{n<em>{inputs}+n</em>{outputs}}}$</td>
+<td>$r=4\sqrt{\frac{6}{n_{inputs}+n_{outputs}}}$</td>
+<td>$\sigma=4\sqrt{\frac{2}{n_{inputs}+n_{outputs}}}$</td>
 </tr>
 <tr>
 <td style="text-align:left">Relu (and its variants)</td>
-<td>$r = \sqrt{2}\sqrt{\frac{6}{n<em>{inputs}+n</em>{outputs}}}$</td>
-<td>$\sigma = \sqrt{2}\sqrt{\frac{2}{n<em>{inputs}+n</em>{outputs}}}$</td>
+<td>$r = \sqrt{2}\sqrt{\frac{6}{n_{inputs}+n_{outputs}}}$</td>
+<td>$\sigma = \sqrt{2}\sqrt{\frac{2}{n_{inputs}+n_{outputs}}}$</td>
 </tr>
 </tbody>
 </table>
@@ -387,8 +387,10 @@
 </code></pre><h2 id="ELU（-alpha-1-）"><a href="#ELU（-alpha-1-）" class="headerlink" title="ELU（$\alpha = 1$）"></a>ELU（$\alpha = 1$）</h2><p>是一种新的激活函数，类似与Leaky Relu($\alpha = 0.01$), 但是有不同的函数表达式</p>
 <p>$ELU_\alpha(Z)=\begin{cases}<br>                \alpha(exp(z)-1) &amp; if\space z&lt;0 \<br>                z &amp;  if\space z\ge0<br>                \end{cases}$</p>
 <p>显然，由于ELU要计算exp函数，所以他的计算速度比Relu函数慢，但是他可以在训练过程中通过收敛速度来弥补，但是测试的时间会慢于Relu。</p>
-<p>Tensorflow中使用Relu和ELU</p>
-<pre><code>tf.nn.elu()                     
+<p>Tensorflow中使用leaky Relu和ELU</p>
+<pre><code># ELU
+tf.nn.elu()
+# leaky Relu                     
 return maximum(0.01*z, z , name=name)
 </code></pre><h2 id="Batch-Norm"><a href="#Batch-Norm" class="headerlink" title="Batch Norm"></a>Batch Norm</h2><p>一种防止梯度消失/爆炸的方法，通过归一化，数据的均值趋于0，方差趋于1，batch norm则是打破这种趋势，但是并不会改变数据的总体分布，使得后面的层更能经受前面层变化所带来的影响。</p>
 <p>在Tensorflow中的实现：</p>
@@ -426,8 +428,13 @@ training_op = optimizer.minimize(loss, var_list = train_var)
 <p>TensorFlow实现:</p>
 <pre><code>optimizer = tf.train.MomentumOptimizer(learning_rate = learning_rate, momentum = 0.9, use_nesterov = True)
 </code></pre><h2 id="Learning-Rate"><a href="#Learning-Rate" class="headerlink" title="Learning Rate"></a>Learning Rate</h2><p>Exponential scheduling:<br>$$\eta(t)=\eta_010^{\frac{-t}{r}}$$<br>其中t为迭代次数，学习率会在每r个step中下降10倍。</p>
-<p>TensorFlow实现：<br>      initial_learning_rate = 0.1<br>      decay_step = 10000<br>      decay_rate = 0.1<br>      global_step = tf.Variable(0, trainable = False)<br>      learning_rate = tf.train.exponential_decay(initial_learning_rate, global_step, decay_step, decay_rate)</p>
-<p>由于AdaGrad, RMSProp, Adam optimization可以自动的减少学习率，所以运用这些方法时，可以不使用该方法。</p>
+<p>TensorFlow实现：</p>
+<pre><code>initial_learning_rate = 0.1
+decay_step = 10000
+decay_rate = 0.1
+global_step = tf.Variable(0, trainable = False)
+learning_rate = tf.train.exponential_decay(initial_learning_rate, global_step, decay_step, decay_rate)
+</code></pre><p>由于AdaGrad, RMSProp, Adam optimization可以自动的减少学习率，所以运用这些方法时，可以不使用该方法。</p>
 <h2 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h2><p>如果设置Dropout的概率为50%，那么就会导致测试的时候用到的神经元个数是训练的时候的两倍，为了弥补这个损失，通常我们会在训练结束后每个权重乘上一个keep probability（1 - p），或者我们可以在训练的过程中，对每个神经元除以keep probability。</p>
 <p>TensorFlow实现</p>
 <pre><code>from tensorflow.contrib.layers import dropout
