@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="搭建Docker的诸多坑，敬请期待。">
+<meta name="description" content="搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker_pro">
+<meta property="og:title" content="Docker的坑">
 <meta property="og:url" content="particularj.github.io/2017/11/24/docker_pro/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="搭建Docker的诸多坑，敬请期待。">
+<meta property="og:description" content="搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T15:40:55.846Z">
+<meta property="og:updated_time" content="2017-11-25T13:05:18.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker_pro">
-<meta name="twitter:description" content="搭建Docker的诸多坑，敬请期待。">
+<meta name="twitter:title" content="Docker的坑">
+<meta name="twitter:description" content="搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。">
 
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <title>Docker_pro | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Docker的坑 | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker_pro</h1>
+          <h1 class="post-title" itemprop="name headline">Docker的坑</h1>
         
 
         <div class="post-meta">
@@ -353,9 +353,49 @@
       
 
       
-        <p>搭建Docker的诸多坑，敬请期待。</p>
+        <p>搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。</p>
 <a id="more"></a>
-
+<h1 id="Docker的填坑之旅"><a href="#Docker的填坑之旅" class="headerlink" title="Docker的填坑之旅"></a>Docker的填坑之旅</h1><p> 写在最前面的话，这次的Docker搭建以及填坑中，最要感谢的一位小伙伴<a href="www.enningxie.com">Coolix</a>。</p>
+<h2 id="镜像的加载问题"><a href="#镜像的加载问题" class="headerlink" title="镜像的加载问题"></a>镜像的加载问题</h2><p>除了自己从Docker官网上pull image之外，还有就是使用现成的image。在使用现成的image中，可能遇到以下几个问题。</p>
+<ul>
+<li><p>import/export：这两个命令是用于 <strong>container</strong> 的操作。具体的是，export是将 <strong>container</strong> 导出，而import是将这个导出的  <strong>container</strong> 导入成一个 <strong>images</strong>。</p>
+</li>
+<li><p>save/load: save和load的操作则完全是针对于 <strong>image</strong> 而操作的。</p>
+</li>
+</ul>
+<p>一般image正确导入会在docker iamges显示repository:tag。</p>
+<pre><code>REPOSITORY                  TAG                 IMAGE ID            
+simpleware/bigdata-ubuntu   latest              db8e75c00b4e   
+</code></pre><h2 id="Dockerfile的书写问题"><a href="#Dockerfile的书写问题" class="headerlink" title="Dockerfile的书写问题"></a>Dockerfile的书写问题</h2><ul>
+<li><p>尽量少使用RUN命令，因为每一次RUN就会多添加一层，会使得镜像臃肿。</p>
+</li>
+<li><p>安装软件时，和在Linux安装区别不大，将命令依次写入Dockerfile即可，每行以“ &amp;&amp;\”结尾。</p>
+</li>
+<li><p>注意在安装完成后，在Dockerfile写入相应的清楚命令，清楚多余的安装包以及缓存。</p>
+</li>
+</ul>
+<h2 id="DockerGUI"><a href="#DockerGUI" class="headerlink" title="DockerGUI"></a>DockerGUI</h2><p>在某些现成的Docker image中，可能已经有配置好的GUI，那我们该如何实现：</p>
+<p>你可以将所给的Docker image包解压，之后查看其提供的readme文件，查找出相关信息，比如vnc password。做好前期准备工作后，一般通过如下方式实现。</p>
+<pre><code>$ docker run --name test -P -d REPOSITORY:TAG
+</code></pre><p>使用该命令你会为image启动一个test的容器。</p>
+<pre><code>$ docker port test
+</code></pre><p>使用该命令就会得到test容器的端口映射,根据所给的端口信息，通过VNC便可以连接到含有GUI的image。</p>
+<h2 id="中文显示问题"><a href="#中文显示问题" class="headerlink" title="中文显示问题"></a>中文显示问题</h2><p>根据我自己的安装遇到的问题，在COPY文件到Docker后，不能正常显示中文。解决方法如下：</p>
+<h3 id="显示“？？？”"><a href="#显示“？？？”" class="headerlink" title="显示“？？？”"></a>显示“？？？”</h3><p>安装中文支持包：</p>
+<pre><code>$ sudo apt-get install language-pack-zh-hans
+</code></pre><p>修改/etc/environmeng在当中添加：</p>
+<pre><code>LANG=“zh_CN.UTF-8”
+LANGUAGE=&quot;zh_CN:zh:en_US:en&quot;
+</code></pre><p>修改/var/lib/locales/supported.d/local在当中添加：</p>
+<pre><code>en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+zh_CN.GBK GBK
+zh_CN GB2312
+</code></pre><p>保存后执行命令：</p>
+<pre><code>$ sudo locale-gen
+</code></pre><h3 id="显示“□□□”问题"><a href="#显示“□□□”问题" class="headerlink" title="显示“□□□”问题"></a>显示“□□□”问题</h3><p>直接安装相关的字体</p>
+<pre><code>$ sudo apt-get install fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
+</code></pre>
       
     </div>
     
@@ -445,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -520,6 +569,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker的填坑之旅"><span class="nav-number">1.</span> <span class="nav-text">Docker的填坑之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像的加载问题"><span class="nav-number">1.1.</span> <span class="nav-text">镜像的加载问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile的书写问题"><span class="nav-number">1.2.</span> <span class="nav-text">Dockerfile的书写问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DockerGUI"><span class="nav-number">1.3.</span> <span class="nav-text">DockerGUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文显示问题"><span class="nav-number">1.4.</span> <span class="nav-text">中文显示问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示“？？？”"><span class="nav-number">1.4.1.</span> <span class="nav-text">显示“？？？”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示“□□□”问题"><span class="nav-number">1.4.2.</span> <span class="nav-text">显示“□□□”问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
