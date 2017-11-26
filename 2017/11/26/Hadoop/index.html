@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="Operating System," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -112,18 +112,17 @@
 
 
 
-<meta name="description" content="简单的介绍线程与进程的区别，熟能生巧。">
-<meta name="keywords" content="Operating System">
+<meta name="description" content="Those who can not beat you will make you stronger.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程和线程">
-<meta property="og:url" content="particularj.github.io/2017/11/20/Thread-and-process/index.html">
+<meta property="og:title" content="Hadoop">
+<meta property="og:url" content="particularj.github.io/2017/11/26/Hadoop/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="简单的介绍线程与进程的区别，熟能生巧。">
+<meta property="og:description" content="Those who can not beat you will make you stronger.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-20T14:24:02.683Z">
+<meta property="og:updated_time" content="2017-11-26T03:30:28.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="进程和线程">
-<meta name="twitter:description" content="简单的介绍线程与进程的区别，熟能生巧。">
+<meta name="twitter:title" content="Hadoop">
+<meta name="twitter:description" content="Those who can not beat you will make you stronger.">
 
 
 
@@ -157,7 +156,7 @@
 
 
 
-  <title>进程和线程 | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Hadoop | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -264,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/20/Thread-and-process/">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/26/Hadoop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ParticularJ">
@@ -281,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">进程和线程</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop</h1>
         
 
         <div class="post-meta">
@@ -293,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-20T21:16:00+08:00">
-                2017-11-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-26T11:30:28+08:00">
+                2017-11-26
               </time>
             
 
@@ -303,28 +302,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -353,49 +330,7 @@
       
 
       
-        <p>简单的介绍线程与进程的区别，熟能生巧。<br><a id="more"></a></p>
-<h1 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h1><p>by <a href="http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html" target="_blank" rel="external">廖雪峰（进程和线程）</a></p>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程(process), 是计算机已运行程序的实体。进程曾经是分时系统的基本运作单位。在面向进程设计的系统中，进程是程序的基本执行实体；在面向线程设计的系统中，进程本身不是基本运行单位，而是线程的容器。程序本身只是指令、数据及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，且每个进程皆可以同步或异步的方式独立运行。现代计算机系统可在同一段时间内以进程的形式将多个程序加载到内存中，并借由时间共享，以在一个处理器上表现出同时运行的感觉。同样的，使用多线程技术的操作系统或计算框架，同样程序的平行线程，可在多CPU主机或网络上真正的同时运行。</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>用户下达运行程序的命令后，就会产生进程。同一程序可以产生多个进程，以允许同时有多位用户运行同一程序，却不会冲突。</p>
-<p>进程需要一些资源才能完成工作，如CPU使用时间、内存、文件以及I/O设备，且为依序逐一进行，也就是每个CPU核心任何时间内仅能运行一项进程。</p>
-<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>进程在运行时，状态会改变。所谓状态，就是指进程目前的动作：</p>
-<ul>
-<li>新生（new）：进程新产生中。</li>
-<li>运行（running）： 正在运行</li>
-<li>等待（waiting）： 等待某事发生，例如等待用户输入完成。</li>
-<li>就绪（ready）： 排班中，等待CPU</li>
-<li>结束（terminated）: 完成运行。</li>
-</ul>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>线程（thread），是操作系统能够进行运算调度的最小单位。它被包含在进程当中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
-<p>线程是独立调度和分派的基本单位。线程可以操作系统内核调度的内核线程，如Win32线程；由用户进行自行调度的用户线程；或者由内核与用户进程进行混合调度。</p>
-<p>同一进程中的多条线程共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈，自己的寄存器，自己的线程本地存储。</p>
-<p>一个进程可以有很多线程，每条线程并行执行不同的任务。</p>
-<h3 id="状态-1"><a href="#状态-1" class="headerlink" title="状态"></a>状态</h3><ul>
-<li>产生（spawn）</li>
-<li>中断（block）</li>
-<li>非中断（unblock）</li>
-<li>结束（finish）</li>
-</ul>
-<h2 id="进程与线程的理解"><a href="#进程与线程的理解" class="headerlink" title="进程与线程的理解"></a>进程与线程的理解</h2><ul>
-<li>计算机的核心是CPU，它承担了所有的计算任务。就像一座工厂，时刻在运行。</li>
-<li>假定工厂的电力有限，一次只能提供一个车间使用。也就是说，一个车间开工的时候，其他车间都必须停工。背后的含义就是，单个CPU一次只能运行一个任务。</li>
-<li>进程就好比工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，其他进程处于非运行状态。</li>
-<li>一个车间可以有好多工人，他们协同完成一个任务。</li>
-<li>线程就好比车间里的工人，一个进程可以包含多个线程。</li>
-<li>车间的空间是工人们共享的，比如许多房间是每个工人都可以进出的。这象征一个进程的内存空间是共享的，每个线程都可以使用这些共享内存。</li>
-<li>可是，每间房间的大小不同，有些房间最多只能容纳一个人，比如厕所。里面有人的时候，其他人就进不去。这代表一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。</li>
-<li>一个防止他人进入的简单方法，就是门口加一把锁。先到的人锁上门，后到的人看到上锁，就在门口排队，等锁打开再进去。这就叫“互斥锁”（Mutex），防止多个线程同时读写某一块内存区域。</li>
-<li>还有些房间，可以同时容纳n个人，比如厨房。也就是说，如果人数大于n,多出来的人只能在外面等着。这好比某些内存区域，只能提供给固定数目的线程使用。</li>
-<li><p>这时的解决方式，就是在门口挂n把钥匙。进去的人就取一把钥匙，出来时再把钥匙挂回原处。后到的人发现钥匙架空了，就知道必须在门口排队等着了。这种做法叫做“信号量”（Samaphore），用来保证多个线程不会互相冲突。</p>
-<p>不难看出，Mutex是Samaphore的一种特殊情况。也就是说，完全可以用后者替代前者。但是，因为Mutex较为简单，且效率高，所以在必须保证资源独占的情况下，还是采用这种设计。</p>
-</li>
-<li><p>操作系统的设计，因此归结为以下三点：</p>
-<p>  1）以多进程形式，允许多个任务同时运行；</p>
-<p>  2）以多线程形式，允许单个任务分成不同的部分运行；</p>
-<p>  3）提供协调机制，一方面防止进程之间和线程之间产生冲突，另一方面允许进程之间和线程之间共享资源。</p>
-</li>
-</ul>
-
+        
       
     </div>
     
@@ -410,12 +345,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Operating-System/" rel="tag"><i class="fa fa-tag"></i> Operating System</a>
-          
-        </div>
-      
 
       
       
@@ -425,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/19/deeplearning/" rel="next" title="DeepLearning">
-                <i class="fa fa-chevron-left"></i> DeepLearning
+              <a href="/2017/11/24/docker_pro/" rel="next" title="Docker的坑">
+                <i class="fa fa-chevron-left"></i> Docker的坑
               </a>
             
           </div>
@@ -434,10 +363,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/21/docker/" rel="prev" title="Docker">
-                Docker <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,17 +414,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -573,22 +489,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程和线程的区别"><span class="nav-number">1.</span> <span class="nav-text">进程和线程的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.1.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态"><span class="nav-number">1.1.2.</span> <span class="nav-text">状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.2.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程与线程的理解"><span class="nav-number">1.3.</span> <span class="nav-text">进程与线程的理解</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
