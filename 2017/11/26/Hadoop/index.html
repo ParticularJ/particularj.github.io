@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -112,17 +112,18 @@
 
 
 
-<meta name="description" content="Those who can not beat you will make you stronger.">
+<meta name="description" content="在古时候，人们用牛来拉重物。当一头牛拉不动一根圆木时，人们从来没有考虑过要想方设法培育出一种更强壮的牛。同理，我们也不该想法设法打造什么超级计算机，而应该千方百计综合利用更多计算机来解决问题。">
+<meta name="keywords" content="Hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop">
 <meta property="og:url" content="particularj.github.io/2017/11/26/Hadoop/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="Those who can not beat you will make you stronger.">
+<meta property="og:description" content="在古时候，人们用牛来拉重物。当一头牛拉不动一根圆木时，人们从来没有考虑过要想方设法培育出一种更强壮的牛。同理，我们也不该想法设法打造什么超级计算机，而应该千方百计综合利用更多计算机来解决问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-26T03:30:28.470Z">
+<meta property="og:updated_time" content="2017-11-28T00:56:41.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop">
-<meta name="twitter:description" content="Those who can not beat you will make you stronger.">
+<meta name="twitter:description" content="在古时候，人们用牛来拉重物。当一头牛拉不动一根圆木时，人们从来没有考虑过要想方设法培育出一种更强壮的牛。同理，我们也不该想法设法打造什么超级计算机，而应该千方百计综合利用更多计算机来解决问题。">
 
 
 
@@ -303,6 +304,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -330,7 +353,42 @@
       
 
       
-        
+        <p>在古时候，人们用牛来拉重物。当一头牛拉不动一根圆木时，人们从来没有考虑过要想方设法培育出一种更强壮的牛。同理，我们也不该想法设法打造什么超级计算机，而应该千方百计综合利用更多计算机来解决问题。</p>
+<a id="more"></a>
+<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="初识Hadoop"><a href="#初识Hadoop" class="headerlink" title="初识Hadoop"></a>初识Hadoop</h2><p>Hadoop是一个分布式系统基础框架。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和储存。</p>
+<p>Hadoop实现了一个分布式文件系统，简称HDFS。HDFS有高容错性的特点，并且设计用来部署在低廉的硬件上；而且它提供高吞吐量来访问应用程序的数据，适合那些有着超大数据集的应用程序。HDFS放宽了POSIX的要求，可以以流的形式访问文件系统中的数据。</p>
+<p>Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数据提供了存储，而MapReduce为海量的数据提供了计算。</p>
+<h2 id="关于MapReduce"><a href="#关于MapReduce" class="headerlink" title="关于MapReduce"></a>关于MapReduce</h2><p>MapReduce是一种可用于数据处理的编程模型。MapReduce程序本质上是并行运行的，因此可以将大规模的数据分析任务分发给任何一个拥有足够多机器的数据中心。其优势便在于处理大规模数据集。</p>
+<h3 id="Map和Reduce"><a href="#Map和Reduce" class="headerlink" title="Map和Reduce"></a>Map和Reduce</h3><p>MapReduce任务过程分为两个处理阶段：map阶段和reduce阶段。每个阶段都是以键值对作为输入和输出。分别由map函数和reduce函数组成。</p>
+<h3 id="横向扩展"><a href="#横向扩展" class="headerlink" title="横向扩展"></a>横向扩展</h3><h4 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h4><p>MapReduce作业（job）是客户端需要执行的一个工作单元：它包括输入数据、MapReduce程序和配置信息。Hadoop将作业分成若干个任务来执行，其中包括两类任务：map任务和reduce任务。这些任务运行在集群的节点上，并通过YARN进行调度。</p>
+<p>Hadoop将MapReduce的输入数据划分成等长的小数据块，称为输入分片或简称“分片”。Hadoop为每个分片构建一个Map任务。一般来说，一个 <strong>合理的分片大小趋向于HDFS的一个块的大小，默认是128MB</strong>。</p>
+<p>Hadoop在存储有输入数据（HDFS中的数据）的节点上运行map任务，可以获得最佳的性能，因为它无需使用宝贵的集群带宽资源。因此最佳的分片大小应该与块大小相同。</p>
+<h4 id="combiner函数"><a href="#combiner函数" class="headerlink" title="combiner函数"></a>combiner函数</h4><p>集群上的可用带宽限制了MapReduce作业的数量，因此尽量避免Map和Reduce任务之间的数据传输是有利的。Hadoop允许用户针对map任务的输出指定一个combiner，combiner的输出作为reduce函数的输入。</p>
+<h3 id="Hadoop-Streaming"><a href="#Hadoop-Streaming" class="headerlink" title="Hadoop Streaming"></a>Hadoop Streaming</h3><p>Streaming天生适合用于文本处理。Map的输入数据通过标准输入流传递给map函数，并且是一行一行地传输，最后将结果行写到标准输出。Map输出的键值对是一个制表符分隔的行，reduce函数的输入格式与之相同并通过标准输入流进行传输。Reduce函数从标准输入流中读取输入行，该输入已由Hadoop框架根据键排过序，最后将结果写入标准输出。</p>
+<h2 id="Hadoop分布式文件系统"><a href="#Hadoop分布式文件系统" class="headerlink" title="Hadoop分布式文件系统"></a>Hadoop分布式文件系统</h2><p>当数据集的大小超过一台独立的物理计算机的存储能力时，就有必要对它进行分区并存储到若干台单独的计算机上。管理网络中跨多台计算机存储的文件系统称为分布式文件系统。</p>
+<h3 id="HDFS的设计"><a href="#HDFS的设计" class="headerlink" title="HDFS的设计"></a>HDFS的设计</h3><ul>
+<li>超大文件</li>
+<li>流式数据访问：一次写入，多次读取。</li>
+<li>商用硬件：节点故障后继续运行而不察觉到明显的中断。</li>
+<li>低时间延迟的数据访问：不适合Hadoop</li>
+<li>大量的小文件</li>
+<li>多用户写入，任意修改文件：只支持单用户写入，并且是末尾添加。</li>
+</ul>
+<h3 id="namenode和datanode"><a href="#namenode和datanode" class="headerlink" title="namenode和datanode"></a>namenode和datanode</h3><p>HDFS集群有两类节点以管理节点-工作节点模式运行，即一个namenode（管理节点）和多个datanode（工作节点）。namenode管理文件系统的命名空间。它维护着文件系统树及整颗树内所有的文件和目录。这些信息以两个文件形式永久保存在本地磁盘上：命名空间镜像文件和编辑日志文件。datanode是文件系统的工作节点。它们根据需要存储并检索数据块，并且定期向namenode发送它们所存储的块的列表。</p>
+<p>namenode是很关键的，因此，对namenode实现容错非常重要，Hadoop为此提供两种机制。</p>
+<ul>
+<li>备份那些组成文件系统元数据持久状态的文件。</li>
+<li>运行一个辅助namenode，但它不能被用作namenode。作用是定期合并编辑日志和命名空间镜像，以防止编辑日志过大。</li>
+</ul>
+<h3 id="块缓存"><a href="#块缓存" class="headerlink" title="块缓存"></a>块缓存</h3><p>通常datanode从磁盘中读取块，但对于访问频繁的文件，其对应的块可能被显示地缓存在datanode的内存中，以堆外块缓存的形式存在。</p>
+<h3 id="联邦HDFS"><a href="#联邦HDFS" class="headerlink" title="联邦HDFS"></a>联邦HDFS</h3><p>每个namenode管理文件系统命名空间中的一部分，每个namenode维护一个命名空间卷，由命名空间的元数据和一个数据块池组成，数据块池包含该命名空间下文件的所有数据块。</p>
+<h2 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h2><p>YARN是Hadoop的集群资源管理系统。YARN通过两类长期运行的守护进程提供自己的核心服务：管理集群上资源使用的资源管理器、运行在集群中所有节点上能够启动和监控容器的节点管理器。</p>
+<h3 id="YARN中的调度"><a href="#YARN中的调度" class="headerlink" title="YARN中的调度"></a>YARN中的调度</h3><p>理想情况下，YARN应用发出的资源请求应该立即给予满足。然而现实中资源是有限的，在一个繁忙的集群上，一个应用经常需要等待才能得到所需的资源。YARN调度器的工作就是根据既定策略为应用分配资源。</p>
+<p>YARN中有三种调度器可用：FIFO调度器，容量调度器和公平调度器。</p>
+<p>FIFO调度器是将应用放置在一个队列中，然后按照提交的顺序进行运行。它的优点是简单易懂，不需要任何配置，但是不适合共享集群。大的应用会占用集群中的所有资源，所以每个应用必须等待直到轮到自己运行。</p>
+<p>容量调度器允许多个组织共享一个Hadoop集群，每个组织可以分配到全部集群资源的一部分。每个组织被配置一个专门的队列，每个队列被配置为可以使用一定的集群资源。</p>
+<p>公平调度器旨在为所有运行的应用公平分配资源。</p>
+
       
     </div>
     
@@ -344,6 +402,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"><i class="fa fa-tag"></i> Hadoop</a>
+          
+        </div>
       
 
       
@@ -414,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -456,7 +529,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -489,6 +562,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop"><span class="nav-number">1.</span> <span class="nav-text">Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识Hadoop"><span class="nav-number">1.1.</span> <span class="nav-text">初识Hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于MapReduce"><span class="nav-number">1.2.</span> <span class="nav-text">关于MapReduce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map和Reduce"><span class="nav-number">1.2.1.</span> <span class="nav-text">Map和Reduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#横向扩展"><span class="nav-number">1.2.2.</span> <span class="nav-text">横向扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据流"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">数据流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#combiner函数"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">combiner函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop-Streaming"><span class="nav-number">1.2.3.</span> <span class="nav-text">Hadoop Streaming</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop分布式文件系统"><span class="nav-number">1.3.</span> <span class="nav-text">Hadoop分布式文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS的设计"><span class="nav-number">1.3.1.</span> <span class="nav-text">HDFS的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#namenode和datanode"><span class="nav-number">1.3.2.</span> <span class="nav-text">namenode和datanode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块缓存"><span class="nav-number">1.3.3.</span> <span class="nav-text">块缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联邦HDFS"><span class="nav-number">1.3.4.</span> <span class="nav-text">联邦HDFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN"><span class="nav-number">1.4.</span> <span class="nav-text">YARN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#YARN中的调度"><span class="nav-number">1.4.1.</span> <span class="nav-text">YARN中的调度</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
