@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-29T15:27:59.405Z">
+<meta property="og:updated_time" content="2017-11-30T15:20:12.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学（一）">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -355,7 +355,7 @@
       
         <p>Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。</p>
 <a id="more"></a>
-<h1 id="Linu就该这么学（一）"><a href="#Linu就该这么学（一）" class="headerlink" title="Linu就该这么学（一）"></a>Linu就该这么学（一）</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<h1 id="Linu就该这么学（一）"><a href="#Linu就该这么学（一）" class="headerlink" title="Linu就该这么学（一）"></a>Linu就该这么学（一）</h1><h2 id="常用系统工作命令"><a href="#常用系统工作命令" class="headerlink" title="常用系统工作命令"></a>常用系统工作命令</h2><ul>
 <li><p>1、echo</p>
 <p>  echo命令用于在终端输出字符串或变量提取后的值，格式为 <strong>echo [字符串|$变量]</strong></p>
 </li>
@@ -399,6 +399,34 @@
 </li>
 <li><p>10、killall</p>
 <p>killall命令用于终止某个指定名称的服务所对应的全部进程，格式为 <strong>killall [参数][进程名称]</strong></p>
+<p>通常来说，复杂的软件服务程序会有多个进程协同为用户提供服务，如果逐个去结束这些进程会比较麻烦，此时就可以使用killall命令来批量结束某个服务程序带有的全部进程。</p>
+<p><em>如果有些命令在执行时不断地在屏幕上输出信息，影响到后续命令的输入，则可以在执行命令时在末尾加上一个&amp;符号，这样命令进入系统的后台来执行。</em></p>
+</li>
+</ul>
+<h2 id="系统状态检测命令"><a href="#系统状态检测命令" class="headerlink" title="系统状态检测命令"></a>系统状态检测命令</h2><ul>
+<li><p>1、ifconfig</p>
+<p>  ifconfig命令用于获取网卡配置与网络状态信息，格式为 <strong>ifconfig [网络设备][参数]</strong>。</p>
+</li>
+<li><p>2、uname</p>
+<p>  uname命令用于查看系统内核与系统版本等信息，格式为 <strong>uname [-a]</strong></p>
+</li>
+<li><p>3、uptime</p>
+<p>  uptime用于查看系统的负载信息，格式为 <strong>uptime</strong>。</p>
+</li>
+<li><p>4、free</p>
+<p>  free用于显示当前系统中内存的使用量信息，格式为 <strong>free [-h]</strong></p>
+</li>
+<li><p>5、who</p>
+<p>  who用于查看当前登入主机的用户终端信息，格式为 <strong>who [参数]</strong></p>
+</li>
+<li><p>6、last</p>
+<p>  last命令用于查看所有系统的登录记录，格式为 <strong>last [参数]</strong></p>
+</li>
+<li><p>7、history</p>
+<p>  history命令用于显示历史执行过的命令，格式为 <strong>history [-c]</strong>, -c表示清楚历史执行的命令。</p>
+</li>
+<li><p>8、sosreport</p>
+<p>  sosreport命令用于收集系统配置及框架信息并输出诊断文档，格式为 <strong>sosreport</strong>。</p>
 </li>
 </ul>
 
@@ -585,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linu就该这么学（一）"><span class="nav-number">1.</span> <span class="nav-text">Linu就该这么学（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linu就该这么学（一）"><span class="nav-number">1.</span> <span class="nav-text">Linu就该这么学（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用系统工作命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用系统工作命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统状态检测命令"><span class="nav-number">1.2.</span> <span class="nav-text">系统状态检测命令</span></a></li></ol></li></ol></div>
             
 
           </div>
