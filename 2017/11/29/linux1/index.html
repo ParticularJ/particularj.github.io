@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-14T15:28:35.650Z">
+<meta property="og:updated_time" content="2017-12-16T15:41:59.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学（一）">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -502,7 +502,7 @@
 <p>|参数|命令|<br>|—-|—-|<br>|-b|将可执行文件（binary）当作文本文件(text)来搜索|<br>|-c|仅显示找到的行数|<br>|-i|忽略大小写|<br>|<strong>-n</strong> |显示行号|<br>|<strong>-v</strong> |反向选择–仅列出没有”关键词”的行|</p>
 </li>
 <li><p>3、find</p>
-<p>find命令用于按照指定条件来查找文件，<strong>find[查找路径] 寻找条件 操作</strong></p>
+<p>find命令用于按照指定条件来查找文件，<strong>find[查找路径] 寻找条件 操作</strong><br>|参数|作用|<br>|—-|—-|<br>|-name|匹配名称|<br>|-perm|匹配权限（mode为完全匹配，-mode为包含即可）|<br>|-user|匹配所有者|<br>|-group|匹配所有组|<br>|-mtime -n +n|匹配修改内容的时间（-n指n天以内，+n指n天以前）|<br>|-atime -n +n|匹配访问文件的时间（-n指n天以内，+n指n天以前）|<br>|-ctime -n +n|匹配修改文件权限的时间（-n指n天以内，+n指n天以前）|<br>|-nouser|匹配无所有者的文件|<br>|-nogroup|匹配无所有组的文件|<br>|-newer f1 !f2|匹配比文件f1新但是比f2旧的文件|<br>|–type b/d/c/p/l/f|匹配文件类型（依次为块设备、目录、字符设备、管道、链接文件、文本文件）|<br>|-size|匹配文件的大小（+50KB为查找超过50KB的文件，而-50KB为查找小于50KB的文件）|<br>|-prune|忽略某个目录|<br>|-exec …… {}\;|后面可跟用于进一步处理搜索结果的命令|</p>
 </li>
 </ul>
 
