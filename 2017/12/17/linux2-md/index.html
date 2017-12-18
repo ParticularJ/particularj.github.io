@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T14:30:08.511Z">
+<meta property="og:updated_time" content="2017-12-18T15:42:06.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(二)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -364,60 +364,9 @@
 <li><p>错误输出重定向（STDERR，文件描述符为2）：默认输出到屏幕。</p>
 </li>
 </ul>
-<p><center><br>输入重定向中用到的符号及其作用</center></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">符号</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">命令 &lt; 文件</td>
-<td style="text-align:center">将文件作为命令的标准输入</td>
-</tr>
-<tr>
-<td style="text-align:center">命令 &lt;&lt; 分界符</td>
-<td style="text-align:center">从标准输入中读入，知道遇见分界符才停止</td>
-</tr>
-<tr>
-<td style="text-align:center">命令 &lt; 文件1 &gt; 文件2</td>
-<td style="text-align:center">将文件1作为命令的标准输入并将标准输出到文件2</td>
-</tr>
-</tbody>
-</table>
-<p>输出重定向中用到的符号及其作用</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">符号</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">命令 &gt; 文件</td>
-<td style="text-align:center">将标准输出重定向到一个文件中（清空原有文件的数据）</td>
-</tr>
-<tr>
-<td style="text-align:center">命令 2&gt; 文件</td>
-<td style="text-align:center">将错误输出重定向到一个文件中（清空原有文件的数据）</td>
-</tr>
-<tr>
-<td style="text-align:center">命令 &gt;&gt; 文件</td>
-<td style="text-align:center">将标准输出重定向到一个文件中（追加到原有内容的后面）</td>
-</tr>
-<tr>
-<td style="text-align:center">命令 2&gt;&gt; 文件</td>
-<td style="text-align:center">将错误输出重定向到一个文件中（追加到原有内容的后面）</td>
-</tr>
-<tr>
-<td style="text-align:center">命令 &gt;&gt; 文件 2&gt;&amp;1  或 命令 &amp;&gt;&gt; 文件</td>
-<td style="text-align:center">将标准输出与错误输出共同写入到文件中（追加到原有内容的后面）</td>
-</tr>
-</tbody>
-</table>
+<center><br>输入重定向中用到的符号及其作用<br><br>|符号|作用|<br>|:—-:|:—-:|<br>|命令 &lt; 文件|将文件作为命令的标准输入|<br>|命令 &lt;&lt; 分界符|从标准输入中读入，知道遇见分界符才停止|<br>|命令 &lt; 文件1 &gt; 文件2|将文件1作为命令的标准输入并将标准输出到文件2|<br><br>输出重定向中用到的符号及其作用<br><br>|符号|作用|<br>|:—-:|:—-:|<br>|命令 &gt; 文件|将标准输出重定向到一个文件中（清空原有文件的数据）|<br>|命令 2&gt; 文件|将错误输出重定向到一个文件中（清空原有文件的数据）|<br>|命令 &gt;&gt; 文件|将标准输出重定向到一个文件中（追加到原有内容的后面）|<br>|命令 2&gt;&gt; 文件|将错误输出重定向到一个文件中（追加到原有内容的后面）|<br>|命令 &gt;&gt; 文件 2&gt;&amp;1  或 命令 &amp;&gt;&gt; 文件|将标准输出与错误输出共同写入到文件中（追加到原有内容的后面）|<br></center>
+
+<h3 id="管道命令符"><a href="#管道命令符" class="headerlink" title="管道命令符"></a>管道命令符</h3><p>格式为：<strong>“|”</strong> 命令符的作用是:“把前一个命令原本要输出到屏幕的数据当作是后一个命令的标准输入。”</p>
 
       
     </div>
@@ -602,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-二"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(二)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管道符、重定向与环境变量"><span class="nav-number">1.1.</span> <span class="nav-text">管道符、重定向与环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出重定向"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入输出重定向</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-二"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(二)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管道符、重定向与环境变量"><span class="nav-number">1.1.</span> <span class="nav-text">管道符、重定向与环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出重定向"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入输出重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道命令符"><span class="nav-number">1.1.2.</span> <span class="nav-text">管道命令符</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
