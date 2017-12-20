@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-20T14:23:52.965Z">
+<meta property="og:updated_time" content="2017-12-20T15:22:27.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(二)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -367,7 +367,70 @@
 <center><br>输入重定向中用到的符号及其作用<br><br>|符号|作用|<br>|:—-:|:—-:|<br>|命令 &lt; 文件|将文件作为命令的标准输入|<br>|命令 &lt;&lt; 分界符|从标准输入中读入，知道遇见分界符才停止|<br>|命令 &lt; 文件1 &gt; 文件2|将文件1作为命令的标准输入并将标准输出到文件2|<br><br>输出重定向中用到的符号及其作用<br><br>|符号|作用|<br>|:—-:|:—-:|<br>|命令 &gt; 文件|将标准输出重定向到一个文件中（清空原有文件的数据）|<br>|命令 2&gt; 文件|将错误输出重定向到一个文件中（清空原有文件的数据）|<br>|命令 &gt;&gt; 文件|将标准输出重定向到一个文件中（追加到原有内容的后面）|<br>|命令 2&gt;&gt; 文件|将错误输出重定向到一个文件中（追加到原有内容的后面）|<br>|命令 &gt;&gt; 文件 2&gt;&amp;1  或 命令 &amp;&gt;&gt; 文件|将标准输出与错误输出共同写入到文件中（追加到原有内容的后面）|<br></center>
 
 <h3 id="管道命令符"><a href="#管道命令符" class="headerlink" title="管道命令符"></a>管道命令符</h3><p>格式为：<strong>“|”</strong> 命令符的作用是:“把前一个命令原本要输出到屏幕的数据当作是后一个命令的标准输入。</p>
-<h3 id="命令行的通配符"><a href="#命令行的通配符" class="headerlink" title="命令行的通配符"></a>命令行的通配符</h3><p>通配符就是通用的匹配信息的符号，比如“* ”代表匹配零个或多个字符， ”？”代表匹配单个字符，中括号内加上数字[0-9]代表匹配0~9之间的单个数字的字符，而中括号内加上字母[abc]则代表匹配a,b,c三个字符中的任意一个字符。</p>
+<h3 id="命令行的通配符"><a href="#命令行的通配符" class="headerlink" title="命令行的通配符"></a>命令行的通配符</h3><p>通配符就是通用的匹配信息的符号，比如“* ”代表匹配零个或多个字符， ”?”代表匹配单个字符，中括号内加上数字[0-9]代表匹配0~9之间的单个数字的字符，而中括号内加上字母[abc]则代表匹配a,b,c三个字符中的任意一个字符。</p>
+<h3 id="常用的转义字符"><a href="#常用的转义字符" class="headerlink" title="常用的转义字符"></a>常用的转义字符</h3><p>4个最常用的转义字符如下所示：</p>
+<ul>
+<li><p>反斜杠（\）:使反斜杠后面的一个变量变为单纯的字符串。</p>
+</li>
+<li><p>单引号（‘’）：转义其中所有的变量为单纯的字符串。</p>
+</li>
+<li><p>双引号（“”）：保留其中的变量属性，不进行转义处理。</p>
+</li>
+<li><p>反引号（``）：把其中的命令执行后返回结果。</p>
+</li>
+</ul>
+<h3 id="重要的环境变量"><a href="#重要的环境变量" class="headerlink" title="重要的环境变量"></a>重要的环境变量</h3><p>Linux系统中的环境变量是用来定义系统运行环境的一些参数，比如每个用户不同的家目录、邮件存放位置等。常见的10个重要环境变量。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量名称</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">HOME</td>
+<td style="text-align:center">用户的主目录（即家目录）</td>
+</tr>
+<tr>
+<td style="text-align:center">SHELL</td>
+<td style="text-align:center">用户在使用的Shell解释器名称</td>
+</tr>
+<tr>
+<td style="text-align:center">HISTSIZE</td>
+<td style="text-align:center">输出的历史命令记录条数</td>
+</tr>
+<tr>
+<td style="text-align:center">HISTFILESIZE</td>
+<td style="text-align:center">保存的历史命令记录条数</td>
+</tr>
+<tr>
+<td style="text-align:center">MAIL</td>
+<td style="text-align:center">邮件保存路径</td>
+</tr>
+<tr>
+<td style="text-align:center">LANG</td>
+<td style="text-align:center">系统语言、语系名称</td>
+</tr>
+<tr>
+<td style="text-align:center">RANDOM</td>
+<td style="text-align:center">生成一个随机数字</td>
+</tr>
+<tr>
+<td style="text-align:center">PS1</td>
+<td style="text-align:center">Bash解释器的提示符</td>
+</tr>
+<tr>
+<td style="text-align:center">PATH</td>
+<td style="text-align:center">定义解释器搜索用户执行命令的路径</td>
+</tr>
+<tr>
+<td style="text-align:center">EDITOR</td>
+<td style="text-align:center">用户默认的文本编辑器</td>
+</tr>
+</tbody>
+</table>
+<p>为了使得一个变量具有全局性，可以使用export命令将变量提升为全局变量。这样其他用户也就可以使用它了。</p>
 
       
     </div>
@@ -552,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-二"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(二)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管道符、重定向与环境变量"><span class="nav-number">1.1.</span> <span class="nav-text">管道符、重定向与环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出重定向"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入输出重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道命令符"><span class="nav-number">1.1.2.</span> <span class="nav-text">管道命令符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行的通配符"><span class="nav-number">1.1.3.</span> <span class="nav-text">命令行的通配符</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-二"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(二)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管道符、重定向与环境变量"><span class="nav-number">1.1.</span> <span class="nav-text">管道符、重定向与环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出重定向"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入输出重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道命令符"><span class="nav-number">1.1.2.</span> <span class="nav-text">管道命令符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行的通配符"><span class="nav-number">1.1.3.</span> <span class="nav-text">命令行的通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的转义字符"><span class="nav-number">1.1.4.</span> <span class="nav-text">常用的转义字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重要的环境变量"><span class="nav-number">1.1.5.</span> <span class="nav-text">重要的环境变量</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
