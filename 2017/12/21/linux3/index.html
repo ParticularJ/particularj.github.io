@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-22T14:58:46.870Z">
+<meta property="og:updated_time" content="2017-12-23T14:40:28.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(三)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -355,8 +355,17 @@
       
         <p>Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。</p>
 <a id="more"></a>
-<h1 id="Linux就该这么学-三"><a href="#Linux就该这么学-三" class="headerlink" title="Linux就该这么学(三)"></a>Linux就该这么学(三)</h1><h2 id="Vim编辑器与Shell命令脚本"><a href="#Vim编辑器与Shell命令脚本" class="headerlink" title="Vim编辑器与Shell命令脚本"></a>Vim编辑器与Shell命令脚本</h2><h3 id="Vim文本编辑器"><a href="#Vim文本编辑器" class="headerlink" title="Vim文本编辑器"></a>Vim文本编辑器</h3><p>“在Linux系统中一切都是文件，而配置一个服务就是在修改其配置文件的参数。”文本编辑器的应用</p>
-
+<h1 id="Linux就该这么学-三"><a href="#Linux就该这么学-三" class="headerlink" title="Linux就该这么学(三)"></a>Linux就该这么学(三)</h1><h2 id="Vim编辑器与Shell命令脚本"><a href="#Vim编辑器与Shell命令脚本" class="headerlink" title="Vim编辑器与Shell命令脚本"></a>Vim编辑器与Shell命令脚本</h2><h3 id="Vim文本编辑器"><a href="#Vim文本编辑器" class="headerlink" title="Vim文本编辑器"></a>Vim文本编辑器</h3><p>“在Linux系统中一切都是文件，而配置一个服务就是在修改其配置文件的参数。”Vim有三种模式命令行模式、末行模式和编辑模式。</p>
+<ul>
+<li><p>命令模式：控制光标移动，可对文本进行复制、粘贴、删除和查找工作。</p>
+</li>
+<li><p>输入模式：正常的文本录入。</p>
+</li>
+<li><p>末行模式：保存或退出文档，以及设置编辑环境。</p>
+</li>
+</ul>
+<center><br><br>Vim中常用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|dd|删除（剪切）光标所在整行|<br>|5dd|删除（剪切）从光标处开始的5行|<br>|yy|复制光标所在整行|<br>|5yy|复制从光标处开始5行|<br>|n|显示搜索命令定位到的下一个字符串|<br>|N|显示搜索命令定位到的上一个字符串|<br>|u|撤销上一步的操作|<br>|p|将之前删除或复制过的数据粘贴到光标后面|<br><br><br>末行模式中可用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|:w|保存|<br>|:q|退出|<br>|:q!|强制退出（放弃对文档的修改内容）|<br>|:wq!|强制保存退出|<br>|:set nu|显示行号|<br>|:set nonu|不显示行号|<br>|:命令|执行该命令|<br>|:整数|跳转到该行|<br>|:s/one/two|将当前光标坐在行的第一个one替换成two|<br>|:s/one/two/g|将当前光标所在行的所有one替换成two|<br>|:%s/one/two/g|将文本中的所有one替换成two|<br>|？字符串|在文本中从下至上搜索该字符串|<br>|/字符串|在文本中从上至下搜索该字符串|<br></center>
+</center></center></center></center>
       
     </div>
     
