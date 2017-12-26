@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-24T15:42:52.391Z">
+<meta property="og:updated_time" content="2017-12-26T15:03:39.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(三)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -364,7 +364,26 @@
 <li><p>末行模式：保存或退出文档，以及设置编辑环境。</p>
 </li>
 </ul>
-<center><br><br>Vim中常用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|dd|删除（剪切）光标所在整行|<br>|5dd|删除（剪切）从光标处开始的5行|<br>|yy|复制光标所在整行|<br>|5yy|复制从光标处开始5行|<br>|n|显示搜索命令定位到的下一个字符串|<br>|N|显示搜索命令定位到的上一个字符串|<br>|u|撤销上一步的操作|<br>|p|将之前删除或复制过的数据粘贴到光标后面|<br><br><br>末行模式中可用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|:w|保存|<br>|:q|退出|<br>|:q!|强制退出（放弃对文档的修改内容）|<br>|:wq!|强制保存退出|<br>|:set nu|显示行号|<br>|:set nonu|不显示行号|<br>|:命令|执行该命令|<br>|:整数|跳转到该行|<br>|:s/one/two|将当前光标坐在行的第一个one替换成two|<br>|:s/one/two/g|将当前光标所在行的所有one替换成two|<br>|:%s/one/two/g|将文本中的所有one替换成two|<br>|？字符串|在文本中从下至上搜索该字符串|<br>|/字符串|在文本中从上至下搜索该字符串|<br><br><br><br><br></center>
+<center><br><br>Vim中常用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|dd|删除（剪切）光标所在整行|<br>|5dd|删除（剪切）从光标处开始的5行|<br>|yy|复制光标所在整行|<br>|5yy|复制从光标处开始5行|<br>|n|显示搜索命令定位到的下一个字符串|<br>|N|显示搜索命令定位到的上一个字符串|<br>|u|撤销上一步的操作|<br>|p|将之前删除或复制过的数据粘贴到光标后面|<br><br><br>末行模式中可用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|:w|保存|<br>|:q|退出|<br>|:q!|强制退出（放弃对文档的修改内容）|<br>|:wq!|强制保存退出|<br>|:set nu|显示行号|<br>|:set nonu|不显示行号|<br>|:命令|执行该命令|<br>|:整数|跳转到该行|<br>|:s/one/two|将当前光标坐在行的第一个one替换成two|<br>|:s/one/two/g|将当前光标所在行的所有one替换成two|<br>|:%s/one/two/g|将文本中的所有one替换成two|<br>|？字符串|在文本中从下至上搜索该字符串|<br>|/字符串|在文本中从上至下搜索该字符串|<br></center>
+
+<h3 id="编写Shell脚本"><a href="#编写Shell脚本" class="headerlink" title="编写Shell脚本"></a>编写Shell脚本</h3><p>Shell脚本命令的工作方式有两种：交互式和批处理。</p>
+<ul>
+<li>交互式：用户每次输入一条命令就立即执行。</li>
+<li>批处理：由用户事先编写好一个完整的Shell脚本，Shell会一次性执行脚本中的诸多命令。</li>
+</ul>
+<pre><code>#!/bin/bash  使用什么编译器
+#For Example By CK  注释信息
+pwd
+ls -al
+</code></pre><h4 id="接收用户的参数"><a href="#接收用户的参数" class="headerlink" title="接收用户的参数"></a>接收用户的参数</h4><p>Linux系统中的Shell脚本语言，内设了用于接收参数的变量，变量之间可以使用空格间隔。例如 <strong>$0</strong> 对应的是当前Shell脚本程序的名称，<strong>$#</strong> 对应的是总共有几个参数， <strong>$*</strong> 对应的是所有位置的参数值， <strong>$?</strong> 对应的是显示上一次命令的执行返回值，而 <strong>$1、$2、$3……</strong> 分别对应着第N个位置的参数值。</p>
+<h4 id="判断用户的参数"><a href="#判断用户的参数" class="headerlink" title="判断用户的参数"></a>判断用户的参数</h4><p>Shell脚本中的条件测试语句可以判断表达式是否成立，若条件成立则返回数字0，否则返回其他随机数值。</p>
+<pre><code>测试语句格式：[ 条件表达式 ] 前后有空格
+</code></pre><p>按照测试对象来划分，条件测试语句可以分为4种：</p>
+<ul>
+<li>文件测试语句；</li>
+<li>逻辑测试语句；</li>
+<li>整数值比较语句</li>
+</ul>
 </center></center></center></center>
       
     </div>
@@ -549,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-三"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(三)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim编辑器与Shell命令脚本"><span class="nav-number">1.1.</span> <span class="nav-text">Vim编辑器与Shell命令脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim文本编辑器"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vim文本编辑器</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-三"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(三)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim编辑器与Shell命令脚本"><span class="nav-number">1.1.</span> <span class="nav-text">Vim编辑器与Shell命令脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim文本编辑器"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vim文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Shell脚本"><span class="nav-number">1.1.2.</span> <span class="nav-text">编写Shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接收用户的参数"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">接收用户的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断用户的参数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">判断用户的参数</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
