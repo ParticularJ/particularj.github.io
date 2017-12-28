@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T15:03:07.952Z">
+<meta property="og:updated_time" content="2017-12-28T14:43:50.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(三)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -385,8 +385,16 @@ ls -al
 <li>整数值比较语句；</li>
 <li>字符串比较语句。</li>
 </ul>
-<p><center><br>文件测试所用的参数<br>|运算符|作用|<br>|:—-:|:—-:|<br>|-d|测试文件是否为目录类型|<br>|-e|测试文件是否存在|<br>|-f|判断是否为一般文件|<br>|-r|测试当前用户是否有权限读取|<br>|-w|测试当前用户是否有权限写入|<br>|-x|测试当前用户是否有权限执行|</center></p>
-</center></center></center></center>
+<center><br>文件测试所用的参数<br>|运算符|作用|<br>|:—-:|:—-:|<br>|-d|测试文件是否为目录类型|<br>|-e|测试文件是否存在|<br>|-f|判断是否为一般文件|<br>|-r|测试当前用户是否有权限读取|<br>|-w|测试当前用户是否有权限写入|<br>|-x|测试当前用户是否有权限执行|<br><br><br>可用的整数比较运算符<br>|运算符|作用|<br>|:—-:|:—-:|<br>|-eq|是否等于|<br>|-nq|是否不等于|<br>|-gt|是否大于|<br>|-lt|是否小于|<br>|-le|是否等于或小于|<br>|-ge|是否大于或等于|<br><br>常见的字符串比较运算符<br>|运算符|作用|<br>|:—-:|:—-:|<br>|=|比较字符串内容是否相同|<br>|！=|比较字符串内容是否不同|<br>|-z|判断字符串是否为空|<br><br></center>
+
+<h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a>if条件语句</h4><pre><code>if 条件测试操作
+  then 命令序列
+fi
+</code></pre><h4 id="for条件循环语句"><a href="#for条件循环语句" class="headerlink" title="for条件循环语句"></a>for条件循环语句</h4><pre><code>for 变量名 in 取值列表
+do
+    命令序列
+done
+</code></pre></center></center></center></center>
       
     </div>
     
@@ -570,7 +578,7 @@ ls -al
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-三"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(三)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim编辑器与Shell命令脚本"><span class="nav-number">1.1.</span> <span class="nav-text">Vim编辑器与Shell命令脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim文本编辑器"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vim文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Shell脚本"><span class="nav-number">1.1.2.</span> <span class="nav-text">编写Shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接收用户的参数"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">接收用户的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断用户的参数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">判断用户的参数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-三"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(三)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim编辑器与Shell命令脚本"><span class="nav-number">1.1.</span> <span class="nav-text">Vim编辑器与Shell命令脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim文本编辑器"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vim文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Shell脚本"><span class="nav-number">1.1.2.</span> <span class="nav-text">编写Shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接收用户的参数"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">接收用户的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断用户的参数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">判断用户的参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制语句"><span class="nav-number">1.1.3.</span> <span class="nav-text">流程控制语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if条件语句"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">if条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for条件循环语句"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">for条件循环语句</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
