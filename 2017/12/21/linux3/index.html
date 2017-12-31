@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-30T14:48:32.797Z">
+<meta property="og:updated_time" content="2017-12-31T14:02:40.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(三)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -385,7 +385,7 @@ ls -al
 <li>整数值比较语句；</li>
 <li>字符串比较语句。</li>
 </ul>
-<center><br>文件测试所用的参数<br>|运算符|作用|<br>|:—-:|:—-:|<br>|-d|测试文件是否为目录类型|<br>|-e|测试文件是否存在|<br>|-f|判断是否为一般文件|<br>|-r|测试当前用户是否有权限读取|<br>|-w|测试当前用户是否有权限写入|<br>|-x|测试当前用户是否有权限执行|<br><br><br>可用的整数比较运算符<br>|运算符|作用|<br>|:—-:|:—-:|<br>|-eq|是否等于|<br>|-nq|是否不等于|<br>|-gt|是否大于|<br>|-lt|是否小于|<br>|-le|是否等于或小于|<br>|-ge|是否大于或等于|<br><br>常见的字符串比较运算符<br>|运算符|作用|<br>|:—-:|:—-:|<br>|=|比较字符串内容是否相同|<br>|！=|比较字符串内容是否不同|<br>|-z|判断字符串是否为空|<br><br></center>
+<center><br>文件测试所用的参数<br><br>|运算符|作用|<br>|:—-:|:—-:|<br>|-d|测试文件是否为目录类型|<br>|-e|测试文件是否存在|<br>|-f|判断是否为一般文件|<br>|-r|测试当前用户是否有权限读取|<br>|-w|测试当前用户是否有权限写入|<br>|-x|测试当前用户是否有权限执行|<br><br><br>可用的整数比较运算符<br><br>|运算符|作用|<br>|:—-:|:—-:|<br>|-eq|是否等于|<br>|-nq|是否不等于|<br>|-gt|是否大于|<br>|-lt|是否小于|<br>|-le|是否等于或小于|<br>|-ge|是否大于或等于|<br><br>常见的字符串比较运算符<br><br>|运算符|作用|<br>|:—-:|:—-:|<br>|=|比较字符串内容是否相同|<br>|！=|比较字符串内容是否不同|<br>|-z|判断字符串是否为空|<br><br></center>
 
 <h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a>if条件语句</h4><pre><code>if 条件测试操作
   then 命令序列
@@ -416,8 +416,46 @@ esac*
 </ul>
 <p>一次性任务：可以使用 <strong>at 时间</strong>，之后编写所需要执行的命令。产看已设置好但还未执行的计划 <strong>at -l</strong>;若要删除，使用 <strong>atrm 任务序号</strong>。</p>
 <h4 id="长期性任务"><a href="#长期性任务" class="headerlink" title="长期性任务"></a>长期性任务</h4><p>长期性任务：如果希望Linux系统能够周期性地、有规律地执行某些任务，那么Linux中的crond服务。 创建、编辑计划任务的命令为 <strong>crontab -e</strong>,查看当前计划任务的命令为 <strong>crontab -l</strong>, 删除某条计划任务的命令 <strong>crontab -r</strong>。</p>
-<p>命令为： <strong>分、时、日、月、星期 命令</strong>，如果某些字段没有设置，则需要使用（*）占位。</p>
-<p><center><br>使用crond设置任务的参数<br>|字段|说明|<br>|:—-:|:—-:|<br>|分|0-59（int）|<br>|时|0-23（int）|<br>|日|1-31（int）|<br>|月|1-12（int）|<br>|星期|1-7（int）|<br>|命令|要执行的命令或脚本|<br>|提示|可以使用“，”来间隔时间；用“-”来表示时间段；用“/”来表示时间间隔（/2：每隔两分钟执行一次）|    </center></p>
+<p>命令为： <strong>分、时、日、月、星期 命令</strong>，如果某些字段没有设置，则需要使用（*）占位，其中“分”必须有数值，而“日”和“星期”字段不能同时使用。在所有的crond服务的计划任务参数中，所有命令一定要使用绝对路径的方法。</p>
+<p><center><br>使用crond设置任务的参数</center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">分</td>
+<td style="text-align:center">0-59（int）</td>
+</tr>
+<tr>
+<td style="text-align:center">时</td>
+<td style="text-align:center">0-23（int）</td>
+</tr>
+<tr>
+<td style="text-align:center">日</td>
+<td style="text-align:center">1-31（int）</td>
+</tr>
+<tr>
+<td style="text-align:center">月</td>
+<td style="text-align:center">1-12（int）</td>
+</tr>
+<tr>
+<td style="text-align:center">星期</td>
+<td style="text-align:center">1-7（int）</td>
+</tr>
+<tr>
+<td style="text-align:center">命令</td>
+<td style="text-align:center">要执行的命令或脚本</td>
+</tr>
+<tr>
+<td style="text-align:center">提示</td>
+<td style="text-align:center">可以使用“，”来间隔时间；用“-”来表示时间段；用“/”来表示时间间隔（/2：每隔两分钟执行一次）</td>
+</tr>
+</tbody>
+</table>
 </center></center></center></center>
       
     </div>
@@ -457,6 +495,10 @@ esac*
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/31/linux4/" rel="prev" title="Linux就该这么学(四)">
+                Linux就该这么学(四) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +579,7 @@ esac*
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

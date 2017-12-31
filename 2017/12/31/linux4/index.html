@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="svm," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="本文主要讲述SVM的主要原理，熟能生巧。">
-<meta name="keywords" content="svm">
+<meta name="description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="支持向量机">
-<meta property="og:url" content="particularj.github.io/2017/11/16/svm/index.html">
+<meta property="og:title" content="Linux就该这么学(四)">
+<meta property="og:url" content="particularj.github.io/2017/12/31/linux4/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="本文主要讲述SVM的主要原理，熟能生巧。">
+<meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-17T02:17:45.540Z">
+<meta property="og:updated_time" content="2017-12-31T15:45:26.985Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="支持向量机">
-<meta name="twitter:description" content="本文主要讲述SVM的主要原理，熟能生巧。">
+<meta name="twitter:title" content="Linux就该这么学(四)">
+<meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <title>支持向量机 | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Linux就该这么学(四) | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/16/svm/">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/12/31/linux4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ParticularJ">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">支持向量机</h1>
+          <h1 class="post-title" itemprop="name headline">Linux就该这么学(四)</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T18:00:46+08:00">
-                2017-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-31T21:38:29+08:00">
+                2017-12-31
               </time>
             
 
@@ -316,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/teconology/" itemprop="url" rel="index">
-                    <span itemprop="name">teconology</span>
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
                   </a>
                 </span>
 
@@ -353,37 +353,25 @@
       
 
       
-        <p>本文主要讲述SVM的主要原理，熟能生巧。<br><a id="more"></a></p>
-<h1 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h1><p>支持向量机是一种性能并且应用十分广泛的监督学习算法。要探讨SVM我们首先要讨论，“margin”和如何能理想的用最大的间隔去区分数据。之后，我们要讨论拉格朗日对偶问题，用来实现最优间隔分类器。SVM的另外一项重要的功能就是核函数的引入，可以使得SVM在很高的维度空间仍然有高效的表现。</p>
-<h2 id="间隔（margin）"><a href="#间隔（margin）" class="headerlink" title="间隔（margin）"></a>间隔（margin）</h2><p>间隔的直观定义便是找到一个将平面上的类别可以最好分隔的超平面，能够最大程度的保证分隔的正确性。</p>
-<h2 id="函数和几何间隔"><a href="#函数和几何间隔" class="headerlink" title="函数和几何间隔"></a>函数和几何间隔</h2><h3 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h3><p>给定一个训练集($x^{(i)},y^{(i)}$),我们定义训练集的函数间隔为：</p>
-<p>$\hat{r}^{(i)}=y^{(i)}(w^{T}x+b)$。</p>
-<p>我们的目标是使得函数间隔最大，这样才能保证我们预测的结果的可信度更高。由于我们对$w,b$进行任意尺度的缩放，并不会改变预测的结果，因此我们可以任意尺度缩放这两个参数，这在归一化的过程中有极大的帮助。</p>
-<p>我们的目标便是在函数训练集上去寻找那个函数间隔最小的，使得最小的满足正确分类要求。即：</p>
-<p>$\hat{r}= \min\limits_{i=1,\dots,m}\hat{r}^{(i)}$</p>
-<h3 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h3><p>几何间隔，即平面上的点到超平面的距离，我们定义几何间隔为：</p>
-<p>$r^{(i)}=y^{(i)}\Big((\frac{w}{||w||})^{T}x^{(i)}+\frac{b}{||w||} \Big)$</p>
-<p>当 $||w||=1$时，几何间隔等于函数间隔，并且函数间隔是不会因为$w,b$的变化而发生变化。</p>
-<p>我们的目标便是在整个训练集上去寻找几何间隔最小的，使得最小的满足分类要求。即：<br>$r=\min\limits_{i=1,\dots,m}r^{(i)}$</p>
-<h2 id="最优间隔分类器-The-optimal-margin-classifier"><a href="#最优间隔分类器-The-optimal-margin-classifier" class="headerlink" title="最优间隔分类器(The optimal margin classifier)"></a>最优间隔分类器(The optimal margin classifier)</h2><p>从上面的讨论，我们自然而然想到的便是我们尽可能去找一个决策边界使得间隔可以最大化，这样才能使得我们的分类置信度更高。这样的决策边界的确定，就会在正负样本之间产生一个几何间隔，我们的目标便是使得这个几何间隔最大(意味着：我们在函数训练集中选择一个最小的几何间隔，然后使得这个间隔尽可能的大)。</p>
-<p>综合考虑，计算的可能性和凸优化函数，我们最终得到如下的优化问题：</p>
-<p>$$\min_{r,w,b}  \frac{1}{2}||w||^{2} \ s.t.\ \ y^{(i)}(w^{T}x^{i}+b)\ge1, i=1,\dots,m$$</p>
-<p>这个问题的解便是最优间隔分类器的确定。</p>
-<h2 id="拉格朗日对偶性（Lagrange-duality）"><a href="#拉格朗日对偶性（Lagrange-duality）" class="headerlink" title="拉格朗日对偶性（Lagrange duality）"></a>拉格朗日对偶性（Lagrange duality）</h2><p>拉格朗日的对偶性说的就是对一个式子先取最大再取最小值和先取最小再取最大值在某些情况下会有同样的效果。具体来说，我们在原问题可能先将$w$当做常量，去确定 $\alpha,\beta$的值，之后再去确定$w$,对偶问题则相反。</p>
-<p>$d^{\star}=\max\limits_{\alpha,\beta:\alpha_{i}\ge0}\min\limits_{w}L(w,\alpha,\beta)\le\min\limits_{w}\max\limits_{\alpha,\beta:\alpha_{i}\ge0}L(w,\alpha,\beta)=p^\star$</p>
-<p>在特定的条件下（满足KKT）对偶问题和原始问题的解是相同的，我们便可以用对偶问题去求解原始问题</p>
-<h2 id="Optimal-margin-classifier"><a href="#Optimal-margin-classifier" class="headerlink" title="Optimal margin classifier"></a>Optimal margin classifier</h2><p>在满足最小的间隔也正好是最接近决策面的点，由于他们所在的直线和决策面是平行的。因为决策面要满足KKT条件，所以在该直线上的点 $\alpha&gt;0$,这样的点就被称作支持向量。</p>
-<p>根据拉格朗日的对偶性，我们可以通过求解对偶问题来解决，从而简化求解的难度，求出我们需要的参数$w,b$。</p>
-<p>除此之外，我们可以在预测的阶段使用如下公式：</p>
-<p> $w^{T}x+b = \sum\limits_{i=1}^{m}\alpha_{i}y^{(i)} K(x^{(i)},x)+b$</p>
-<p>这样做的好处是我们在预测的过程中不用计算所有的样本，因为除了支持向量以外，其余的 $\alpha$均等于零，我们就能通过支持向量快速做出预测。</p>
-<h2 id="核（Kernels）"><a href="#核（Kernels）" class="headerlink" title="核（Kernels）"></a>核（Kernels）</h2><p>$$K(x,z)=\phi(x)^{T}\phi(z)$$</p>
-<p>核函数在SVM中是一个计算效率很高的函数，可以快速的计算内积（$O(n^2)$）,找到对应的$K(x,z)$ 只需要$O(n)$。我们可以不用找出明确的 $\phi(x)$ 向量,只需要将特征映射到高维特征空间，之后通过高维空间可以快速的计算内积。</p>
-<p>由于 $\phi(x),\phi(z)$ 如果很接近那么，K就会很大；反之，K则会很小。所以K可以看做是反应  $\phi(x),\phi(z)$ 相似程度的一个准则。我们便可以提出相似的核函数，满足这个准则。</p>
-<p>定理：如果K是一个有效的核函数，那么它的充要条件是，这个核矩阵是对称半正定的。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>我们将特征映射到高维，其中之一的目的就是使之在映射到高维后可以找到一个超平面让数据可分，但是由于某些数据的加入，可能使得超平面因为满足小部分的数据从而产生很大的改变，所以，我们要想办法去抑制这种影响，使之对那些点的敏感性降低。因此，使用正则化是一个有效的途径。</p>
-<p>正则化之后的最优间隔的求解仍然与原问题求解相似，只是约束条件有所改变。</p>
-<h2 id="SMO算法"><a href="#SMO算法" class="headerlink" title="SMO算法"></a>SMO算法</h2><p>SMO（顺序最小优化）算法是一种有效去计算对偶问题的算法。<br>主要思想是：固定一部分变量的值，只对少部分变量进行求解，依次类推，从而找到最优的变量。</p>
+        <p>Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。</p>
+<a id="more"></a>
+<h1 id="Linux就该这么学（四）"><a href="#Linux就该这么学（四）" class="headerlink" title="Linux就该这么学（四）"></a>Linux就该这么学（四）</h1><h2 id="用户身份与能力"><a href="#用户身份与能力" class="headerlink" title="用户身份与能力"></a>用户身份与能力</h2><p>UID（User IDentification），用户的身份号码。</p>
+<ul>
+<li>管理员UID为0：系统的管理员用户</li>
+<li>系统用户UID为1~999：Linux系统为了避免因某个服务程序出现漏洞而被黑客提权至整台服务器，默认服务程序会有独立的系统用户负责运行，进而有效控制被破坏范围。</li>
+<li>普通用户UID从1000开始：是由管理员创建的用于日常工作的用户。</li>
+</ul>
+<p>GID（Group IDentification）用户组号码，通过使用GID我们可以把多个用户加入到同一个组中，从而方便为组中的用户统一规划权限或指定任务。</p>
+<h3 id="useradd命令"><a href="#useradd命令" class="headerlink" title="useradd命令"></a>useradd命令</h3><p>用于创建新的用户，格式为 <strong>useradd [选项] 用户名</strong></p>
+<center><br>useradd命令中的用户参数及其作用<br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-d|指定用户的家目录（默认为/home/username）|<br>|-e|账户的到期时间，格式为YYYY-MM-DD|<br>|-u|指定该用户的默认UID|<br>|-g|指定一个初始的用户基本组（必须已存在）|<br>|-G|指定一个或多个扩展组|<br>|-N|不创建与用户同名的基本用户组|<br>|-s|指定该用户的默认Shell解释器|<br></center>
+
+<h3 id="groupadd命令"><a href="#groupadd命令" class="headerlink" title="groupadd命令"></a>groupadd命令</h3><p>用于创建用户组，格式为 <strong>groupadd[选项] 用户名</strong>。将多个用户添加到一个同一个组里面，这样可以针对一类用户统一安排权限。</p>
+<h3 id="usermod命令"><a href="#usermod命令" class="headerlink" title="usermod命令"></a>usermod命令</h3><p>用于修改用户的属性，格式为 <strong>usermod[选项] 用户名</strong>。</p>
+<center><br>usermod命令中的参数及作用<br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-c|填写用户账户的备注信息|<br>|-d -m|参数-m与参数-d连用，可重新指定用户的家目录并自动把旧的数据转移过去|<br>|-e|账户的到期时间，格式为YYYY-MM-DD|<br>|-g|变更所属用户组|<br>|-G|变更扩展用户组|<br>|-L|锁定用户禁止其登录系统|<br>|-U|解锁用户，允许其登录系统|<br>|-s|变更默认终端|<br>|-u|修改用户的UID|<br><br></center><br>### passwd命令<br><br>用于修改用户密码、过期时间、认证信息等，格式为 <strong>passwd[选项][用户名]</strong><br><br><center><br>passwd命令中的参数以及作用<br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-l|锁定用户，禁止其登录|<br>|-u|解除锁定，允许用户登录|<br>|–stdin|允许通过标准输入修改用户密码，如echo “NewPassWord” | passwd –stdin Username|<br>|-d|使该用户可用空密码登录系统|<br>|-e|强制用户在下次登录时修改密码|<br>|-S|显示用户的密码是否被锁定，以及密码所采用的加密算法名称|<br></center>
+
+
+<h3 id="userdel命令"><a href="#userdel命令" class="headerlink" title="userdel命令"></a>userdel命令</h3><p>用于删除用户，格式为 <strong>userdel [选项] 用户名</strong></p>
+<center><br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-f|强制删除用户|<br>|-r|同时删除用户以及家目录|<br></center>
 
       
     </div>
@@ -401,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/svm/" rel="tag"><i class="fa fa-tag"></i> svm</a>
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
           
         </div>
       
@@ -414,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/13/Latex/" rel="next" title="Latex Function">
-                <i class="fa fa-chevron-left"></i> Latex Function
+              <a href="/2017/12/21/linux3/" rel="next" title="Linux就该这么学(三)">
+                <i class="fa fa-chevron-left"></i> Linux就该这么学(三)
               </a>
             
           </div>
@@ -423,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/19/deeplearning/" rel="prev" title="DeepLearning">
-                DeepLearning <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量机（SVM）"><span class="nav-number">1.</span> <span class="nav-text">支持向量机（SVM）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#间隔（margin）"><span class="nav-number">1.1.</span> <span class="nav-text">间隔（margin）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数和几何间隔"><span class="nav-number">1.2.</span> <span class="nav-text">函数和几何间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数间隔"><span class="nav-number">1.2.1.</span> <span class="nav-text">函数间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何间隔"><span class="nav-number">1.2.2.</span> <span class="nav-text">几何间隔</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最优间隔分类器-The-optimal-margin-classifier"><span class="nav-number">1.3.</span> <span class="nav-text">最优间隔分类器(The optimal margin classifier)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉格朗日对偶性（Lagrange-duality）"><span class="nav-number">1.4.</span> <span class="nav-text">拉格朗日对偶性（Lagrange duality）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimal-margin-classifier"><span class="nav-number">1.5.</span> <span class="nav-text">Optimal margin classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核（Kernels）"><span class="nav-number">1.6.</span> <span class="nav-text">核（Kernels）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化"><span class="nav-number">1.7.</span> <span class="nav-text">正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMO算法"><span class="nav-number">1.8.</span> <span class="nav-text">SMO算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学（四）"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学（四）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户身份与能力"><span class="nav-number">1.1.</span> <span class="nav-text">用户身份与能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useradd命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">useradd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupadd命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">groupadd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod命令"><span class="nav-number">1.1.3.</span> <span class="nav-text">usermod命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userdel命令"><span class="nav-number">1.1.4.</span> <span class="nav-text">userdel命令</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
