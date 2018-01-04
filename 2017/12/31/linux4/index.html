@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T14:40:44.764Z">
+<meta property="og:updated_time" content="2018-01-04T15:08:29.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(四)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -394,7 +394,12 @@
 <pre><code>chmod g+s
 </code></pre><h3 id="SBIT"><a href="#SBIT" class="headerlink" title="SBIT"></a>SBIT</h3><p>SBIT特殊权限位可确保用户只能删除自己的文件，而不能删除其他用户的文件。</p>
 <pre><code>chmod o+t
-</code></pre>
+</code></pre><h2 id="文件的隐藏属性"><a href="#文件的隐藏属性" class="headerlink" title="文件的隐藏属性"></a>文件的隐藏属性</h2><p>Linux系统中的文件除了具备一般权限和特殊权限之外，还有一种隐藏权限，即被隐藏起来的权限，默认情况下不能直接被用户发觉。作用是，虽然权限充足但是仍然无法删除某些文件等情况。</p>
+<h3 id="chattr命令"><a href="#chattr命令" class="headerlink" title="chattr命令"></a>chattr命令</h3><p>用于设置文件的隐藏权限，格式为 <strong>chattr[参数] 文件</strong>。如果要把某个隐藏功能添加到文件上，则需要在命令后面追加 <strong>+ 参数</strong>，如果想要把某个隐藏功能移出文件，则需要追加 <strong>- 参数</strong>。</p>
+<center><br><br>chattr命令中用于隐藏权限的参数及其作用<br>|参数|作用|<br>|:—-:|:—-:|<br>|i|无法对文件进行修改；若对目录设置了该参数，则仅能修改其中的子文件内容而不能新建或删除文件|<br>|a|仅允许补充（追加）内容，无法覆盖/删除内容（Append only）|<br>|S|文件内容在变更后立即同步到硬盘(sync)|<br>|s|彻底从硬盘删除，不可恢复（用0填充原文件所在硬盘区域）|<br>|A|不再修改这个文件或目录的最后访问时间（atime）|<br>|b|不再修改文件或目录的存取时间|<br>|D|检查压缩文件中的错误|<br>|d|使用dump命令备份时忽略本文件/目录|<br>|c|默认将文件或目录进行压缩|<br>|u|当删除该文件后依然保留其在硬盘中的数据，方便日后恢复|<br>|t|让文件系统支持尾部合并（tail-merging）|<br>|X|可以直接访问压缩文件中的内容|<br><br></center>
+
+<h3 id="lsattr命令"><a href="#lsattr命令" class="headerlink" title="lsattr命令"></a>lsattr命令</h3><p>lsattr命令用于显示文件的隐藏属性，格式为 <strong>lsattr[参数] 文件</strong></p>
+
       
     </div>
     
@@ -578,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学（四）"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学（四）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户身份与能力"><span class="nav-number">1.1.</span> <span class="nav-text">用户身份与能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useradd命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">useradd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupadd命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">groupadd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod命令"><span class="nav-number">1.1.3.</span> <span class="nav-text">usermod命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userdel命令"><span class="nav-number">1.1.4.</span> <span class="nav-text">userdel命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限与归属"><span class="nav-number">1.2.</span> <span class="nav-text">文件权限与归属</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊权限"><span class="nav-number">1.3.</span> <span class="nav-text">文件的特殊权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID"><span class="nav-number">1.3.1.</span> <span class="nav-text">SUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGID"><span class="nav-number">1.3.2.</span> <span class="nav-text">SGID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SBIT"><span class="nav-number">1.3.3.</span> <span class="nav-text">SBIT</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学（四）"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学（四）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户身份与能力"><span class="nav-number">1.1.</span> <span class="nav-text">用户身份与能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useradd命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">useradd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupadd命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">groupadd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod命令"><span class="nav-number">1.1.3.</span> <span class="nav-text">usermod命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userdel命令"><span class="nav-number">1.1.4.</span> <span class="nav-text">userdel命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限与归属"><span class="nav-number">1.2.</span> <span class="nav-text">文件权限与归属</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊权限"><span class="nav-number">1.3.</span> <span class="nav-text">文件的特殊权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID"><span class="nav-number">1.3.1.</span> <span class="nav-text">SUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGID"><span class="nav-number">1.3.2.</span> <span class="nav-text">SGID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SBIT"><span class="nav-number">1.3.3.</span> <span class="nav-text">SBIT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的隐藏属性"><span class="nav-number">1.4.</span> <span class="nav-text">文件的隐藏属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chattr命令"><span class="nav-number">1.4.1.</span> <span class="nav-text">chattr命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lsattr命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">lsattr命令</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
