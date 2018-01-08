@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-07T13:31:31.695Z">
+<meta property="og:updated_time" content="2018-01-08T13:18:33.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(四)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -363,17 +363,147 @@
 </ul>
 <p>GID（Group IDentification）用户组号码，通过使用GID我们可以把多个用户加入到同一个组中，从而方便为组中的用户统一规划权限或指定任务。</p>
 <h3 id="useradd命令"><a href="#useradd命令" class="headerlink" title="useradd命令"></a>useradd命令</h3><p>用于创建新的用户，格式为 <strong>useradd [选项] 用户名</strong></p>
-<center><br>useradd命令中的用户参数及其作用<br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-d|指定用户的家目录（默认为/home/username）|<br>|-e|账户的到期时间，格式为YYYY-MM-DD|<br>|-u|指定该用户的默认UID|<br>|-g|指定一个初始的用户基本组（必须已存在）|<br>|-G|指定一个或多个扩展组|<br>|-N|不创建与用户同名的基本用户组|<br>|-s|指定该用户的默认Shell解释器|<br></center>
-
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">指定用户的家目录（默认为/home/username）</td>
+</tr>
+<tr>
+<td style="text-align:center">-e</td>
+<td style="text-align:center">账户的到期时间，格式为YYYY-MM-DD</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td style="text-align:center">指定该用户的默认UID</td>
+</tr>
+<tr>
+<td style="text-align:center">-g</td>
+<td style="text-align:center">指定一个初始的用户基本组（必须已存在）</td>
+</tr>
+<tr>
+<td style="text-align:center">-G</td>
+<td style="text-align:center">指定一个或多个扩展组</td>
+</tr>
+<tr>
+<td style="text-align:center">-N</td>
+<td style="text-align:center">不创建与用户同名的基本用户组</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">指定该用户的默认Shell解释器</td>
+</tr>
+</tbody>
+</table>
 <h3 id="groupadd命令"><a href="#groupadd命令" class="headerlink" title="groupadd命令"></a>groupadd命令</h3><p>用于创建用户组，格式为 <strong>groupadd[选项] 用户名</strong>。将多个用户添加到一个同一个组里面，这样可以针对一类用户统一安排权限。</p>
 <h3 id="usermod命令"><a href="#usermod命令" class="headerlink" title="usermod命令"></a>usermod命令</h3><p>用于修改用户的属性，格式为 <strong>usermod[选项] 用户名</strong>。</p>
-<center><br>usermod命令中的参数及作用<br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-c|填写用户账户的备注信息|<br>|-d -m|参数-m与参数-d连用，可重新指定用户的家目录并自动把旧的数据转移过去|<br>|-e|账户的到期时间，格式为YYYY-MM-DD|<br>|-g|变更所属用户组|<br>|-G|变更扩展用户组|<br>|-L|锁定用户禁止其登录系统|<br>|-U|解锁用户，允许其登录系统|<br>|-s|变更默认终端|<br>|-u|修改用户的UID|<br><br></center><br>### passwd命令<br><br>用于修改用户密码、过期时间、认证信息等，格式为 <strong>passwd[选项][用户名]</strong><br><br><center><br>passwd命令中的参数以及作用<br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-l|锁定用户，禁止其登录|<br>|-u|解除锁定，允许用户登录|<br>|–stdin|允许通过标准输入修改用户密码，如echo “NewPassWord” | passwd –stdin Username|<br>|-d|使该用户可用空密码登录系统|<br>|-e|强制用户在下次登录时修改密码|<br>|-S|显示用户的密码是否被锁定，以及密码所采用的加密算法名称|<br></center>
-
-
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">填写用户账户的备注信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-d -m</td>
+<td style="text-align:center">参数-m与参数-d连用，可重新指定用户的家目录并自动把旧的数据转移过去</td>
+</tr>
+<tr>
+<td style="text-align:center">-e</td>
+<td style="text-align:center">账户的到期时间，格式为YYYY-MM-DD</td>
+</tr>
+<tr>
+<td style="text-align:center">-g</td>
+<td style="text-align:center">变更所属用户组</td>
+</tr>
+<tr>
+<td style="text-align:center">-G</td>
+<td style="text-align:center">变更扩展用户组</td>
+</tr>
+<tr>
+<td style="text-align:center">-L</td>
+<td style="text-align:center">锁定用户禁止其登录系统</td>
+</tr>
+<tr>
+<td style="text-align:center">-U</td>
+<td style="text-align:center">解锁用户，允许其登录系统</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">变更默认终端</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td style="text-align:center">修改用户的UID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="passwd命令"><a href="#passwd命令" class="headerlink" title="passwd命令"></a>passwd命令</h3><p>用于修改用户密码、过期时间、认证信息等，格式为 <strong>passwd[选项][用户名]</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">锁定用户，禁止其登录</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td style="text-align:center">解除锁定，允许用户登录</td>
+</tr>
+<tr>
+<td style="text-align:center">–stdin</td>
+<td style="text-align:center">允许通过标准输入修改用户密码，如echo “NewPassWord” \</td>
+<td>passwd –stdin Username</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">使该用户可用空密码登录系统</td>
+</tr>
+<tr>
+<td style="text-align:center">-e</td>
+<td style="text-align:center">强制用户在下次登录时修改密码</td>
+</tr>
+<tr>
+<td style="text-align:center">-S</td>
+<td style="text-align:center">显示用户的密码是否被锁定，以及密码所采用的加密算法名称</td>
+</tr>
+</tbody>
+</table>
 <h3 id="userdel命令"><a href="#userdel命令" class="headerlink" title="userdel命令"></a>userdel命令</h3><p>用于删除用户，格式为 <strong>userdel [选项] 用户名</strong></p>
-<center><br><br>|参数|作用|<br>|:—-:|:—-:|<br>|-f|强制删除用户|<br>|-r|同时删除用户以及家目录|<br></center>
-
-
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">强制删除用户</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">同时删除用户以及家目录</td>
+</tr>
+</tbody>
+</table>
 <h2 id="文件权限与归属"><a href="#文件权限与归属" class="headerlink" title="文件权限与归属"></a>文件权限与归属</h2><p>Linux使用不同的字符来区分不同的文件类型。</p>
 <ul>
 <li>-：普通文件</li>
@@ -396,15 +526,71 @@
 <pre><code>chmod o+t
 </code></pre><h2 id="文件的隐藏属性"><a href="#文件的隐藏属性" class="headerlink" title="文件的隐藏属性"></a>文件的隐藏属性</h2><p>Linux系统中的文件除了具备一般权限和特殊权限之外，还有一种隐藏权限，即被隐藏起来的权限，默认情况下不能直接被用户发觉。作用是，虽然权限充足但是仍然无法删除某些文件等情况。</p>
 <h3 id="chattr命令"><a href="#chattr命令" class="headerlink" title="chattr命令"></a>chattr命令</h3><p>用于设置文件的隐藏权限，格式为 <strong>chattr[参数] 文件</strong>。如果要把某个隐藏功能添加到文件上，则需要在命令后面追加 <strong>+ 参数</strong>，如果想要把某个隐藏功能移出文件，则需要追加 <strong>- 参数</strong>。</p>
-<center><br><br>chattr命令中用于隐藏权限的参数及其作用<br><br>|参数|<center>作用|<br>|:—-:|:—-:|<br>|i|无法对文件进行修改；若对目录设置了该参数，则仅能修改其中的子文件内容而不能新建或删除文件|<br>|a|仅允许补充（追加）内容，无法覆盖/删除内容（Append only）|<br>|S|文件内容在变更后立即同步到硬盘(sync)|<br>|s|彻底从硬盘删除，不可恢复（用0填充原文件所在硬盘区域）|<br>|A|不再修改这个文件或目录的最后访问时间（atime）|<br>|b|不再修改文件或目录的存取时间|<br>|D|检查压缩文件中的错误|<br>|d|使用dump命令备份时忽略本文件/目录|<br>|c|默认将文件或目录进行压缩|<br>|u|当删除该文件后依然保留其在硬盘中的数据，方便日后恢复|<br>|t|让文件系统支持尾部合并（tail-merging）|<br>|X|可以直接访问压缩文件中的内容|<br><br></center>
-
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:center">无法对文件进行修改；若对目录设置了该参数，则仅能修改其中的子文件内容而不能新建或删除文件</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">仅允许补充（追加）内容，无法覆盖/删除内容（Append only）</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">文件内容在变更后立即同步到硬盘(sync)</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">彻底从硬盘删除，不可恢复（用0填充原文件所在硬盘区域）</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">不再修改这个文件或目录的最后访问时间（atime）</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">不再修改文件或目录的存取时间</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">检查压缩文件中的错误</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">使用dump命令备份时忽略本文件/目录</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">默认将文件或目录进行压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">当删除该文件后依然保留其在硬盘中的数据，方便日后恢复</td>
+</tr>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:center">让文件系统支持尾部合并（tail-merging）</td>
+</tr>
+<tr>
+<td style="text-align:center">X</td>
+<td style="text-align:center">可以直接访问压缩文件中的内容</td>
+</tr>
+</tbody>
+</table>
 <h3 id="lsattr命令"><a href="#lsattr命令" class="headerlink" title="lsattr命令"></a>lsattr命令</h3><p>lsattr命令用于显示文件的隐藏属性，格式为 <strong>lsattr[参数] 文件</strong></p>
 <h2 id="文件访问控制列表"><a href="#文件访问控制列表" class="headerlink" title="文件访问控制列表"></a>文件访问控制列表</h2><p>如果需要对某个指定的用户进行单独的权限控制，就需要用到文件的访问控制列表（ACL）。通俗来讲，基于普通文件或目录设置ACL其实就是针对指定的用户或用户组设置文件或目录的操作权限。另外，如果针对某个目录设置了ACL，则目录中的文件会继承其ACL；若针对文件设置了ACL，则文件不再继承其所在目录的ACL。</p>
 <h3 id="setfacl命令"><a href="#setfacl命令" class="headerlink" title="setfacl命令"></a>setfacl命令</h3><p>setfacl命令用于管理文件的ACL规则，格式为 <strong>setfacl[参数] 文件名称</strong>。文件的ACL提供的是在所有者、所属组、其他人的读/写/执行权限之外的图书权限控制。其中，针对命令要使用 <strong>-R</strong> 递归参数，针对普通文件则使用 <strong>-m</strong> 参数； 如果想要删除某个文件的ACL，则使用 <strong>-b</strong> 参数。</p>
 <pre><code>drwxrwx---+ 7 root root 4096 12月 23 22:38 /root/
 </code></pre><p>当最后一位由（.）变成（+）后，证明文件具有ACL权限。</p>
 <h3 id="getfacl命令"><a href="#getfacl命令" class="headerlink" title="getfacl命令"></a>getfacl命令</h3><p>getfacl命令用于显示文件上设置的ACL信息，格式为 <strong>getfacl 文件名称</strong>。</p>
-</center>
+
       
     </div>
     
@@ -444,7 +630,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/07/linux5/" rel="prev" title="Linux就该这么学（五）">
+              <a href="/2018/01/08/linux5/" rel="prev" title="Linux就该这么学（五）">
                 Linux就该这么学（五） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -592,7 +778,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学（四）"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学（四）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户身份与能力"><span class="nav-number">1.1.</span> <span class="nav-text">用户身份与能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useradd命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">useradd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupadd命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">groupadd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod命令"><span class="nav-number">1.1.3.</span> <span class="nav-text">usermod命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userdel命令"><span class="nav-number">1.1.4.</span> <span class="nav-text">userdel命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限与归属"><span class="nav-number">1.2.</span> <span class="nav-text">文件权限与归属</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊权限"><span class="nav-number">1.3.</span> <span class="nav-text">文件的特殊权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID"><span class="nav-number">1.3.1.</span> <span class="nav-text">SUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGID"><span class="nav-number">1.3.2.</span> <span class="nav-text">SGID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SBIT"><span class="nav-number">1.3.3.</span> <span class="nav-text">SBIT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的隐藏属性"><span class="nav-number">1.4.</span> <span class="nav-text">文件的隐藏属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chattr命令"><span class="nav-number">1.4.1.</span> <span class="nav-text">chattr命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lsattr命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">lsattr命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件访问控制列表"><span class="nav-number">1.5.</span> <span class="nav-text">文件访问控制列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setfacl命令"><span class="nav-number">1.5.1.</span> <span class="nav-text">setfacl命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getfacl命令"><span class="nav-number">1.5.2.</span> <span class="nav-text">getfacl命令</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学（四）"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学（四）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户身份与能力"><span class="nav-number">1.1.</span> <span class="nav-text">用户身份与能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useradd命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">useradd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupadd命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">groupadd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod命令"><span class="nav-number">1.1.3.</span> <span class="nav-text">usermod命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#passwd命令"><span class="nav-number">1.1.4.</span> <span class="nav-text">passwd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#userdel命令"><span class="nav-number">1.1.5.</span> <span class="nav-text">userdel命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限与归属"><span class="nav-number">1.2.</span> <span class="nav-text">文件权限与归属</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊权限"><span class="nav-number">1.3.</span> <span class="nav-text">文件的特殊权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID"><span class="nav-number">1.3.1.</span> <span class="nav-text">SUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGID"><span class="nav-number">1.3.2.</span> <span class="nav-text">SGID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SBIT"><span class="nav-number">1.3.3.</span> <span class="nav-text">SBIT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的隐藏属性"><span class="nav-number">1.4.</span> <span class="nav-text">文件的隐藏属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chattr命令"><span class="nav-number">1.4.1.</span> <span class="nav-text">chattr命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lsattr命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">lsattr命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件访问控制列表"><span class="nav-number">1.5.</span> <span class="nav-text">文件访问控制列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setfacl命令"><span class="nav-number">1.5.1.</span> <span class="nav-text">setfacl命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getfacl命令"><span class="nav-number">1.5.2.</span> <span class="nav-text">getfacl命令</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
