@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-31T14:02:40.442Z">
+<meta property="og:updated_time" content="2018-01-10T13:29:12.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学(三)">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -364,8 +364,110 @@
 <li><p>末行模式：保存或退出文档，以及设置编辑环境。</p>
 </li>
 </ul>
-<center><br><br>Vim中常用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|dd|删除（剪切）光标所在整行|<br>|5dd|删除（剪切）从光标处开始的5行|<br>|yy|复制光标所在整行|<br>|5yy|复制从光标处开始5行|<br>|n|显示搜索命令定位到的下一个字符串|<br>|N|显示搜索命令定位到的上一个字符串|<br>|u|撤销上一步的操作|<br>|p|将之前删除或复制过的数据粘贴到光标后面|<br><br><br>末行模式中可用的命令<br>|<center>命令|<center>作用|<br>|:—-:|:—-:|<br>|:w|保存|<br>|:q|退出|<br>|:q!|强制退出（放弃对文档的修改内容）|<br>|:wq!|强制保存退出|<br>|:set nu|显示行号|<br>|:set nonu|不显示行号|<br>|:命令|执行该命令|<br>|:整数|跳转到该行|<br>|:s/one/two|将当前光标坐在行的第一个one替换成two|<br>|:s/one/two/g|将当前光标所在行的所有one替换成two|<br>|:%s/one/two/g|将文本中的所有one替换成two|<br>|？字符串|在文本中从下至上搜索该字符串|<br>|/字符串|在文本中从上至下搜索该字符串|<br></center>
-
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><center>命令</center></th>
+<th style="text-align:center"><center>作用</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">dd</td>
+<td style="text-align:center">删除（剪切）光标所在整行</td>
+</tr>
+<tr>
+<td style="text-align:center">5dd</td>
+<td style="text-align:center">删除（剪切）从光标处开始的5行</td>
+</tr>
+<tr>
+<td style="text-align:center">yy</td>
+<td style="text-align:center">复制光标所在整行</td>
+</tr>
+<tr>
+<td style="text-align:center">5yy</td>
+<td style="text-align:center">复制从光标处开始5行</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:center">显示搜索命令定位到的下一个字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">显示搜索命令定位到的上一个字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">撤销上一步的操作</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">将之前删除或复制过的数据粘贴到光标后面</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><center>命令</center></th>
+<th style="text-align:center"><center>作用</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:w</td>
+<td style="text-align:center">保存</td>
+</tr>
+<tr>
+<td style="text-align:center">:q</td>
+<td style="text-align:center">退出</td>
+</tr>
+<tr>
+<td style="text-align:center">:q!</td>
+<td style="text-align:center">强制退出（放弃对文档的修改内容）</td>
+</tr>
+<tr>
+<td style="text-align:center">:wq!</td>
+<td style="text-align:center">强制保存退出</td>
+</tr>
+<tr>
+<td style="text-align:center">:set nu</td>
+<td style="text-align:center">显示行号</td>
+</tr>
+<tr>
+<td style="text-align:center">:set nonu</td>
+<td style="text-align:center">不显示行号</td>
+</tr>
+<tr>
+<td style="text-align:center">:命令</td>
+<td style="text-align:center">执行该命令</td>
+</tr>
+<tr>
+<td style="text-align:center">:整数</td>
+<td style="text-align:center">跳转到该行</td>
+</tr>
+<tr>
+<td style="text-align:center">:s/one/two</td>
+<td style="text-align:center">将当前光标坐在行的第一个one替换成two</td>
+</tr>
+<tr>
+<td style="text-align:center">:s/one/two/g</td>
+<td style="text-align:center">将当前光标所在行的所有one替换成two</td>
+</tr>
+<tr>
+<td style="text-align:center">:%s/one/two/g</td>
+<td style="text-align:center">将文本中的所有one替换成two</td>
+</tr>
+<tr>
+<td style="text-align:center">？字符串</td>
+<td style="text-align:center">在文本中从下至上搜索该字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">/字符串</td>
+<td style="text-align:center">在文本中从上至下搜索该字符串</td>
+</tr>
+</tbody>
+</table>
 <h3 id="编写Shell脚本"><a href="#编写Shell脚本" class="headerlink" title="编写Shell脚本"></a>编写Shell脚本</h3><p>Shell脚本命令的工作方式有两种：交互式和批处理。</p>
 <ul>
 <li>交互式：用户每次输入一条命令就立即执行。</li>
@@ -385,8 +487,96 @@ ls -al
 <li>整数值比较语句；</li>
 <li>字符串比较语句。</li>
 </ul>
-<center><br>文件测试所用的参数<br><br>|运算符|作用|<br>|:—-:|:—-:|<br>|-d|测试文件是否为目录类型|<br>|-e|测试文件是否存在|<br>|-f|判断是否为一般文件|<br>|-r|测试当前用户是否有权限读取|<br>|-w|测试当前用户是否有权限写入|<br>|-x|测试当前用户是否有权限执行|<br><br><br>可用的整数比较运算符<br><br>|运算符|作用|<br>|:—-:|:—-:|<br>|-eq|是否等于|<br>|-nq|是否不等于|<br>|-gt|是否大于|<br>|-lt|是否小于|<br>|-le|是否等于或小于|<br>|-ge|是否大于或等于|<br><br>常见的字符串比较运算符<br><br>|运算符|作用|<br>|:—-:|:—-:|<br>|=|比较字符串内容是否相同|<br>|！=|比较字符串内容是否不同|<br>|-z|判断字符串是否为空|<br><br></center>
-
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">测试文件是否为目录类型</td>
+</tr>
+<tr>
+<td style="text-align:center">-e</td>
+<td style="text-align:center">测试文件是否存在</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">判断是否为一般文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">测试当前用户是否有权限读取</td>
+</tr>
+<tr>
+<td style="text-align:center">-w</td>
+<td style="text-align:center">测试当前用户是否有权限写入</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">测试当前用户是否有权限执行</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-eq</td>
+<td style="text-align:center">是否等于</td>
+</tr>
+<tr>
+<td style="text-align:center">-nq</td>
+<td style="text-align:center">是否不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">-gt</td>
+<td style="text-align:center">是否大于</td>
+</tr>
+<tr>
+<td style="text-align:center">-lt</td>
+<td style="text-align:center">是否小于</td>
+</tr>
+<tr>
+<td style="text-align:center">-le</td>
+<td style="text-align:center">是否等于或小于</td>
+</tr>
+<tr>
+<td style="text-align:center">-ge</td>
+<td style="text-align:center">是否大于或等于</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">比较字符串内容是否相同</td>
+</tr>
+<tr>
+<td style="text-align:center">！=</td>
+<td style="text-align:center">比较字符串内容是否不同</td>
+</tr>
+<tr>
+<td style="text-align:center">-z</td>
+<td style="text-align:center">判断字符串是否为空</td>
+</tr>
+</tbody>
+</table>
 <h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a>if条件语句</h4><pre><code>if 条件测试操作
   then 命令序列
 fi
@@ -417,7 +607,6 @@ esac*
 <p>一次性任务：可以使用 <strong>at 时间</strong>，之后编写所需要执行的命令。产看已设置好但还未执行的计划 <strong>at -l</strong>;若要删除，使用 <strong>atrm 任务序号</strong>。</p>
 <h4 id="长期性任务"><a href="#长期性任务" class="headerlink" title="长期性任务"></a>长期性任务</h4><p>长期性任务：如果希望Linux系统能够周期性地、有规律地执行某些任务，那么Linux中的crond服务。 创建、编辑计划任务的命令为 <strong>crontab -e</strong>,查看当前计划任务的命令为 <strong>crontab -l</strong>, 删除某条计划任务的命令 <strong>crontab -r</strong>。</p>
 <p>命令为： <strong>分、时、日、月、星期 命令</strong>，如果某些字段没有设置，则需要使用（*）占位，其中“分”必须有数值，而“日”和“星期”字段不能同时使用。在所有的crond服务的计划任务参数中，所有命令一定要使用绝对路径的方法。</p>
-<p><center><br>使用crond设置任务的参数</center></p>
 <table>
 <thead>
 <tr>
@@ -456,7 +645,7 @@ esac*
 </tr>
 </tbody>
 </table>
-</center></center></center></center>
+
       
     </div>
     
