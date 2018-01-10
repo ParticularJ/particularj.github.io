@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+
+
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux就该这么学（五）">
+<meta property="og:url" content="particularj.github.io/2018/01/10/linux5/index.html">
+<meta property="og:site_name" content="ParticularJ">
+<meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-10T12:36:24.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux就该这么学（五）">
+<meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>Linux就该这么学（五） | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ParticularJ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2018/01/10/linux5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ParticularJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ParticularJ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux就该这么学（五）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T20:36:24+08:00">
+                2018-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。</p>
+<a id="more"></a>
+<h1 id="Linux就该这么学（五）"><a href="#Linux就该这么学（五）" class="headerlink" title="Linux就该这么学（五）"></a>Linux就该这么学（五）</h1><h2 id="存储结构与磁盘划分"><a href="#存储结构与磁盘划分" class="headerlink" title="存储结构与磁盘划分"></a>存储结构与磁盘划分</h2><h3 id="一切从“-”开始"><a href="#一切从“-”开始" class="headerlink" title="一切从“/”开始"></a>一切从“/”开始</h3><p>Linux系统中的文件存储结构，文件系统层次化标准（FHS），一般会将对应的文件放于对应的目录下。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">目录名称</th>
+<th style="text-align:center">应放置文件的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/boot</td>
+<td style="text-align:center">开机所需文件–内核、开机菜单以及所需配置文件等</td>
+</tr>
+<tr>
+<td style="text-align:center">/dev</td>
+<td style="text-align:center">以文件形式存放任何设备与接口</td>
+</tr>
+<tr>
+<td style="text-align:center">/etc</td>
+<td style="text-align:center">配置文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/home</td>
+<td style="text-align:center">用户家目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/bin</td>
+<td style="text-align:center">存放单用户模式下可以操作的命令</td>
+</tr>
+<tr>
+<td style="text-align:center">/lib</td>
+<td style="text-align:center">开机时用到的函数库，以及/bin与/sbin下面的命令要调用的函数</td>
+</tr>
+<tr>
+<td style="text-align:center">/sbin</td>
+<td style="text-align:center">开机过程中需要的命令</td>
+</tr>
+<tr>
+<td style="text-align:center">/media</td>
+<td style="text-align:center">用于挂载设备文件的目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/opt</td>
+<td style="text-align:center">放置第三方的软件</td>
+</tr>
+<tr>
+<td style="text-align:center">/root</td>
+<td style="text-align:center">系统管理员的家目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/srv</td>
+<td style="text-align:center">一些网络服务的数据文件目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/tmp</td>
+<td style="text-align:center">任何人均可使用的“共享”临时目录</td>
+</tr>
+<tr>
+<td style="text-align:center">/proc</td>
+<td style="text-align:center">虚拟文件系统，例如系统内核、进程、外部设备及网络状态等</td>
+</tr>
+<tr>
+<td style="text-align:center">/usr/local</td>
+<td style="text-align:center">用户自行安装的软件</td>
+</tr>
+<tr>
+<td style="text-align:center">/usr/sbin</td>
+<td style="text-align:center">Linux系统开机时不会使用到的软件/命令/脚本</td>
+</tr>
+<tr>
+<td style="text-align:center">/usr/share</td>
+<td style="text-align:center">帮助与说明文件，也可放置共享文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/var</td>
+<td style="text-align:center">主要存放经常变化的文件，如日志</td>
+</tr>
+<tr>
+<td style="text-align:center">/lost+found</td>
+<td style="text-align:center">当文件系统发生错误时，将一些丢失的文件片段存在这里</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="物理设备的命名规则"><a href="#物理设备的命名规则" class="headerlink" title="物理设备的命名规则"></a>物理设备的命名规则</h3><p>Linux系统中的udev设备管理器会自动把硬件名称规范起来。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">硬件设备</th>
+<th style="text-align:center">文件名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">IDE设备</td>
+<td style="text-align:center">/dev/hd[a-d]</td>
+</tr>
+<tr>
+<td style="text-align:center">SCSI/SATA/U盘</td>
+<td style="text-align:center">/dev/sd[a-p]</td>
+</tr>
+<tr>
+<td style="text-align:center">软驱</td>
+<td style="text-align:center">/dev/fd[0-1]</td>
+</tr>
+<tr>
+<td style="text-align:center">打印机</td>
+<td style="text-align:center">/dev/lp[0-15]</td>
+</tr>
+<tr>
+<td style="text-align:center">光驱</td>
+<td style="text-align:center">/dev/cdrom</td>
+</tr>
+<tr>
+<td style="text-align:center">鼠标</td>
+<td style="text-align:center">/dev/mouse</td>
+</tr>
+<tr>
+<td style="text-align:center">磁带机</td>
+<td style="text-align:center">/dev/st0或/dev/ht0</td>
+</tr>
+</tbody>
+</table>
+<p>硬盘的相关知识，硬盘主要分为主分区、扩展分区以及逻辑分区。硬盘是由大量的扇区组成的，而每个扇区则可以分成4个分区，其中三个是主分区，分别为1,2,3，而第四个则作为扩展分区（4），因为往往一个扇区是不够的，我们需要其发挥类似指针的作用，指向别的扇区，而指向的这些扇区则被称作逻辑分区，被表示成（5,6…）。</p>
+<h3 id="挂载硬件设备"><a href="#挂载硬件设备" class="headerlink" title="挂载硬件设备"></a>挂载硬件设备</h3><p>挂载：当用户需要使用硬盘设备或分区中的数据时，需要先将其与一个已存在的目录文件进行关联，而这个关联动作就是挂载。</p>
+<h4 id="mount命令"><a href="#mount命令" class="headerlink" title="mount命令"></a>mount命令</h4><p>mount命令用于挂载文件系统，格式为 <strong>mount 文件系统 挂载目录</strong>。新版Linux基本不用-t参数，但是-a参数能够自动检查/etc/fstab文件中有无疏漏被挂载的设备文件，如果有，则进行自动挂载操作。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">挂载所有在/etc/fstab中定义的文件系统</td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">指定文件系统的类型</td>
+</tr>
+</tbody>
+</table>
+<p>按照以上方法挂载，则每次开机都要重新挂载，我们可以有一劳永逸的方法。但是必须把挂载信息按照指定的填写格式写入到/etc/fstab文件中。格式如下表所示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">设备文件</td>
+<td style="text-align:center">设备的路径+名称，或者写唯一的识别码（UUID）</td>
+</tr>
+<tr>
+<td style="text-align:center">挂载目录</td>
+<td style="text-align:center">指定要挂载到的目录，需在挂载前创建好</td>
+</tr>
+<tr>
+<td style="text-align:center">格式类型</td>
+<td style="text-align:center">指定文件系统的格式，比如Ext3、Ext4、XFS…</td>
+</tr>
+<tr>
+<td style="text-align:center">权限选项</td>
+<td style="text-align:center">若设置为defaults，则默认权限为：rw，suid，dev，exec，auto，nouser，async</td>
+</tr>
+<tr>
+<td style="text-align:center">自检</td>
+<td style="text-align:center">若为1则开机后进行磁盘自检，为0则不自检</td>
+</tr>
+<tr>
+<td style="text-align:center">优先级</td>
+<td style="text-align:center">若“自检”字段为1，则可对多块硬盘进行自检优先级设置</td>
+</tr>
+</tbody>
+</table>
+<h4 id="umount命令"><a href="#umount命令" class="headerlink" title="umount命令"></a>umount命令</h4><p>umount命令用来撤销已经挂载的设备文件，格式为 <strong>umount [挂载点/设备文件]</strong><br>使用 <strong>df -h</strong> 查看挂载状态和硬盘使用量信息。</p>
+<h4 id="fdisk命令"><a href="#fdisk命令" class="headerlink" title="fdisk命令"></a>fdisk命令</h4><p>管理硬盘设备最常用的方法为fdisk命令。fdisk命令用于管理磁盘分区，格式为 <strong>fdisk [磁盘名称]</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">产看全部可用参数</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:center">添加新的分区</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">删除某个分区信息</td>
+</tr>
+<tr>
+<td style="text-align:center">l</td>
+<td style="text-align:center">列出所有可用的分区类型</td>
+</tr>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:center">改变某个分区的类型</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">产看分区信息</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">保存并退出</td>
+</tr>
+<tr>
+<td style="text-align:center">q</td>
+<td style="text-align:center">不保存直接退出</td>
+</tr>
+</tbody>
+</table>
+<p>创建结束后，使用 <strong>w</strong> 参数保存，之后我们使用 <strong>partprobe</strong> 命令使之与内核关联。</p>
+<h4 id="mkfs命令"><a href="#mkfs命令" class="headerlink" title="mkfs命令"></a>mkfs命令</h4><p>用于格式化存储设备，格式为 <strong>mkfs.[格式化类型] 存储设备</strong></p>
+<h4 id="du命令"><a href="#du命令" class="headerlink" title="du命令"></a>du命令</h4><p>查看文件数据占用量，即查看一个或多个文件占用了多大的硬盘空间。格式为 <strong>du[选项][文件]</strong><br>使用 <strong>du -sh /*</strong> 查看在Linux系统根目录下所有一级目录分别占用的空间大小。</p>
+<h3 id="添加交换分区"><a href="#添加交换分区" class="headerlink" title="添加交换分区"></a>添加交换分区</h3><p>SWAP（交换）分区是一种通过在硬盘中预先划分一定的空间，然后将把内存中暂时不常用的数据临时存放到硬盘当中，以便腾出物理内存空间让更活跃的程序服务来使用的技术。其实现的步骤与挂载并使用的存储设备的过程相似。</p>
+<p>使用格式化命令 <strong>mkswap</strong> 进行格式化操作，使用 <strong>swapon</strong> 命令将分区设备正式挂载到系统当中。</p>
+<h3 id="磁盘容量配额"><a href="#磁盘容量配额" class="headerlink" title="磁盘容量配额"></a>磁盘容量配额</h3><p>使用磁盘容量配额服务来限制每个用户或每个用户组针对特定文件夹可以使用的最大硬盘空间或最大文件个数。这个限制分为软限制和硬限制。</p>
+<ul>
+<li>软限制：当达到软限制时会提示用户，但仍然允许用户在限定的额度内继续使用。</li>
+<li>硬限制：当达到硬限制时会提示用户，且强制终止用户的操作。</li>
+</ul>
+<h4 id="xfs-quota命令"><a href="#xfs-quota命令" class="headerlink" title="xfs_quota命令"></a>xfs_quota命令</h4><p>专门针对xfs文件系统来管理quota磁盘容量配额服务而设计的命令。格式为 <strong>xfs_quota [参数] 配额 文件系统</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">以参数的形式设置要执行的命令</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">专家模式</td>
+</tr>
+</tbody>
+</table>
+<h4 id="edquota命令"><a href="#edquota命令" class="headerlink" title="edquota命令"></a>edquota命令</h4><p>edquota命令用于编辑用户的quota配额限制，格式为 <strong>edquota [参数][用户]</strong> 。 其中“-u”，“-g”分别对应对某个用户进行更改或者某个组进行更改。</p>
+<h3 id="软硬方式链接"><a href="#软硬方式链接" class="headerlink" title="软硬方式链接"></a>软硬方式链接</h3><p>在Linux系统中存在硬链接和软链接两种文件。</p>
+<ul>
+<li><p>硬链接（hard link）：可以将之理解为“指向原始文件inode的指针”，系统不为他分配独立的inode和文件。所以，硬链接其实和源文件是同一个文件，只是名字不同。因此，即便删除原文件，依然可以通过硬链接来访问文件，但是，我们不能跨分区对目录文件进行链接。</p>
+</li>
+<li><p>软链接（也称为符号链接[symbolic link]）:仅仅包含所链接文件的路径名，因此能链接目录文件，也可以跨越文件系统进行链接。但是，原始文件删除后，链接文件将失效。</p>
+</li>
+</ul>
+<h4 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h4><p>ln命令用于创建链接文件，格式为 <strong>ln[选项] 目标</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">创建“符号链接”（如果不带-s参数，则默认创建硬链接）</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">强制创建文件或目录的链接</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">覆盖前先询问</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示创建链接的过程</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/31/linux4/" rel="next" title="Linux就该这么学(四)">
+                <i class="fa fa-chevron-left"></i> Linux就该这么学(四)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/10/linux6/" rel="prev" title="Linux就该这么学（六）">
+                Linux就该这么学（六） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="ParticularJ" />
+            
+              <p class="site-author-name" itemprop="name">ParticularJ</p>
+              <p class="site-description motion-element" itemprop="description">Those who can not beat you will make you stronger.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ParticularJ" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学（五）"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学（五）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储结构与磁盘划分"><span class="nav-number">1.1.</span> <span class="nav-text">存储结构与磁盘划分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一切从“-”开始"><span class="nav-number">1.1.1.</span> <span class="nav-text">一切从“/”开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理设备的命名规则"><span class="nav-number">1.1.2.</span> <span class="nav-text">物理设备的命名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载硬件设备"><span class="nav-number">1.1.3.</span> <span class="nav-text">挂载硬件设备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mount命令"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">mount命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#umount命令"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">umount命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fdisk命令"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">fdisk命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkfs命令"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">mkfs命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#du命令"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">du命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加交换分区"><span class="nav-number">1.1.4.</span> <span class="nav-text">添加交换分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘容量配额"><span class="nav-number">1.1.5.</span> <span class="nav-text">磁盘容量配额</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#xfs-quota命令"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">xfs_quota命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edquota命令"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">edquota命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软硬方式链接"><span class="nav-number">1.1.6.</span> <span class="nav-text">软硬方式链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ln命令"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">ln命令</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ParticularJ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
