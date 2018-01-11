@@ -355,45 +355,14 @@
 
       
         
-          
-            <p>Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。</p>
-<h1 id="Linux就该这么学-六"><a href="#Linux就该这么学-六" class="headerlink" title="Linux就该这么学(六)"></a>Linux就该这么学(六)</h1><h2 id="远程控制服务"><a href="#远程控制服务" class="headerlink" title="远程控制服务"></a>远程控制服务</h2><h3 id="ssh服务"><a href="#ssh服务" class="headerlink" title="ssh服务"></a>ssh服务</h3><p>SSH(Secure Shell)是一种能够以安全的方式提供远程登录的协议，其格式为 <strong>ssh[参数] 主机IP地址</strong>。</p>
-<ul>
-<li><p>若果想要禁止root管理员的身份远程登录到服务器。则可以使用 <strong>vim /etc/ssh/sshd_config</strong>, 之后修改48行PermitRootLogin。</p>
-</li>
-<li><p>安全密钥认证：1、使用 <strong>ssh-keygen</strong> 生成密钥对；2、使用 <strong>ssh-copy-id</strong> 将生成的公钥文件传送至远程主机；3、使用 <strong>vim /etc/ssh/sshd_config</strong>, 修改78行 PasswordAuthentication。</p>
-</li>
-</ul>
-<h3 id="远程传输命令"><a href="#远程传输命令" class="headerlink" title="远程传输命令"></a>远程传输命令</h3><p>scp（secure copy）是一个基于SSH协议在网络之间进行安全传输的命令， 其格式为 <strong>scp[参数] 本地文件 远程账户@远程IP地址：远程目录</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">-v</td>
-<td style="text-align:center">显示详细的连接进度</td>
-</tr>
-<tr>
-<td style="text-align:center">-P</td>
-<td style="text-align:center">指定远程主机的sshd端口号</td>
-</tr>
-<tr>
-<td style="text-align:center">-r</td>
-<td style="text-align:center">用于传送文件夹</td>
-</tr>
-<tr>
-<td style="text-align:center">-6</td>
-<td style="text-align:center">使用IPv6协议</td>
-</tr>
-</tbody>
-</table>
-<p>此外，还可以使用scp命令把远程主机上的文件下载到本地主机，其格式为 <strong>scp[参数] 远程用户@远程IP地址：远程文件 本地目录</strong></p>
-<h3 id="不间断会话服务"><a href="#不间断会话服务" class="headerlink" title="不间断会话服务"></a>不间断会话服务</h3>
-          
+          <p>Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/10/linux6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
