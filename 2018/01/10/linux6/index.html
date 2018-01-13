@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="ParticularJ">
 <meta property="og:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-12T14:30:56.216Z">
+<meta property="og:updated_time" content="2018-01-13T14:46:56.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux就该这么学（六）">
 <meta name="twitter:description" content="Linux作为一个十分优秀的操作系统，优秀的程序员应该熟练的掌握Linux，let’s do it.孰能生巧。">
@@ -441,6 +441,198 @@
 <li>终端B，ssh一台地址</li>
 <li>screen -x<br>通过以上步骤，即可实现共享，两台主机可以看到同一个屏幕。</li>
 </ul>
+<h2 id="使用vstfpd服务传输文件"><a href="#使用vstfpd服务传输文件" class="headerlink" title="使用vstfpd服务传输文件"></a>使用vstfpd服务传输文件</h2><h3 id="文件传输协议"><a href="#文件传输协议" class="headerlink" title="文件传输协议"></a>文件传输协议</h3><p>FTP是一种在互联网中进行文件传输的协议，基于客户端/服务器模式，默认使用20、21号端口。其中，FTP协议有如下两种工作模式。</p>
+<ul>
+<li>主动模式：FTP服务器主动向客户端发起连接请求。</li>
+<li>被动模式：FTP服务器等待客户端发起连接请求</li>
+</ul>
+<p>vstpd是一款运行在Linux操作系统的FTP服务程序。安装过后，iptables防火墙管理工具默认禁止了FTP传输协议的端口号，因此，使用如下命令。</p>
+<pre><code>iptables -F
+service iptables save
+</code></pre><p>vsftp一些常见的参数以及作用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">listen=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否以独立运行的方式监听服务</td>
+</tr>
+<tr>
+<td style="text-align:center">listen_address=IP地址</td>
+<td style="text-align:center">设置要监听的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">listen_port=21</td>
+<td style="text-align:center">设置FTP服务的监听端口</td>
+</tr>
+<tr>
+<td style="text-align:center">download_enable=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否允许下载文件</td>
+</tr>
+<tr>
+<td style="text-align:center">userlist_enable=[YES\</td>
+<td style="text-align:center">NO] userlist_deny=[YES\</td>
+<td>NO]</td>
+<td>设置用户列表为“允许”还是“禁止”操作</td>
+</tr>
+<tr>
+<td style="text-align:center">max_clients=0</td>
+<td style="text-align:center">最大客户端连接数，0为不限制</td>
+</tr>
+<tr>
+<td style="text-align:center">max_per_ip=0</td>
+<td style="text-align:center">同一IP地址的最大连接数，0为不限制</td>
+</tr>
+<tr>
+<td style="text-align:center">anonymous_enable=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否允许匿名用户访问</td>
+</tr>
+<tr>
+<td style="text-align:center">anon_upload_enable=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否允许匿名用户上传文件</td>
+</tr>
+<tr>
+<td style="text-align:center">anon_umask=022</td>
+<td style="text-align:center">匿名用户上传的umask值</td>
+</tr>
+<tr>
+<td style="text-align:center">anon_root=/var/ftp</td>
+<td style="text-align:center">匿名用户的ftp根目录</td>
+</tr>
+<tr>
+<td style="text-align:center">anon_mkdir_write_enable=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否允许匿名用户创建目录</td>
+</tr>
+<tr>
+<td style="text-align:center">anon_other_write_enable=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否开放匿名用户的其他写入权限</td>
+</tr>
+<tr>
+<td style="text-align:center">anon_max_rate=0</td>
+<td style="text-align:center">匿名用户的最大传输速率，0为不限制</td>
+</tr>
+<tr>
+<td style="text-align:center">local_enable=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否允许本地用户登录FTP</td>
+</tr>
+<tr>
+<td style="text-align:center">local_umask=022</td>
+<td style="text-align:center">本地用户上传的umask值</td>
+</tr>
+<tr>
+<td style="text-align:center">local_root=/var/ftp</td>
+<td style="text-align:center">本地用户的FTP根目录</td>
+</tr>
+<tr>
+<td style="text-align:center">chroot_local_user=[YES\</td>
+<td style="text-align:center">NO]</td>
+<td>是否将用户权限禁锢在FTP目录，以确保安全</td>
+</tr>
+<tr>
+<td style="text-align:center">local_max_rate=0</td>
+<td style="text-align:center">本地用户最大传输速率，0为不限制</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vsftpd服务程序"><a href="#vsftpd服务程序" class="headerlink" title="vsftpd服务程序"></a>vsftpd服务程序</h3><p>vsftpd作为更加安全的文件传输的服务程序，允许用户以三种认证模式登录到FTP服务器上。</p>
+<ul>
+<li><p>匿名开方模式：是一种最不安全的认证模式，任何人都可以无需密码验证而直接登录到FTP服务器。</p>
+</li>
+<li><p>本地用户模式：是通过Linux系统本地的账户密码信息进行认证的模式。</p>
+</li>
+<li><p>虚拟用户模式：是这三种模式中最安全的一种认证模式，它需要为FTP服务单独建立用户数据库支持，虚拟出用来进行口令验证的账户信息。</p>
+</li>
+</ul>
+<h3 id="使用Samba或NFS实现文件共享"><a href="#使用Samba或NFS实现文件共享" class="headerlink" title="使用Samba或NFS实现文件共享"></a>使用Samba或NFS实现文件共享</h3><h4 id="Samba文件共享服务"><a href="#Samba文件共享服务" class="headerlink" title="Samba文件共享服务"></a>Samba文件共享服务</h4><p>用于创建Samba的参数以及作用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">[database]</td>
+<td style="text-align:center">共享名称为database</td>
+</tr>
+<tr>
+<td style="text-align:center">comment = Do not arbitrarily modify the database file</td>
+<td style="text-align:center">警告不要随意修改数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">path = /home/database</td>
+<td style="text-align:center">共享目录</td>
+</tr>
+<tr>
+<td style="text-align:center">public = no</td>
+<td style="text-align:center">关闭 “所有人可见”</td>
+</tr>
+<tr>
+<td style="text-align:center">writable = yes</td>
+<td style="text-align:center">允许写操作</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>第一步：创建用于访问共享资源的账户信息。</li>
+</ul>
+<p>pdbedit命令用于管理SMB服务程序的账户信息数据库，格式为 <strong>pdbedit[选项] 账户</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">建立Samba账户</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">删除Samba账户</td>
+</tr>
+<tr>
+<td style="text-align:center">-L</td>
+<td style="text-align:center">列出账户列表</td>
+</tr>
+<tr>
+<td style="text-align:center">-LV</td>
+<td style="text-align:center">列出账户详细信息列表</td>
+</tr>
+</tbody>
+</table>
+<pre><code>pdbedit -a -u 用户名
+</code></pre><ul>
+<li>第二步：创建用于共享资源的文件目录。考虑到SELinux安全上下文所带来的限制。最后使用restorecon使之生效。</li>
+</ul>
+<pre><code>mkdir /home/databse
+chown -Rf ck:ck /home/database
+semanage fcontext -a -t samba_share_t /home/databse
+restorecon -Rv /home/databse
+</code></pre><ul>
+<li><p>第三步：设置SELinux服务与策略。</p>
+</li>
+<li><p>第四步：在Samba服务程序的主配置文件加入信息。</p>
+</li>
+<li><p>第五步：重启smd服务。</p>
+</li>
+</ul>
+<p>NFS（网络文件系统）可以使得远程Linux系统上的文件共享资源挂载到本地主机的目录上，从而使得本地主机基于TCP/IP协议访问。</p>
 
       
     </div>
@@ -625,7 +817,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-六"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(六)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#远程控制服务"><span class="nav-number">1.1.</span> <span class="nav-text">远程控制服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh服务"><span class="nav-number">1.1.1.</span> <span class="nav-text">ssh服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程传输命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">远程传输命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不间断会话服务"><span class="nav-number">1.1.3.</span> <span class="nav-text">不间断会话服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管理远程会话"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">管理远程会话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#会话共享功能"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">会话共享功能</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学-六"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学(六)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#远程控制服务"><span class="nav-number">1.1.</span> <span class="nav-text">远程控制服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh服务"><span class="nav-number">1.1.1.</span> <span class="nav-text">ssh服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程传输命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">远程传输命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不间断会话服务"><span class="nav-number">1.1.3.</span> <span class="nav-text">不间断会话服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管理远程会话"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">管理远程会话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#会话共享功能"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">会话共享功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用vstfpd服务传输文件"><span class="nav-number">1.2.</span> <span class="nav-text">使用vstfpd服务传输文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件传输协议"><span class="nav-number">1.2.1.</span> <span class="nav-text">文件传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vsftpd服务程序"><span class="nav-number">1.2.2.</span> <span class="nav-text">vsftpd服务程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Samba或NFS实现文件共享"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用Samba或NFS实现文件共享</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Samba文件共享服务"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Samba文件共享服务</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
