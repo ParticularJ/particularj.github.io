@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="TensorFlow," />
 
 
 
@@ -112,16 +112,18 @@
 
 
 
-<meta name="description" content="Those who can not beat you will make you stronger.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ParticularJ">
-<meta property="og:url" content="particularj.github.io/archives/2017/11/page/2/index.html">
+<meta name="description" content="TensorFlow中estimator的简单介绍，熟能生巧。">
+<meta name="keywords" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="estimator">
+<meta property="og:url" content="particularj.github.io/2018/01/20/estimator/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="Those who can not beat you will make you stronger.">
+<meta property="og:description" content="TensorFlow中estimator的简单介绍，熟能生巧。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-20T09:39:51.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ParticularJ">
-<meta name="twitter:description" content="Those who can not beat you will make you stronger.">
+<meta name="twitter:title" content="estimator">
+<meta name="twitter:description" content="TensorFlow中estimator的简单介绍，熟能生巧。">
 
 
 
@@ -155,7 +157,7 @@
 
 
 
-  <title>归档 | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>estimator | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -174,7 +176,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,115 +250,228 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 20 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2018/01/20/estimator/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ParticularJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ParticularJ">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/09/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">estimator</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-09T22:55:58+08:00"
-              content="2017-11-09" >
-          11-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T15:31:36+08:00">
+                2018-01-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/09/Tensorflow/" itemprop="url">
-              
-                <span itemprop="name">Tensorflow</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-09T14:19:42+08:00"
-              content="2017-11-09" >
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>TensorFlow中estimator的简单介绍，熟能生巧。</p>
+<a id="more"></a>
+<h1 id="Building-Input-Functions-with-tf-estimator"><a href="#Building-Input-Functions-with-tf-estimator" class="headerlink" title="Building Input Functions with tf.estimator"></a>Building Input Functions with tf.estimator</h1><h2 id="The-consturct-of-input-fn"><a href="#The-consturct-of-input-fn" class="headerlink" title="The consturct of input_fn"></a>The consturct of input_fn</h2><ul>
+<li>feature_cols: 字典，其中包含对应的特征数据。</li>
+<li>labels： 对应的标签</li>
+</ul>
+<h2 id="Converting-Feature-Data-to-Tensor"><a href="#Converting-Feature-Data-to-Tensor" class="headerlink" title="Converting Feature Data to Tensor"></a>Converting Feature Data to Tensor</h2><p>根据你输入数据的格式，有numpy和panda两种格式，根据不同的方式建立input_fn.</p>
+<pre><code># numpy 格式
+import numpy as np
+my_input_fn = tf.estimator.inputs.numpy_input_fn(
+  x = {&quot;x&quot;:np.array(x_data)},
+  y = np.array(y_data),
+  ...)
+# panda格式
+import panda as pd
+my_input_fn = tf.estimator.inputs.panda_input_fn(
+  x = pd.DataFrame({&quot;x&quot;: x_data}),
+  y = pd.Series(y_data),
+  ...)
+</code></pre><p>对于大部分数据是0的类型，使用SparseTensor,主要由以下三个参数构成</p>
+<ul>
+<li><p>dense_shape:确定张量的维度。</p>
+</li>
+<li><p>indices：在tensor中含有非零值的位置。</p>
+</li>
+<li><p>value：对应的数值。</p>
+<pre><code>sparse_tensor = tf.SparseTensor(indices=[[0, 1], [2, 4]],
+                                values = [6, 0.5],
+                                dense_shape = [3, 5])
+</code></pre></li>
+</ul>
+<h2 id="Passing-input-fn-Data-to-Your-Model"><a href="#Passing-input-fn-Data-to-Your-Model" class="headerlink" title="Passing input_fn Data to Your Model"></a>Passing input_fn Data to Your Model</h2><p>在classifier.train(input_fn = my_input_fn, steps = 2000)中，input_fn接收传递的必须为一个函数，而不能只是简单的一个数值。如果我们想要以参数的形式传递给input_fn。</p>
+<p>第一种方法，需要使用到 functools.partial函数，该函数可以使得我们即便以参数形式传入，也会将之对待为函数。</p>
+<pre><code>classifier.train(input_fn = functools.partial(my_input_fn, data_set = training_set), steps = 2000)
+</code></pre><p>第二种方法，使用lambda的表示形式</p>
+<pre><code>classifier.train(input_fn = lambda: my_input_fn(training_set),steps = 2000)
+</code></pre><p>之后，就可以使用如下函数，一次定义需要输入的数据，而不用分别对（训练，测试，预测训练集）重复定义,只需要在使用时改变数据集dataset即可，</p>
+<pre><code>import pandas as pd
+
+def get_input_fn_from_pandas(data_set, num_epochs=None, shuffle=True):
+  return tf.estimator.inputs.pandas_input_fn(
+    x=pd.DataFrame(...),
+    y=pd.Series(...),
+    num_epochs=num_epochs,
+    shuffle=shuffle)
+
+
+
+import numpy as np
+
+def get_input_fn_from_numpy(data_set, num_epochs=None, shuffle=True):
+  return tf.estimator.inputs.numpy_input_fn(
+    x={...},
+    y=np.array(...),
+    num_epochs=num_epochs,
+    shuffle=shuffle)
+</code></pre><p>如下面代码所示：</p>
+<pre><code>regressor.train(input_fn=get_input_fn(training_set), steps=5000)
+regressor.evaluate(input_fn=get_input_fn(test_set, num_epochs=1, shuffle=False))
+regressor.predict(input_fn=get_input_fn(prediction_set, num_epochs=1, shuffle=False))
+</code></pre>
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"><i class="fa fa-tag"></i> TensorFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/linux6/" rel="next" title="Linux就该这么学（六）">
+                <i class="fa fa-chevron-left"></i> Linux就该这么学（六）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2017/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2017/11/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -364,6 +479,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -384,8 +503,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -459,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-Input-Functions-with-tf-estimator"><span class="nav-number">1.</span> <span class="nav-text">Building Input Functions with tf.estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-consturct-of-input-fn"><span class="nav-number">1.1.</span> <span class="nav-text">The consturct of input_fn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Converting-Feature-Data-to-Tensor"><span class="nav-number">1.2.</span> <span class="nav-text">Converting Feature Data to Tensor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Passing-input-fn-Data-to-Your-Model"><span class="nav-number">1.3.</span> <span class="nav-text">Passing input_fn Data to Your Model</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -593,6 +737,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
