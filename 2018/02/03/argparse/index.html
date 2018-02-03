@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="TensorFlow," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="TensorFlow中estimator的简单介绍，熟能生巧。">
-<meta name="keywords" content="TensorFlow">
+<meta name="description" content="Python当中argparse的简单记录，参考yarving .">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="estimator">
-<meta property="og:url" content="particularj.github.io/2018/01/20/estimator/index.html">
+<meta property="og:title" content="argparse">
+<meta property="og:url" content="particularj.github.io/2018/02/03/argparse/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="TensorFlow中estimator的简单介绍，熟能生巧。">
+<meta property="og:description" content="Python当中argparse的简单记录，参考yarving .">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-03T07:46:29.271Z">
+<meta property="og:updated_time" content="2018-02-03T13:00:13.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="estimator">
-<meta name="twitter:description" content="TensorFlow中estimator的简单介绍，熟能生巧。">
+<meta name="twitter:title" content="argparse">
+<meta name="twitter:description" content="Python当中argparse的简单记录，参考yarving .">
 
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <title>estimator | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>argparse | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="particularj.github.io/2018/01/20/estimator/">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2018/02/03/argparse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ParticularJ">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">estimator</h1>
+          <h1 class="post-title" itemprop="name headline">argparse</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T15:31:36+08:00">
-                2018-01-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T15:45:43+08:00">
+                2018-02-03
               </time>
             
 
@@ -353,67 +353,68 @@
       
 
       
-        <p>TensorFlow中estimator的简单介绍，熟能生巧。</p>
+        <p>Python当中argparse的简单记录，参考<a href="https://www.jianshu.com/p/fef2d215b91d" target="_blank" rel="external">yarving</a> .</p>
 <a id="more"></a>
-<h1 id="Building-Input-Functions-with-tf-estimator"><a href="#Building-Input-Functions-with-tf-estimator" class="headerlink" title="Building Input Functions with tf.estimator"></a>Building Input Functions with tf.estimator</h1><h2 id="The-consturct-of-input-fn"><a href="#The-consturct-of-input-fn" class="headerlink" title="The consturct of input_fn"></a>The consturct of input_fn</h2><ul>
-<li>feature_cols: 字典，其中包含对应的特征数据。</li>
-<li>labels： 对应的标签</li>
-</ul>
-<h2 id="Converting-Feature-Data-to-Tensor"><a href="#Converting-Feature-Data-to-Tensor" class="headerlink" title="Converting Feature Data to Tensor"></a>Converting Feature Data to Tensor</h2><p>根据你输入数据的格式，有numpy和panda两种格式，根据不同的方式建立input_fn.</p>
-<pre><code># numpy 格式
-import numpy as np
-my_input_fn = tf.estimator.inputs.numpy_input_fn(
-  x = {&quot;x&quot;:np.array(x_data)},
-  y = np.array(y_data),
-  ...)
-# panda格式
-import panda as pd
-my_input_fn = tf.estimator.inputs.panda_input_fn(
-  x = pd.DataFrame({&quot;x&quot;: x_data}),
-  y = pd.Series(y_data),
-  ...)
-</code></pre><p>对于大部分数据是0的类型，使用SparseTensor,主要由以下三个参数构成</p>
-<ul>
-<li><p>dense_shape:确定张量的维度。</p>
+<h1 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h1><p>python中的一个命令行解析包。一般用法</p>
+<h2 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a>一般用法</h2><pre><code># 1、导入argparse包
+import argparse
+# 2、启用parser
+parser = argparse.ArgumentParser()
+# 3、解析参数
+args = parser.parse_args()
+</code></pre><p>一般我们会在2,3步中添加我们想要解析的参数,3后输出结果，以下演示省略上述三步。</p>
+<h2 id="positional-arguments"><a href="#positional-arguments" class="headerlink" title="positional arguments"></a>positional arguments</h2><p>可以不用带“-”修改内容,具体用法</p>
+<pre><code>parser.add_argument(&quot;echo&quot;)
+print(args.echo)
+
+python arg.py particularj即可得到输出结果
+</code></pre><h2 id="optional-arguments"><a href="#optional-arguments" class="headerlink" title="optional arguments"></a>optional arguments</h2><ul>
+<li><p>通过“-”指定短参数</p>
 </li>
-<li><p>indices：在tensor中含有非零值的位置。</p>
-</li>
-<li><p>value：对应的数值。</p>
-<pre><code>sparse_tensor = tf.SparseTensor(indices=[[0, 1], [2, 4]],
-                                values = [6, 0.5],
-                                dense_shape = [3, 5])
+<li><p>通过“–”指定长参数</p>
+<pre><code># 默认建立一个长参数对应的参数，使得args可以解析
+parser.add_argument(&quot;-v&quot;, &quot;--verbosity&quot;, help=&quot;increase output verbosity&quot;)
+if args.verbosity:
+  print(&quot;verbosity turned on&quot;)
 </code></pre></li>
 </ul>
-<h2 id="Passing-input-fn-Data-to-Your-Model"><a href="#Passing-input-fn-Data-to-Your-Model" class="headerlink" title="Passing input_fn Data to Your Model"></a>Passing input_fn Data to Your Model</h2><p>在classifier.train(input_fn = my_input_fn, steps = 2000)中，input_fn接收传递的必须为一个函数，而不能只是简单的一个数值。如果我们想要以参数的形式传递给input_fn。</p>
-<p>第一种方法，需要使用到 functools.partial函数，该函数可以使得我们即便以参数形式传入，也会将之对待为函数。</p>
-<pre><code>classifier.train(input_fn = functools.partial(my_input_fn, data_set = training_set), steps = 2000)
-</code></pre><p>第二种方法，使用lambda的表示形式</p>
-<pre><code>classifier.train(input_fn = lambda: my_input_fn(training_set),steps = 2000)
-</code></pre><p>之后，就可以使用如下函数，一次定义需要输入的数据，而不用分别对（训练，测试，预测训练集）重复定义,只需要在使用时改变数据集dataset即可，</p>
-<pre><code>import pandas as pd
+<pre><code>python arg.py **-v** key
+</code></pre><h2 id="action-’store-true’"><a href="#action-’store-true’" class="headerlink" title="action=’store_true’"></a>action=’store_true’</h2><p>在上述表示中，“-v”后必须添加参数，添加该代码，可以使得你不使用参数仍然可以正确运行。</p>
+<pre><code>python arg.py -v
+</code></pre><h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>默认的参数类型为，str，如果要进行数学运算，我们将要使用int，float等。</p>
+<pre><code>parser.add_argument(&quot;x&quot;, type=int, help=&quot;the base&quot;)
+print(args.x ** 2)
+</code></pre><h2 id="choices"><a href="#choices" class="headerlink" title="choices=[]"></a>choices=[]</h2><p>除此之外，我们可以限制某个值的取值范围，比如说如下操作：</p>
+<pre><code>parser.add_argument(&quot;x&quot;, type=int, choices=[0, 1, 2], help=&quot;3 case in x&quot;)
 
-def get_input_fn_from_pandas(data_set, num_epochs=None, shuffle=True):
-  return tf.estimator.inputs.pandas_input_fn(
-    x=pd.DataFrame(...),
-    y=pd.Series(...),
-    num_epochs=num_epochs,
-    shuffle=shuffle)
+if args.x==0:
+    ...
+elif args.x==1:
+    ...
+else:
+    ...
+通过判断，执行对应的操作。
+</code></pre><h2 id="程序用法帮助"><a href="#程序用法帮助" class="headerlink" title="程序用法帮助"></a>程序用法帮助</h2><p>在初始句中加入对应的描述信息，描述程序的用法：</p>
+<pre><code>parser = argparse.ArgumentParser(description=&quot;information&quot;)
+</code></pre><h2 id="互斥参数"><a href="#互斥参数" class="headerlink" title="互斥参数"></a>互斥参数</h2><p>两个参数不能共同使用，用法如下：</p>
+<pre><code>group = parser.add_mutually_exclusive_grout()
+group.add_argument(&quot;-v&quot;,...)
+group.add_argument(&quot;-g&quot;,...)
+</code></pre><h2 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h2><p>加入default参数，默认以指定格式输出。<br>      parser.add_argument(“x”, type=int, choices=[0, 1, 2], default=1，help=”3 case in x”)</p>
+<h2 id="register"><a href="#register" class="headerlink" title="register"></a>register</h2><p>指定一个新的解释器，用法：</p>
+<pre><code>parser.register(&quot;type&quot;, &quot;bool&quot;, lambda v: v.lower() == true)
+</code></pre><p>在parser.add_argument中，type=“bool”，则执行上述parser。</p>
+<h2 id="nargs与const参数"><a href="#nargs与const参数" class="headerlink" title="nargs与const参数"></a>nargs与const参数</h2><p>在parser.add_argument()中，如果action=’store_const’,则需要指定const函数。</p>
+<p>nargs</p>
+<ul>
+<li>为N（integer）表示从命令行的N个参数一起加入到一个list</li>
+<li><p>‘？’一般和default连用：若命令行中有使用参数则使用参数，没有则使用default的值</p>
+<pre><code>parser.add_argument(&quot;-s&quot;, &quot;--square&quot;, type=int, nargs = &quot;?&quot;, default = 3, help=&quot;the square caculation&quot;)
 
+如上所示：如果指定了 -s 2 则使用2进行乘方，没有的话则使用3.
+</code></pre></li>
+</ul>
 
-
-import numpy as np
-
-def get_input_fn_from_numpy(data_set, num_epochs=None, shuffle=True):
-  return tf.estimator.inputs.numpy_input_fn(
-    x={...},
-    y=np.array(...),
-    num_epochs=num_epochs,
-    shuffle=shuffle)
-</code></pre><p>如下面代码所示：</p>
-<pre><code>regressor.train(input_fn=get_input_fn(training_set), steps=5000)
-regressor.evaluate(input_fn=get_input_fn(test_set, num_epochs=1, shuffle=False))
-regressor.predict(input_fn=get_input_fn(prediction_set, num_epochs=1, shuffle=False))
-</code></pre>
       
     </div>
     
@@ -430,7 +431,7 @@ regressor.predict(input_fn=get_input_fn(prediction_set, num_epochs=1, shuffle=Fa
       
         <div class="post-tags">
           
-            <a href="/tags/TensorFlow/" rel="tag"><i class="fa fa-tag"></i> TensorFlow</a>
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
           
         </div>
       
@@ -443,8 +444,8 @@ regressor.predict(input_fn=get_input_fn(prediction_set, num_epochs=1, shuffle=Fa
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/10/linux6/" rel="next" title="Linux就该这么学（六）">
-                <i class="fa fa-chevron-left"></i> Linux就该这么学（六）
+              <a href="/2018/01/20/estimator/" rel="next" title="estimator">
+                <i class="fa fa-chevron-left"></i> estimator
               </a>
             
           </div>
@@ -452,10 +453,6 @@ regressor.predict(input_fn=get_input_fn(prediction_set, num_epochs=1, shuffle=Fa
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/03/argparse/" rel="prev" title="argparse">
-                argparse <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +598,7 @@ regressor.predict(input_fn=get_input_fn(prediction_set, num_epochs=1, shuffle=Fa
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-Input-Functions-with-tf-estimator"><span class="nav-number">1.</span> <span class="nav-text">Building Input Functions with tf.estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-consturct-of-input-fn"><span class="nav-number">1.1.</span> <span class="nav-text">The consturct of input_fn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Converting-Feature-Data-to-Tensor"><span class="nav-number">1.2.</span> <span class="nav-text">Converting Feature Data to Tensor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Passing-input-fn-Data-to-Your-Model"><span class="nav-number">1.3.</span> <span class="nav-text">Passing input_fn Data to Your Model</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#argparse"><span class="nav-number">1.</span> <span class="nav-text">argparse</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般用法"><span class="nav-number">1.1.</span> <span class="nav-text">一般用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#positional-arguments"><span class="nav-number">1.2.</span> <span class="nav-text">positional arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optional-arguments"><span class="nav-number">1.3.</span> <span class="nav-text">optional arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#action-’store-true’"><span class="nav-number">1.4.</span> <span class="nav-text">action=’store_true’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type"><span class="nav-number">1.5.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#choices"><span class="nav-number">1.6.</span> <span class="nav-text">choices=[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序用法帮助"><span class="nav-number">1.7.</span> <span class="nav-text">程序用法帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥参数"><span class="nav-number">1.8.</span> <span class="nav-text">互斥参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数默认值"><span class="nav-number">1.9.</span> <span class="nav-text">参数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#register"><span class="nav-number">1.10.</span> <span class="nav-text">register</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nargs与const参数"><span class="nav-number">1.11.</span> <span class="nav-text">nargs与const参数</span></a></li></ol></li></ol></div>
             
 
           </div>
