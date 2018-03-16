@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -112,18 +112,17 @@
 
 
 
-<meta name="description" content="搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。">
-<meta name="keywords" content="docker">
+<meta name="description" content="shadowsocks的安装安装shadowsockspip install git+https://github.com/shadowsocks/shadowsocks.git@master 安装shadowsocks-libev, 支持chacha20-ietf-poly1035加密方式sudo apt-get install software-properties-common -y su">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker的坑">
-<meta property="og:url" content="particularj.github.io/2017/11/24/docker_pro/index.html">
+<meta property="og:title" content="shadowsock">
+<meta property="og:url" content="particularj.github.io/2018/03/16/shadowsock/index.html">
 <meta property="og:site_name" content="ParticularJ">
-<meta property="og:description" content="搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。">
+<meta property="og:description" content="shadowsocks的安装安装shadowsockspip install git+https://github.com/shadowsocks/shadowsocks.git@master 安装shadowsocks-libev, 支持chacha20-ietf-poly1035加密方式sudo apt-get install software-properties-common -y su">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-25T13:09:53.261Z">
+<meta property="og:updated_time" content="2018-03-16T08:09:30.745Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker的坑">
-<meta name="twitter:description" content="搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。">
+<meta name="twitter:title" content="shadowsock">
+<meta name="twitter:description" content="shadowsocks的安装安装shadowsockspip install git+https://github.com/shadowsocks/shadowsocks.git@master 安装shadowsocks-libev, 支持chacha20-ietf-poly1035加密方式sudo apt-get install software-properties-common -y su">
 
 
 
@@ -157,7 +156,7 @@
 
 
 
-  <title>Docker的坑 | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>shadowsock | ParticularJ</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -264,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="particularj.github.io/2017/11/24/docker_pro/">
+    <link itemprop="mainEntityOfPage" href="particularj.github.io/2018/03/16/shadowsock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ParticularJ">
@@ -281,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker的坑</h1>
+          <h1 class="post-title" itemprop="name headline">shadowsock</h1>
         
 
         <div class="post-meta">
@@ -293,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T23:38:53+08:00">
-                2017-11-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T16:06:15+08:00">
+                2018-03-16
               </time>
             
 
@@ -303,28 +302,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -353,49 +330,13 @@
       
 
       
-        <p>搭建Docker的诸多坑，没有坑是大神和Google不能填平的，熟能生巧。</p>
-<a id="more"></a>
-<h1 id="Docker的填坑之旅"><a href="#Docker的填坑之旅" class="headerlink" title="Docker的填坑之旅"></a>Docker的填坑之旅</h1><p> 写在最前面的话，这次的Docker搭建以及填坑中，最要感谢的一位小伙伴<a href="http://www.enningxie.com" target="_blank" rel="external">Coolix</a> .</p>
-<h2 id="镜像的加载问题"><a href="#镜像的加载问题" class="headerlink" title="镜像的加载问题"></a>镜像的加载问题</h2><p>除了自己从Docker官网上pull image之外，还有就是使用现成的image。在使用现成的image中，可能遇到以下几个问题。</p>
-<ul>
-<li><p>import/export：这两个命令是用于 <strong>container</strong> 的操作。具体的是，export是将 <strong>container</strong> 导出，而import是将这个导出的  <strong>container</strong> 导入成一个 <strong>images</strong>。</p>
-</li>
-<li><p>save/load: save和load的操作则完全是针对于 <strong>image</strong> 而操作的。</p>
-</li>
-</ul>
-<p>一般image正确导入会在docker iamges显示repository:tag。</p>
-<pre><code>REPOSITORY                  TAG                 IMAGE ID            
-simpleware/bigdata-ubuntu   latest              db8e75c00b4e   
-</code></pre><h2 id="Dockerfile的书写问题"><a href="#Dockerfile的书写问题" class="headerlink" title="Dockerfile的书写问题"></a>Dockerfile的书写问题</h2><ul>
-<li><p>尽量少使用RUN命令，因为每一次RUN就会多添加一层，会使得镜像臃肿。</p>
-</li>
-<li><p>安装软件时，和在Linux安装区别不大，将命令依次写入Dockerfile即可，每行以“ &amp;&amp;\”结尾。</p>
-</li>
-<li><p>注意在安装完成后，在Dockerfile写入相应的清楚命令，清楚多余的安装包以及缓存。</p>
-</li>
-</ul>
-<h2 id="DockerGUI"><a href="#DockerGUI" class="headerlink" title="DockerGUI"></a>DockerGUI</h2><p>在某些现成的Docker image中，可能已经有配置好的GUI，那我们该如何实现：</p>
-<p>你可以将所给的Docker image包解压，之后查看其提供的readme文件，查找出相关信息，比如vnc password。做好前期准备工作后，一般通过如下方式实现。</p>
-<pre><code>$ docker run --name test -P -d REPOSITORY:TAG
-</code></pre><p>使用该命令你会为image启动一个test的容器。</p>
-<pre><code>$ docker port test
-</code></pre><p>使用该命令就会得到test容器的端口映射,根据所给的端口信息，通过VNC便可以连接到含有GUI的image。</p>
-<h2 id="中文显示问题"><a href="#中文显示问题" class="headerlink" title="中文显示问题"></a>中文显示问题</h2><p>根据我自己的安装遇到的问题，在COPY文件到Docker后，不能正常显示中文。解决方法如下：</p>
-<h3 id="显示“？？？”"><a href="#显示“？？？”" class="headerlink" title="显示“？？？”"></a>显示“？？？”</h3><p>安装中文支持包：</p>
-<pre><code>$ sudo apt-get install language-pack-zh-hans
-</code></pre><p>修改/etc/environmeng在当中添加：</p>
-<pre><code>LANG=“zh_CN.UTF-8”
-LANGUAGE=&quot;zh_CN:zh:en_US:en&quot;
-</code></pre><p>修改/var/lib/locales/supported.d/local在当中添加：</p>
-<pre><code>en_US.UTF-8 UTF-8
-zh_CN.UTF-8 UTF-8
-zh_CN.GBK GBK
-zh_CN GB2312
-</code></pre><p>保存后执行命令：</p>
-<pre><code>$ sudo locale-gen
-</code></pre><h3 id="显示“□□□”问题"><a href="#显示“□□□”问题" class="headerlink" title="显示“□□□”问题"></a>显示“□□□”问题</h3><p>直接安装相关的字体</p>
-<pre><code>$ sudo apt-get install fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
-</code></pre>
+        <a id="more"></a>
+<h1 id="shadowsocks的安装"><a href="#shadowsocks的安装" class="headerlink" title="shadowsocks的安装"></a>shadowsocks的安装</h1><h2 id="安装shadowsocks"><a href="#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><pre><code>pip install git+https://github.com/shadowsocks/shadowsocks.git@master
+</code></pre><h2 id="安装shadowsocks-libev-支持chacha20-ietf-poly1035加密方式"><a href="#安装shadowsocks-libev-支持chacha20-ietf-poly1035加密方式" class="headerlink" title="安装shadowsocks-libev, 支持chacha20-ietf-poly1035加密方式"></a>安装shadowsocks-libev, 支持chacha20-ietf-poly1035加密方式</h2><pre><code>sudo apt-get install software-properties-common -y
+sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev -y
+sudo apt-get update
+sudo apt install shadowsocks-libev
+</code></pre><h2 id="配置config-json文件。"><a href="#配置config-json文件。" class="headerlink" title="配置config.json文件。"></a>配置config.json文件。</h2>
       
     </div>
     
@@ -410,12 +351,6 @@ zh_CN GB2312
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
-          
-        </div>
-      
 
       
       
@@ -425,8 +360,8 @@ zh_CN GB2312
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/21/docker/" rel="next" title="Docker">
-                <i class="fa fa-chevron-left"></i> Docker
+              <a href="/2018/02/03/argparse/" rel="next" title="argparse">
+                <i class="fa fa-chevron-left"></i> argparse
               </a>
             
           </div>
@@ -434,10 +369,6 @@ zh_CN GB2312
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/26/Hadoop/" rel="prev" title="Hadoop">
-                Hadoop <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +514,7 @@ zh_CN GB2312
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker的填坑之旅"><span class="nav-number">1.</span> <span class="nav-text">Docker的填坑之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像的加载问题"><span class="nav-number">1.1.</span> <span class="nav-text">镜像的加载问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile的书写问题"><span class="nav-number">1.2.</span> <span class="nav-text">Dockerfile的书写问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DockerGUI"><span class="nav-number">1.3.</span> <span class="nav-text">DockerGUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文显示问题"><span class="nav-number">1.4.</span> <span class="nav-text">中文显示问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示“？？？”"><span class="nav-number">1.4.1.</span> <span class="nav-text">显示“？？？”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示“□□□”问题"><span class="nav-number">1.4.2.</span> <span class="nav-text">显示“□□□”问题</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shadowsocks的安装"><span class="nav-number">1.</span> <span class="nav-text">shadowsocks的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装shadowsocks"><span class="nav-number">1.1.</span> <span class="nav-text">安装shadowsocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装shadowsocks-libev-支持chacha20-ietf-poly1035加密方式"><span class="nav-number">1.2.</span> <span class="nav-text">安装shadowsocks-libev, 支持chacha20-ietf-poly1035加密方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置config-json文件。"><span class="nav-number">1.3.</span> <span class="nav-text">配置config.json文件。</span></a></li></ol></li></ol></div>
             
 
           </div>
